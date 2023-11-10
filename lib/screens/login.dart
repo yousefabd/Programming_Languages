@@ -48,7 +48,7 @@ class LogInScreen extends StatelessWidget {
                       print(_numberController.text);
                       print(_passwordController.text);
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign in',
                       style: TextStyle(fontSize: 25),
                     )))
