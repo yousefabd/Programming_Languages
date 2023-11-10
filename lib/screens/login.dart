@@ -40,7 +40,18 @@ class LogInScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(height:60,width: 120, child: ElevatedButton(onPressed: (){}, child: Text('Sign in',style: TextStyle(fontSize: 25),)))
+            Container(
+                height: 60,
+                width: 120,
+                child: ElevatedButton(
+                    onPressed: () {
+                      print(_numberController.text);
+                      print(_passwordController.text);
+                    },
+                    child: Text(
+                      'Sign in',
+                      style: TextStyle(fontSize: 25),
+                    )))
           ],
         ),
       ),
