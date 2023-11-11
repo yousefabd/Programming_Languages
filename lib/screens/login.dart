@@ -49,7 +49,7 @@ class LogInScreen extends StatelessWidget {
                       print(_passwordController.text);
                     },
                     child: Text(
-                      'Log in',
+                      'Log In',
                       style: TextStyle(fontSize: 25),
                     )))
           ],
