@@ -13,7 +13,7 @@ class LogInScreen extends StatelessWidget {
             style: GoogleFonts.croissantOne(color: Colors.white)),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 60),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 60),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
