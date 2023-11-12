@@ -65,6 +65,7 @@ flutter:
     #  - assets/images/login_border.png
      - assets/images/logs.png
      - assets/images/needstore.svg
+     - assets/images/svborders.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
