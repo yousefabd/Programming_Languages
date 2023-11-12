@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 class LogInScreen extends StatelessWidget {
   LogInScreen({super.key});
   final _numberController = TextEditingController();
