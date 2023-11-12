@@ -12,12 +12,12 @@ class LogInScreen extends StatelessWidget {
         Container(
           foregroundDecoration: BoxDecoration(
             image: DecorationImage(
-                image: Image.asset('assets/images/login_border.png').image,
+                image: Image.asset('assets/images/logs.png').image,
                 fit: BoxFit.fill),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 60),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 325),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -28,7 +28,7 @@ class LogInScreen extends StatelessWidget {
                 decoration: const InputDecoration(
                     label: Text('Phone Number'), border: OutlineInputBorder()),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               TextField(
                 controller: _passwordController,
                 decoration: const InputDecoration(
@@ -44,7 +44,7 @@ class LogInScreen extends StatelessWidget {
                       },
                       child: const Text(
                         'LOG IN',
-                        style: TextStyle(fontSize: 25),
+                        style: TextStyle(fontSize: 25), 
                       )))
             ],
           ),
