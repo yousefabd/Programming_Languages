@@ -17,13 +17,71 @@ class LogInScreen extends StatelessWidget {
                 fit: BoxFit.fill),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 325),
+        Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
-            children: [],
+            children: [
+              Text(
+                "Hello!",
+                style: GoogleFonts.bitter(
+                    color: Theme.of(context).colorScheme.onBackground,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 65),
+              ),
+              Text(
+                "Sign in to your account",
+                style: GoogleFonts.bitter(
+                  color: Theme.of(context).colorScheme.onBackground,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  maxLength: 10,
+                  controller: _numberController,
+                  decoration: const InputDecoration(
+                    label: Row(children: [
+                      Icon(Icons.phone_android),
+                      SizedBox(width: 8),
+                      Text('Phone Number')
+                    ]),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                child: TextField(
+                  controller: _passwordController,
+                  decoration: const InputDecoration(
+                    label: Row(children: [
+                      Icon(Icons.lock),
+                      SizedBox(width: 8),
+                      Text('Password')
+                    ]),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
+        )
       ]),
     );
   }
