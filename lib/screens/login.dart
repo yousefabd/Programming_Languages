@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prog_languages/widgets/submit_button.dart';
 
 class LogInScreen extends StatelessWidget {
   LogInScreen({super.key});
   final _numberController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  //function to Sign in and switch to User's account
+  void _logInAccount() {
+    //Handling login logic will be added here later
+
+    print('Log in account button pressed');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,99 +27,81 @@ class LogInScreen extends StatelessWidget {
               fit: BoxFit.fill,
             ),
             Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "Hello!",
-                    style: GoogleFonts.bitter(
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 65,
-                    ),
-                  ),
-                  Text(
-                    "Sign in to your account",
-                    style: GoogleFonts.bitter(
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 20),
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      maxLength: 10,
-                      controller: _numberController,
-                      decoration: const InputDecoration(
-                        label: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Icon(Icons.phone_android),
-                          SizedBox(width: 8),
-                          Text('Phone Number')
-                        ]),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          ),
-                        ),
+              child: Material(
+                /*When we used a stack with background image, some Material features were gone, like splash effect
+                in InkWell when it's tapped, so we wrapped the Column with Material with an invisible color just 
+                to get those features back!*/
+                color: Colors.transparent,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Hello!",
+                      style: GoogleFonts.bitter(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 65,
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 20),
-                    child: TextField(
-                      controller: _passwordController,
-                      decoration: const InputDecoration(
-                        label: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Icon(Icons.lock),
-                          SizedBox(width: 8),
-                          Text('Password')
-                        ]),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          ),
-                        ),
+                    Text(
+                      "Sign in to your account",
+                      style: GoogleFonts.bitter(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 280,
-                    height: 100,
-                    child: Padding(
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 40, vertical: 20),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          //
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 49, 237, 237),
-                          foregroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                            side: const BorderSide(
-                              color: Color.fromARGB(255, 49, 237, 237),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        maxLength: 10,
+                        controller: _numberController,
+                        decoration: const InputDecoration(
+                          label: Row(mainAxisSize: MainAxisSize.min, children: [
+                            Icon(Icons.phone_android),
+                            SizedBox(width: 8),
+                            Text('Phone Number')
+                          ]),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30),
                             ),
                           ),
                         ),
-                        child: Text(
-                          'Sign In',
-                          style: GoogleFonts.bitter(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 40, vertical: 20),
+                      child: TextField(
+                        controller: _passwordController,
+                        decoration: const InputDecoration(
+                          label: Row(mainAxisSize: MainAxisSize.min, children: [
+                            Icon(Icons.lock),
+                            SizedBox(width: 8),
+                            Text('Password')
+                          ]),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40, bottom: 60),
+                      //we passed _logInAccount so it will be triggered in SubmitButton class and executed here!
+                      child: SubmitButton(
+                          label: "Sign In", onPressed: _logInAccount),
+                    )
+                  ],
+                ),
               ),
             ),
           ],
