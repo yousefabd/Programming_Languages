@@ -103,7 +103,7 @@ class LogInScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 14),
                     SubmitButton(label: "Sign In", onPressed: _logInAccount),
-                    const SizedBox(height: 90),
+                    const SizedBox(height: 80),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -116,7 +116,12 @@ class LogInScreen extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: _registerAccount,
-                          child: Text('Create'),
+                          child: const Text(
+                            'Create',
+                            style: TextStyle(
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
                         )
                       ],
                     )
