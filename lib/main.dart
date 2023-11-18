@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/screens/login.dart';
+import 'package:prog_languages/screens/pharma_store.dart';
 
 //adding a seed color
 final kColorScheme =
@@ -16,7 +17,7 @@ void main() {
         useMaterial3: true,
         colorScheme: kColorScheme,
       ),
-      home: LogInScreen(),
+      home: const PharmaStore(),
     ),
   );
 }
