@@ -63,8 +63,10 @@ class LogInScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 20),
+                          horizontal: 40, vertical: 15),
                       child: TextField(
+                        style: const TextStyle(fontSize: 20),
+                        textAlign: TextAlign.start,
                         keyboardType: TextInputType.number,
                         maxLength: 10,
                         controller: _numberController,
@@ -84,8 +86,9 @@ class LogInScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 40, vertical: 20),
+                          horizontal: 40, vertical: 15),
                       child: TextField(
+                        style: const TextStyle(fontSize: 20),
                         controller: _passwordController,
                         decoration: const InputDecoration(
                           label: Row(mainAxisSize: MainAxisSize.min, children: [
