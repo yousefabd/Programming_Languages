@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
 class LogInScreen extends StatelessWidget {
-  LogInScreen({super.key});
+  LogInScreen({super.key, required this.onRegisterAccount});
   final _numberController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -15,9 +15,7 @@ class LogInScreen extends StatelessWidget {
     print('Log in account button pressed');
   }
 
-  void _registerAccount() {
-    print('Create Account button pressed');
-  }
+  final void Function() onRegisterAccount;
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +116,7 @@ class LogInScreen extends StatelessWidget {
                               fontWeight: FontWeight.w500),
                         ),
                         TextButton(
-                          onPressed: _registerAccount,
+                          onPressed: onRegisterAccount,
                           child: const Text(
                             'Create',
                             style: TextStyle(
