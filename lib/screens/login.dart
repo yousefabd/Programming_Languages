@@ -15,6 +15,10 @@ class LogInScreen extends StatelessWidget {
     print('Log in account button pressed');
   }
 
+  void _registerAccount() {
+    print('Create Account button pressed');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +37,12 @@ class LogInScreen extends StatelessWidget {
                 to get those features back!*/
                 color: Colors.transparent,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
+                  //mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
+                    const SizedBox(
+                      height: 150,
+                    ),
                     Text(
                       "Hello!",
                       style: GoogleFonts.bitter(
@@ -94,11 +101,24 @@ class LogInScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40, bottom: 60),
-                      //we passed _logInAccount so it will be triggered in SubmitButton class and executed here!
-                      child: SubmitButton(
-                          label: "Sign In", onPressed: _logInAccount),
+                    const SizedBox(height: 14),
+                    SubmitButton(label: "Sign In", onPressed: _logInAccount),
+                    const SizedBox(height: 90),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Don\'t have an account?',
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Theme.of(context).colorScheme.onBackground,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        TextButton(
+                          onPressed: _registerAccount,
+                          child: Text('Create'),
+                        )
+                      ],
                     )
                   ],
                 ),
