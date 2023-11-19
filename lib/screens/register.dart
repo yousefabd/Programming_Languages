@@ -24,9 +24,10 @@ class RegisterScreen extends StatelessWidget {
           ),
           Scaffold(
             backgroundColor: Colors.transparent,
-            resizeToAvoidBottomInset: false,
+            //resizeToAvoidBottomInset: false,
             body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 120),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 120),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
