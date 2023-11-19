@@ -69,11 +69,8 @@ class LogInScreen extends StatelessWidget {
                         maxLength: 10,
                         controller: _numberController,
                         decoration: const InputDecoration(
-                          label: Row(mainAxisSize: MainAxisSize.min, children: [
-                            Icon(Icons.phone_android),
-                            SizedBox(width: 8),
-                            Text('Phone Number')
-                          ]),
+                          prefixIcon: Icon(Icons.phone_android),
+                          label: Text('Phone Number'),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(30),
@@ -89,11 +86,8 @@ class LogInScreen extends StatelessWidget {
                         style: const TextStyle(fontSize: 20),
                         controller: _passwordController,
                         decoration: const InputDecoration(
-                          label: Row(mainAxisSize: MainAxisSize.min, children: [
-                            Icon(Icons.lock),
-                            SizedBox(width: 8),
-                            Text('Password')
-                          ]),
+                          prefixIcon: Icon(Icons.lock),
+                          label: Text('Password'),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(30),
