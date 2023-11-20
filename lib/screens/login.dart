@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:prog_languages/screens/home.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
-class LogInScreen extends StatelessWidget {
-  LogInScreen({super.key, required this.onRegisterAccount});
+class LogInScreen extends StatefulWidget {
+  const LogInScreen(
+      {super.key,
+      required this.onRegisterAccount,
+      required this.onLoginAccount});
+  final void Function() onRegisterAccount;
+  final void Function() onLoginAccount;
+
+  @override
+  State<LogInScreen> createState() => _LogInScreenState();
+}
+
+class _LogInScreenState extends State<LogInScreen> {
   final _numberController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  //function to Sign in and switch to User's account
-  void _logInAccount() {
-    //Handling login logic will be added here later
-    print('Log in account button pressed');
-  }
-
-  final void Function() onRegisterAccount;
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +88,7 @@ class LogInScreen extends StatelessWidget {
                           horizontal: 40, vertical: 15),
                       child: TextField(
                         style: const TextStyle(fontSize: 20),
+                        obscureText: true,
                         controller: _passwordController,
                         decoration: const InputDecoration(
                           filled: true,
@@ -102,11 +105,9 @@ class LogInScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 14),
                     SubmitButton(
-                        label: "Sign In",
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (ctx) => const HomeScreen()));
-                        }),
+                      label: "Sign In",
+                      onPressed: widget.onLoginAccount,
+                    ),
                     const SizedBox(height: 80),
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -119,7 +120,7 @@ class LogInScreen extends StatelessWidget {
                               fontWeight: FontWeight.w500),
                         ),
                         TextButton(
-                          onPressed: onRegisterAccount,
+                          onPressed: widget.onRegisterAccount,
                           child: const Text(
                             'Create',
                             style: TextStyle(

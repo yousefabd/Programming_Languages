@@ -52,6 +52,7 @@ class RegisterScreen extends StatelessWidget {
                               fillColor: Colors.white,
                               //  fillColor: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 246, 244, 244)),
                               prefixIcon: const Icon(Icons.person),
+                              errorText: 'amogus',
                               labelText: ('First Name'),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
@@ -69,6 +70,7 @@ class RegisterScreen extends StatelessWidget {
                               fillColor: Colors.white,
                               prefixIcon: const Icon(Icons.person),
                               labelText: ('Last Name'),
+                              errorText: 'amogus',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),
@@ -85,6 +87,7 @@ class RegisterScreen extends StatelessWidget {
                               fillColor: Colors.white,
                               prefixIcon: const Icon(Icons.phone_android),
                               labelText: ('Phone Number'),
+                              errorText: 'amogus',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),
