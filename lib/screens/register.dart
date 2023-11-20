@@ -48,6 +48,9 @@ class RegisterScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 36),
                           child: TextField(
                             decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              //  fillColor: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 246, 244, 244)),
                               prefixIcon: const Icon(Icons.person),
                               labelText: ('First Name'),
                               border: OutlineInputBorder(
@@ -62,6 +65,8 @@ class RegisterScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 36),
                           child: TextField(
                             decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               prefixIcon: const Icon(Icons.person),
                               labelText: ('Last Name'),
                               border: OutlineInputBorder(
@@ -76,6 +81,8 @@ class RegisterScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 36),
                           child: TextField(
                             decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               prefixIcon: const Icon(Icons.phone_android),
                               labelText: ('Phone Number'),
                               border: OutlineInputBorder(
@@ -90,6 +97,8 @@ class RegisterScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 36),
                           child: TextField(
                             decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               prefixIcon: const Icon(Icons.lock),
                               labelText: ('Password'),
                               border: OutlineInputBorder(
@@ -104,6 +113,8 @@ class RegisterScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 36),
                           child: TextField(
                             decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               prefixIcon: const Icon(Icons.lock),
                               labelText: ('Confirm Password'),
                               border: OutlineInputBorder(
