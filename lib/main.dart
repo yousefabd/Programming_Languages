@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:prog_languages/screens/login.dart';
 import 'package:prog_languages/screens/pharma_store.dart';
 
 //adding a seed color
