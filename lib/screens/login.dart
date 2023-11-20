@@ -69,6 +69,8 @@ class LogInScreen extends StatelessWidget {
                         maxLength: 10,
                         controller: _numberController,
                         decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
                           prefixIcon: Icon(Icons.phone_android),
                           label: Text('Phone Number'),
                           border: OutlineInputBorder(
@@ -86,6 +88,8 @@ class LogInScreen extends StatelessWidget {
                         style: const TextStyle(fontSize: 20),
                         controller: _passwordController,
                         decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
                           prefixIcon: Icon(Icons.lock),
                           label: Text('Password'),
                           border: OutlineInputBorder(
