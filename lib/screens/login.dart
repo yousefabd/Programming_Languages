@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prog_languages/screens/home.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
 class LogInScreen extends StatelessWidget {
@@ -11,7 +12,6 @@ class LogInScreen extends StatelessWidget {
   //function to Sign in and switch to User's account
   void _logInAccount() {
     //Handling login logic will be added here later
-
     print('Log in account button pressed');
   }
 
@@ -97,7 +97,12 @@ class LogInScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 14),
-                    SubmitButton(label: "Sign In", onPressed: _logInAccount),
+                    SubmitButton(
+                        label: "Sign In",
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (ctx) => const HomeScreen()));
+                        }),
                     const SizedBox(height: 80),
                     Row(
                       mainAxisSize: MainAxisSize.min,
