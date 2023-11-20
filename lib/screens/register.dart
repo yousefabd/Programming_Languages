@@ -49,6 +49,7 @@ class RegisterScreen extends StatelessWidget {
                           child: TextField(
                             decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.person),
+                              errorText: 'amogus',
                               labelText: ('First Name'),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
@@ -64,6 +65,7 @@ class RegisterScreen extends StatelessWidget {
                             decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.person),
                               labelText: ('Last Name'),
+                              errorText: 'amogus',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),
@@ -78,6 +80,7 @@ class RegisterScreen extends StatelessWidget {
                             decoration: InputDecoration(
                               prefixIcon: const Icon(Icons.phone_android),
                               labelText: ('Phone Number'),
+                              errorText: 'amogus',
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(25),
                               ),

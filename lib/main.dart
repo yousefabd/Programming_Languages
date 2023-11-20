@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:prog_languages/screens/pharma_store.dart';
 
 //adding a seed color
-final kColorScheme =
-    ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 27, 127, 72));
+final kColorScheme = ColorScheme.fromSeed(
+    seedColor: Color.fromARGB(255, 55, 195, 146), brightness: Brightness.light);
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: kColorScheme.onTertiaryContainer),
