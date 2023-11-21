@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/dummy_medicines.dart';
+import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_item.dart';
 import 'package:prog_languages/widgets/search_bar.dart';
 
@@ -13,7 +13,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  void changeCategory(Category c) {}
+  MedCategory _selectedCategory = MedCategory.painReliever;
+  void changeCategory(MedCategory c) {
+    setState(() {
+      _selectedCategory = c;
+    });
+  }
+
+  List<Medicine> get categoryMedicines {
+    List<Medicine> l = [];
+    for (int i = 0; i < dummyMedicines.length; i++) {
+      if (dummyMedicines[i].category == _selectedCategory) {
+        l.add(dummyMedicines[i]);
+      }
+    }
+    return l;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,16 +62,16 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             MySearchBar(
               onSearch: () {},
-              onSelectCategory: () {
-                print('category selected');
+              onSelectCategory: (category) {
+                changeCategory(category);
               },
             ),
             const SizedBox(height: 18),
             Expanded(
               child: ListView.builder(
-                itemCount: dummyMedicines.length,
+                itemCount: categoryMedicines.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return MedicineItem(dummyMedicines[index]);
+                  return MedicineItem(categoryMedicines[index]);
                 },
               ),
             ),

@@ -5,7 +5,7 @@ class MySearchBar extends StatefulWidget {
   MySearchBar(
       {super.key, required this.onSearch, required this.onSelectCategory});
   final void Function() onSearch;
-  final void Function() onSelectCategory;
+  final void Function(MedCategory) onSelectCategory;
 
   @override
   State<MySearchBar> createState() => _MySearchBarState();
@@ -13,7 +13,7 @@ class MySearchBar extends StatefulWidget {
 
 class _MySearchBarState extends State<MySearchBar> {
   final _searchController = TextEditingController();
-  MedCategory _selectedCategory = MedCategory.sadative;
+  MedCategory _selectedCategory = MedCategory.painReliever;
   String getCategoryName(MedCategory c) {
     switch (c) {
       case MedCategory.antibiotic:
@@ -53,7 +53,7 @@ class _MySearchBarState extends State<MySearchBar> {
               setState(() {
                 _selectedCategory = newCategory;
               });
-              widget.onSelectCategory();
+              widget.onSelectCategory(newCategory);
             })
       ],
     );

@@ -40,4 +40,15 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/cetacodaine.png'),
     id: '3',
   ),
+  Medicine(
+    sciName: 'cetacodaine',
+    marketName: 'Cetacaine',
+    category: MedCategory.painReliever,
+    company: 'Ultra-Medica',
+    quantity: 100,
+    expireDate: randomDate,
+    price: 4000.0,
+    image: Image.asset('assets/images/medicine/cetacodaine.png'),
+    id: '4',
+  ),
 ];
