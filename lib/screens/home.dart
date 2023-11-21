@@ -45,12 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(),
       body: Container(
         width: double.infinity,
-        padding: EdgeInsets.only(left: 10, right: 10, top: 40),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 40),
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Theme.of(context).colorScheme.primary.withOpacity(0.2),
-              Theme.of(context).colorScheme.primary.withOpacity(0.05),
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(255, 255, 255, 255),
+              // Theme.of(context).colorScheme.primary.withOpacity(0.2),
+              // Theme.of(context).colorScheme.primary.withOpacity(0.05),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
