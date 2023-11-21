@@ -38,12 +38,12 @@ class RegisterScreen extends StatelessWidget {
                         fontSize: 35,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 24),
                   //start of TextFields --------------------
                   Expanded(
                     child: ListView(
                       shrinkWrap: true,
                       children: [
+                        const SizedBox(height: 30),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 36),
                           child: TextField(
