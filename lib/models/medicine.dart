@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-enum Category { painReliever, tranqualizer, stimulant, sadative }
+enum MedCategory { painReliever, stimulant, sadative, antibiotic }
 
 class Medicine {
   final String id;
   final String sciName;
   final String marketName;
-  final Category category;
+  final MedCategory category;
   final String company;
   final int quantity;
   final DateTime expireDate;
   final double price;
-  final NetworkImage image;
+  final Image image;
 
   const Medicine(
       {required this.sciName,
