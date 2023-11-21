@@ -8,7 +8,7 @@ class MedicineItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(255, 224, 255, 245),
+      color: Color.fromARGB(255, 255, 255, 255),
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
       child: Stack(
         children: [
