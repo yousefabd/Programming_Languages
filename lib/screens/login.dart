@@ -71,6 +71,8 @@ class _LogInScreenState extends State<LogInScreen> {
                         maxLength: 10,
                         controller: _numberController,
                         decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
                           prefixIcon: Icon(Icons.phone_android),
                           label: Text('Phone Number'),
                           border: OutlineInputBorder(
@@ -89,6 +91,8 @@ class _LogInScreenState extends State<LogInScreen> {
                         obscureText: true,
                         controller: _passwordController,
                         decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
                           prefixIcon: Icon(Icons.lock),
                           label: Text('Password'),
                           border: OutlineInputBorder(
