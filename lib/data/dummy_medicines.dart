@@ -13,7 +13,7 @@ final dummyMedicines = [
     quantity: 250,
     expireDate: randomDate,
     price: 2500.0,
-    image: Image.asset('assets/images/medicine/paracetamol.jpg'),
+    image: Image.asset('assets/images/medicine/paracetamol.png'),
     id: '1',
   ),
   Medicine(
@@ -25,7 +25,7 @@ final dummyMedicines = [
     expireDate: randomDate,
     price: 3500.0,
     image: Image.asset(
-      'assets/images/medicine/aspirine.jpg',
+      'assets/images/medicine/aspirine.png',
     ),
     id: '2',
   ),
@@ -37,7 +37,7 @@ final dummyMedicines = [
     quantity: 100,
     expireDate: randomDate,
     price: 4000.0,
-    image: Image.asset('assets/images/medicine/cetacodaine.jpg'),
+    image: Image.asset('assets/images/medicine/cetacodaine.png'),
     id: '3',
   ),
 ];

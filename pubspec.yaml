@@ -73,6 +73,12 @@ flutter:
      - assets/images/medicine/aspirine.jpg
      - assets/images/medicine/paracetamol.jpg
      - assets/images/medicine/cetacodaine.jpg
+     - assets/images/medicine/paracetamol.png
+     - assets/images/medicine/cetacodaine.png
+     - assets/images/medicine/aspirine.png
+     
+     
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
