@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/dummy_medicines.dart';
+import 'package:prog_languages/widgets/medicine_item.dart';
 import 'package:prog_languages/widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(),
       body: Container(
         width: double.infinity,
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+        padding: EdgeInsets.only(left: 10, right: 10, top: 40),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -44,15 +45,17 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             MySearchBar(
-                onSearch: () {},
-                onSelectCategory: () {
-                  print('category selected');
-                }),
+              onSearch: () {},
+              onSelectCategory: () {
+                print('category selected');
+              },
+            ),
+            const SizedBox(height: 18),
             Expanded(
               child: ListView.builder(
                 itemCount: dummyMedicines.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Card(child: dummyMedicines[index].image);
+                  return MedicineItem(dummyMedicines[index]);
                 },
               ),
             ),
