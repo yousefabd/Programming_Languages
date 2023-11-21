@@ -70,6 +70,9 @@ flutter:
      - assets/images/svborders.svg
      - assets/images/signup_border.svg
      - assets/images/signup_border.png
+     - assets/images/medicine/aspirine.jpg
+     - assets/images/medicine/paracetamol.jpg
+     - assets/images/medicine/cetacodaine.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
