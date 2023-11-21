@@ -70,12 +70,11 @@ flutter:
      - assets/images/svborders.svg
      - assets/images/signup_border.svg
      - assets/images/signup_border.png
-     - assets/images/medicine/aspirine.jpg
-     - assets/images/medicine/paracetamol.jpg
-     - assets/images/medicine/cetacodaine.jpg
      - assets/images/medicine/paracetamol.png
      - assets/images/medicine/cetacodaine.png
      - assets/images/medicine/aspirine.png
+     - assets/locales/ar.json
+     - assets/locales/en.json
      
      
 
