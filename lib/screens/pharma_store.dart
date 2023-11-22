@@ -38,12 +38,16 @@ class _PharmaStoreState extends State<PharmaStore> {
     );
   }
 
-  void _loginAccount() {
+  void _loginAccount(String number, String password) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => const HomeScreen(),
+        builder: (ctx) => HomeScreen(onLogout: _logoutAccount),
       ),
     );
+  }
+
+  void _logoutAccount() {
+    Navigator.of(context).pop();
   }
 
   @override

@@ -3,19 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
-class LogInScreen extends StatefulWidget {
-  const LogInScreen(
-      {super.key,
-      required this.onRegisterAccount,
-      required this.onLoginAccount});
+class LogInScreen extends StatelessWidget {
+  LogInScreen({
+    super.key,
+    required this.onRegisterAccount,
+    required this.onLoginAccount,
+  });
   final void Function() onRegisterAccount;
-  final void Function() onLoginAccount;
-
-  @override
-  State<LogInScreen> createState() => _LogInScreenState();
-}
-
-class _LogInScreenState extends State<LogInScreen> {
+  final void Function(String, String) onLoginAccount;
   final _numberController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -73,7 +68,8 @@ class _LogInScreenState extends State<LogInScreen> {
                         decoration: const InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.phone_android),
+                          prefixIcon: const Icon(Icons.phone_android),
+                          errorText: null,
                           label: Text('Phone Number'),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
@@ -95,6 +91,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           fillColor: Colors.white,
                           prefixIcon: Icon(Icons.lock),
                           label: Text('Password'),
+                          errorText: null,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(30),
@@ -106,7 +103,12 @@ class _LogInScreenState extends State<LogInScreen> {
                     const SizedBox(height: 14),
                     SubmitButton(
                       label: "Sign In",
-                      onPressed: widget.onLoginAccount,
+                      onPressed: () {
+                        onLoginAccount(
+                          _numberController.text,
+                          _passwordController.text,
+                        );
+                      },
                     ),
                     const SizedBox(height: 80),
                     Row(
@@ -120,7 +122,7 @@ class _LogInScreenState extends State<LogInScreen> {
                               fontWeight: FontWeight.w500),
                         ),
                         TextButton(
-                          onPressed: widget.onRegisterAccount,
+                          onPressed: onRegisterAccount,
                           child: const Text(
                             'Create',
                             style: TextStyle(

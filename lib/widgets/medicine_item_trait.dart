@@ -9,48 +9,47 @@ class MedicineItemTrait extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green.shade100.withOpacity(0.75),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
+      decoration: BoxDecoration(
+          color: Colors.green.shade300.withOpacity(0.75),
+          borderRadius: BorderRadius.circular(10)),
+      child: Column(
         children: [
-          const SizedBox(width: 8),
-          Icon(
-            Icons.medical_information,
-            color: Theme.of(context).colorScheme.primary,
-            size: 24,
-          ),
-          const SizedBox(width: 4),
           Text(
             medicine.sciName,
             style: GoogleFonts.aDLaMDisplay(
-                fontSize: 12, color: Theme.of(context).colorScheme.primary),
+                fontSize: 18, color: Theme.of(context).colorScheme.primary),
           ),
-          const Spacer(),
-          Icon(
-            MaterialCommunityIcons.office_building,
-            color: Theme.of(context).colorScheme.primary,
-            size: 24,
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(width: 8),
+              Icon(
+                MaterialCommunityIcons.office_building,
+                color: Theme.of(context).colorScheme.primary,
+                size: 24,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                medicine.company,
+                style: GoogleFonts.aDLaMDisplay(
+                    fontSize: 12, color: Theme.of(context).colorScheme.primary),
+              ),
+              const Spacer(),
+              const SizedBox(width: 24),
+              Icon(
+                Icons.format_list_numbered_outlined,
+                color: Theme.of(context).colorScheme.primary,
+                size: 24,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                medicine.quantity.toString(),
+                style: GoogleFonts.aDLaMDisplay(
+                    fontSize: 12, color: Theme.of(context).colorScheme.primary),
+              ),
+              const SizedBox(width: 8),
+            ],
           ),
-          const SizedBox(width: 4),
-          Text(
-            medicine.company,
-            style: GoogleFonts.aDLaMDisplay(
-                fontSize: 12, color: Theme.of(context).colorScheme.primary),
-          ),
-          const Spacer(),
-          const SizedBox(width: 24),
-          Icon(
-            Icons.format_list_numbered_outlined,
-            color: Theme.of(context).colorScheme.primary,
-            size: 24,
-          ),
-          const SizedBox(width: 4),
-          Text(
-            medicine.quantity.toString(),
-            style: GoogleFonts.aDLaMDisplay(
-                fontSize: 12, color: Theme.of(context).colorScheme.primary),
-          ),
-          const SizedBox(width: 8),
         ],
       ),
     );
