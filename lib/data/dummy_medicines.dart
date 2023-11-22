@@ -6,7 +6,7 @@ var randomDate =
     DateTime(DateTime.now().year + 3, DateTime.now().month, DateTime.now().day);
 final dummyMedicines = [
   Medicine(
-    sciName: 'paracetamol',
+    sciName: 'Paracetamol',
     marketName: 'Panadol',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
@@ -17,7 +17,7 @@ final dummyMedicines = [
     id: '1',
   ),
   Medicine(
-    sciName: 'aspirine',
+    sciName: 'Aspirine',
     marketName: 'Easprin',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
@@ -30,7 +30,7 @@ final dummyMedicines = [
     id: '2',
   ),
   Medicine(
-    sciName: 'cetacodaine',
+    sciName: 'Cetacodaine',
     marketName: 'Cetacaine',
     category: MedCategory.antibiotic,
     company: 'Ultra-Medica',
@@ -41,7 +41,7 @@ final dummyMedicines = [
     id: '3',
   ),
   Medicine(
-    sciName: 'azithromycin',
+    sciName: 'Azithromycin',
     marketName: 'azithromycin',
     category: MedCategory.antibiotic,
     company: 'Ibn-Al-Haitham',
@@ -107,7 +107,7 @@ final dummyMedicines = [
     id: '9',
   ),
    Medicine(
-    sciName: 'schizophrenia',
+    sciName: 'Schizophrenia',
     marketName: 'schizosmash',
     category: MedCategory.stimulant,
     company: 'Yypharma',
@@ -118,7 +118,7 @@ final dummyMedicines = [
     id: '10',
   ),
    Medicine(
-    sciName: 'sulpiride',
+    sciName: 'Sulpiride',
     marketName: 'Damatil 50',
     category: MedCategory.sadative,
     company: 'Ultra-Medica',
@@ -129,7 +129,7 @@ final dummyMedicines = [
     id: '11',
   ),
    Medicine(
-    sciName: 'empagliflozin/linagliptin',
+    sciName: 'Empagliflozin/Linagliptin',
     marketName: 'diacolin',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
@@ -151,7 +151,7 @@ final dummyMedicines = [
     id: '13',
   ),
    Medicine(
-    sciName: 'clomipramine hydrochloride',
+    sciName: 'Clomipramine hydrochloride',
     marketName: 'Newfranil',
     category: MedCategory.sadative,
     company: 'Ultra-Medica',
@@ -184,7 +184,7 @@ final dummyMedicines = [
     id: '16',
   ),
   Medicine(
-    sciName: 'derativalic Acid ',
+    sciName: 'Derativalic Acid ',
     marketName: 'Surgafast 300',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
@@ -195,7 +195,7 @@ final dummyMedicines = [
     id: '17',
   ),
    Medicine(
-    sciName: 'phenylephrine hcl  ',
+    sciName: 'Phenylephrine hcl  ',
     marketName: 'Trilodin',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
