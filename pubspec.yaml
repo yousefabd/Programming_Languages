@@ -79,6 +79,18 @@ flutter:
      - assets/images/medicine/carbatec.png
      - assets/images/medicine/adderall.png
      - assets/images/medicine/cmedicon.png
+     - assets/images/medicine/damatil.png
+     - assets/images/medicine/diacolin.png
+     - assets/images/medicine/ephedrinol.png
+     - assets/images/medicine/newfranil.png
+     - assets/images/medicine/rioxaban.png
+     - assets/images/medicine/surgafast.png
+     - assets/images/medicine/surgafast300.png
+     - assets/images/medicine/trilodin.png
+     - assets/images/medicine/valican.png
+     
+     
+
      - assets/locales/ar.json
      - assets/locales/en.json
      
