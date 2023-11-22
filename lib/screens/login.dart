@@ -3,16 +3,49 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
-class LogInScreen extends StatelessWidget {
-  LogInScreen({
+class LogInScreen extends StatefulWidget {
+  const LogInScreen({
     super.key,
     required this.onRegisterAccount,
     required this.onLoginAccount,
   });
   final void Function() onRegisterAccount;
   final void Function(String, String) onLoginAccount;
+
+  @override
+  State<LogInScreen> createState() => _LogInScreenState();
+}
+
+class _LogInScreenState extends State<LogInScreen> {
   final _numberController = TextEditingController();
   final _passwordController = TextEditingController();
+  String? errorNumber;
+  String? errorPassword;
+  void _validateLogin() {
+    String number = _numberController.text;
+    bool success = true;
+    if (number.length < 10 ||
+        number.contains(',') ||
+        number.contains('.') ||
+        number[0] != '0' ||
+        number[1] != '9') {
+      errorNumber = 'Please enter a valid phone number';
+      success = false;
+    } else {
+      errorNumber = null;
+    }
+    if (_passwordController.text != '12345678' && success) {
+      errorPassword = 'Incorrect Password';
+      success = false;
+    } else {
+      errorPassword = null;
+    }
+
+    setState(() {});
+    if (success) {
+      widget.onLoginAccount(_numberController.text, _passwordController.text);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,12 +98,12 @@ class LogInScreen extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         maxLength: 10,
                         controller: _numberController,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
                           prefixIcon: const Icon(Icons.phone_android),
-                          errorText: null,
-                          label: Text('Phone Number'),
+                          errorText: errorNumber,
+                          label: const Text('Phone Number'),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(30),
@@ -86,13 +119,13 @@ class LogInScreen extends StatelessWidget {
                         style: const TextStyle(fontSize: 20),
                         obscureText: true,
                         controller: _passwordController,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,
-                          prefixIcon: Icon(Icons.lock),
-                          label: Text('Password'),
-                          errorText: null,
-                          border: OutlineInputBorder(
+                          prefixIcon: const Icon(Icons.lock),
+                          label: const Text('Password'),
+                          errorText: errorPassword,
+                          border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(30),
                             ),
@@ -104,10 +137,7 @@ class LogInScreen extends StatelessWidget {
                     SubmitButton(
                       label: "Sign In",
                       onPressed: () {
-                        onLoginAccount(
-                          _numberController.text,
-                          _passwordController.text,
-                        );
+                        _validateLogin();
                       },
                     ),
                     const SizedBox(height: 80),
@@ -122,7 +152,7 @@ class LogInScreen extends StatelessWidget {
                               fontWeight: FontWeight.w500),
                         ),
                         TextButton(
-                          onPressed: onRegisterAccount,
+                          onPressed: widget.onRegisterAccount,
                           child: const Text(
                             'Create',
                             style: TextStyle(
