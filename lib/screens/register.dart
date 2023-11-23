@@ -127,7 +127,7 @@ class RegisterScreen extends StatelessWidget {
                             controller: _confirmPassController,
                           ),
                         ), //confirm Password
-                        const SizedBox(height: 50),
+                        const SizedBox(height: 40),
                         Center(
                           child: SubmitButton(
                             label: 'Sign Up',
