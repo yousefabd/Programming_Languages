@@ -1,15 +1,58 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
-  final _numberController = TextEditingController();
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
-  final _confirmPassController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
+  String? firstName;
+
+  String? lastName;
+
+  String? number;
+
+  String? password;
+
+  void _validateRegister() async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      final tempUrl = Uri.https(
+          'flutter-prep-675a4-default-rtdb.firebaseio.com', 'register.json');
+      await http.post(
+        tempUrl,
+        headers: {
+          'Content_Type': 'application/json',
+        },
+        body: json.encode(
+          {
+            'firstName': firstName!,
+            'lastName': lastName!,
+            'number': number!,
+            'password': password
+          },
+        ),
+      );
+      if (!context.mounted) {
+        return;
+      }
+      Navigator.of(context).pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,105 +81,154 @@ class RegisterScreen extends StatelessWidget {
                         fontSize: 35,
                         fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 24),
+
                   //start of TextFields --------------------
                   Expanded(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 36),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              //  fillColor: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 246, 244, 244)),
-                              prefixIcon: const Icon(Icons.person),
-                              errorText: null,
-                              labelText: ('First Name'),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
+                    child: Form(
+                      key: _formKey,
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          const SizedBox(height: 24),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 36),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                //  fillColor: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 246, 244, 244)),
+                                prefixIcon: const Icon(Icons.person),
+                                labelText: ('First Name'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                               ),
+                              validator: (value) {
+                                if (value!.trim().isEmpty) {
+                                  return 'This field is required';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                firstName = value;
+                              },
                             ),
-                            controller: _firstNameController,
-                          ),
-                        ), //first name
-                        const SizedBox(height: 18),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 36),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: const Icon(Icons.person),
-                              labelText: ('Last Name'),
-                              errorText: null,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
+                          ), //first name
+                          const SizedBox(height: 18),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 36),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: const Icon(Icons.person),
+                                labelText: ('Last Name'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                               ),
+                              validator: (value) {
+                                if (value!.trim().isEmpty) {
+                                  return 'This field is required';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                lastName = value;
+                              },
                             ),
-                            controller: _lastNameController,
-                          ),
-                        ), //last name
-                        const SizedBox(height: 18),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 36),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: const Icon(Icons.phone_android),
-                              labelText: ('Phone Number'),
-                              errorText: null,
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
+                          ), //last name
+                          const SizedBox(height: 18),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 36),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: const Icon(Icons.phone_android),
+                                labelText: ('Phone Number'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                               ),
+                              keyboardType: TextInputType.number,
+                              validator: (value) {
+                                if (value!.trim().isEmpty) {
+                                  return 'This field is required';
+                                } else if (value.contains('.') ||
+                                    value.contains(',') ||
+                                    value.trim().length != 10 ||
+                                    value[0] != '0' ||
+                                    value[1] != '9') {
+                                  return 'Please enter a valid phone number';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                number = value;
+                              },
                             ),
-                            controller: _numberController,
-                          ),
-                        ), //phone number
-                        const SizedBox(height: 18),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 36),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: const Icon(Icons.lock),
-                              labelText: ('Password'),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
+                          ), //phone number
+                          const SizedBox(height: 18),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 36),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: const Icon(Icons.lock),
+                                labelText: ('Password'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                               ),
+                              controller: _passwordController,
+                              obscureText: true,
+                              validator: (value) {
+                                if (value!.trim().isEmpty) {
+                                  return 'This field is required';
+                                }
+                                if (value.trim().length < 8) {
+                                  return 'Password must be at least 8 characters';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                password = value;
+                              },
                             ),
-                            controller: _passwordController,
-                          ),
-                        ), //password
-                        const SizedBox(height: 18),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 36),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              prefixIcon: const Icon(Icons.lock),
-                              labelText: ('Confirm Password'),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25),
+                          ), //password
+                          const SizedBox(height: 18),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 36),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: const Icon(Icons.lock),
+                                labelText: ('Confirm Password'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
                               ),
+                              obscureText: true,
+                              validator: (value) {
+                                if (value != _passwordController.text) {
+                                  return 'Passwords don\'t match';
+                                }
+                                return null;
+                              },
                             ),
-                            controller: _confirmPassController,
+                          ), //confirm Password
+                          const SizedBox(height: 30),
+                          Center(
+                            child: SubmitButton(
+                              label: 'Sign Up',
+                              onPressed: _validateRegister,
+                            ),
                           ),
-                        ), //confirm Password
-                        const SizedBox(height: 50),
-                        Center(
-                          child: SubmitButton(
-                            label: 'Sign Up',
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   //End of TextFields --------------------
