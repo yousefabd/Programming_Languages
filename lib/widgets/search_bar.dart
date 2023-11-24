@@ -1,8 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:prog_languages/models/medicine.dart';
 
 class MySearchBar extends StatefulWidget {
-  const MySearchBar(
+  MySearchBar(
       {super.key, required this.onSearch, required this.onSelectCategory});
   final void Function() onSearch;
   final void Function(MedCategory) onSelectCategory;
