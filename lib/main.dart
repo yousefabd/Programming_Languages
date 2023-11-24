@@ -7,7 +7,7 @@ final kColorScheme = ColorScheme.fromSeed(
     seedColor: Color.fromARGB(255, 55, 195, 146), brightness: Brightness.light);
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(statusBarColor: kColorScheme.onTertiaryContainer),
+    SystemUiOverlayStyle(statusBarColor: kColorScheme.primary),
   );
   runApp(
     MaterialApp(

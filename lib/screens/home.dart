@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/dummy_medicines.dart';
 import 'package:prog_languages/models/medicine.dart';
+import 'package:prog_languages/screens/medicine_details.dart';
 import 'package:prog_languages/widgets/medicine_item.dart';
 import 'package:prog_languages/widgets/search_bar.dart';
 import 'package:prog_languages/widgets/side_drawer.dart';
@@ -19,6 +21,12 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedCategory = c;
     });
+  }
+
+  void _pushDetails(Medicine medicine) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => MedicineDetailsScreen(medicine: medicine),
+    ));
   }
 
   List<Medicine> get categoryMedicines {
@@ -63,7 +71,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListView.builder(
                   itemCount: categoryMedicines.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return MedicineItem(categoryMedicines[index]);
+                    return MedicineItem(
+                      medicine: categoryMedicines[index],
+                      onPushDetails: () {
+                        _pushDetails(
+                          categoryMedicines[index],
+                        );
+                      },
+                    );
                   },
                 ),
               ),

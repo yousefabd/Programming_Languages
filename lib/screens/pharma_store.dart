@@ -52,9 +52,10 @@ class _PharmaStoreState extends State<PharmaStore> {
 
   @override
   Widget build(BuildContext context) {
-    return LogInScreen(
-      onRegisterAccount: _pushRegister,
-      onLoginAccount: _loginAccount,
-    );
+    // return LogInScreen(
+    //   onRegisterAccount: _pushRegister,
+    //   onLoginAccount: _loginAccount,
+    // );
+    return HomeScreen(onLogout: _logoutAccount);
   }
 }
