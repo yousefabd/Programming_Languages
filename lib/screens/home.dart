@@ -41,49 +41,46 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          title: Text(
-            'Home',
-            style: GoogleFonts.comme(
-                color: Theme.of(context).colorScheme.onPrimary),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: Text(
+          'Home',
+          style:
+              GoogleFonts.comme(color: Theme.of(context).colorScheme.onPrimary),
         ),
-        drawer: SideDrawer(onLogout: widget.onLogout),
-        body: Container(
-          width: double.infinity,
-          padding: const EdgeInsets.only(left: 10, right: 10, top: 40),
-          decoration: BoxDecoration(),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MySearchBar(
-                onSearch: () {},
-                onSelectCategory: (category) {
-                  changeCategory(category);
+      ),
+      drawer: SideDrawer(onLogout: widget.onLogout),
+      body: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 40),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            MySearchBar(
+              onSearch: () {},
+              onSelectCategory: (category) {
+                changeCategory(category);
+              },
+            ),
+            const SizedBox(height: 18),
+            Expanded(
+              child: ListView.builder(
+                itemCount: categoryMedicines.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return MedicineItem(
+                    medicine: categoryMedicines[index],
+                    onPushDetails: () {
+                      _pushDetails(
+                        categoryMedicines[index],
+                      );
+                    },
+                  );
                 },
               ),
-              const SizedBox(height: 18),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: categoryMedicines.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return MedicineItem(
-                      medicine: categoryMedicines[index],
-                      onPushDetails: () {
-                        _pushDetails(
-                          categoryMedicines[index],
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
