@@ -1,0 +1,34 @@
+{
+    "hello" : "مرحباً !",
+    "login": "سجل دخول إلى حسابك",
+    "home" : "الصفحة الرئيسية",
+    "search" : "ابحث...",
+    "Antibiotic" : "مضاد حيوي",
+    "painReliever" : " مسكن ألم",
+    "stimulant" : "منشطات",
+    "sedative" : "مهدئات",
+    "LogOut" : "تسجيل الخروج",
+    "phoneNumber" : "رقم الهاتف",
+    "requiredField" : "هذا الحقل مطلوب",
+    "enterValidPhoneNumber" : "الرجاء إدخال رقم صالح",
+    "password" : "كلمة السر",
+    "signup" : "إنشاء حساب",
+    "logIn" : "تسجيل الدخول",
+    "dontHaveAccount" : "لا تملك حساب؟",
+    "create" : "أنشئ واحداً",
+    "createAccount" : "أنشئ حساب",
+    "FirstName" : "الاسم الأول",
+    "lastName" : "الاسم الأخير",
+    "atLeastEight" : "أدخل كلمة مرور من ثمانية أحرف على الأقل",
+    "confirmPassword" : "تأكيد كلمة المرور",
+    "PasswordsDonotMatch" : "كلمة المرور غير متطابقة"
+    
+
+
+
+
+
+
+
+
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/dummy_medicines.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/screens/medicine_details.dart';
 import 'package:prog_languages/widgets/medicine_item.dart';
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          'Home',
+          S.of(context).home,
           style:
               GoogleFonts.comme(color: Theme.of(context).colorScheme.onPrimary),
         ),

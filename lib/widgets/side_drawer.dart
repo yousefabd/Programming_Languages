@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/generated/l10n.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({super.key, required this.onLogout});
@@ -45,7 +46,7 @@ class SideDrawer extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primary,
                     ),
                     title: Text(
-                      'Log out',
+                      S.of(context).LogOut,
                       style: GoogleFonts.bitter(
                         fontSize: 24,
                         color: Theme.of(context).colorScheme.primary,
