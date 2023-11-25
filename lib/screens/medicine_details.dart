@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:prog_languages/models/medicine.dart';
+import 'package:prog_languages/widgets/medicine_detail_tile.dart';
 
 class MedicineDetailsScreen extends StatefulWidget {
   const MedicineDetailsScreen({super.key, required this.medicine});
@@ -14,6 +15,20 @@ class MedicineDetailsScreen extends StatefulWidget {
 class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
+  final _formatter = DateFormat.yMd();
+  String get _medicineCategory {
+    switch (widget.medicine.category) {
+      case MedCategory.antibiotic:
+        return 'Anti-Biotic';
+      case MedCategory.painReliever:
+        return 'Pain Reliever';
+      case MedCategory.stimulant:
+        return 'Stimulant';
+      case MedCategory.sadative:
+        return 'Sedative';
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -37,17 +52,15 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
       appBar: AppBar(
         title: Text(widget.medicine.sciName),
         backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
+        foregroundColor: Theme.of(context).colorScheme.background,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
+          const SizedBox(height: 24),
           Container(
-            color: Theme.of(context)
-                .colorScheme
-                .secondaryContainer
-                .withOpacity(0.6),
+            color: Theme.of(context).colorScheme.background,
             child: Hero(
               tag: widget.medicine.id,
               child: Image(
@@ -56,54 +69,115 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
             ),
           ),
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Theme.of(context).colorScheme.primary,
-                    Theme.of(context).colorScheme.primary.withOpacity(0.5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.assignment_rounded,
+                      color: Theme.of(context).colorScheme.tertiary,
+                      size: 32,
+                    ),
+                    Text(
+                      'Medicine Details',
+                      style: GoogleFonts.bitter(
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                   ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
                 ),
-              ),
-              child: SlideTransition(
-                position: Tween(
-                  begin: const Offset(-10, 0),
-                  end: const Offset(0, 0),
-                ).animate(
-                  CurvedAnimation(
-                    parent: _animationController,
-                    curve: Curves.easeInOut,
+                const SizedBox(height: 8),
+                Container(
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.only(
+                    left: 50,
+                    top: 10,
+                  ),
+                  child: SlideTransition(
+                    position: Tween(
+                      begin: const Offset(-1, 0),
+                      end: const Offset(0, 0),
+                    ).animate(
+                      CurvedAnimation(
+                        parent: _animationController,
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        MedicineDetailTile(
+                          icon: Icons.science,
+                          label: 'Scientific Name:  ',
+                          content: widget.medicine.sciName,
+                        ),
+                        MedicineDetailTile(
+                          icon: Icons.store,
+                          label: 'Commercial Name: ',
+                          content: widget.medicine.marketName,
+                        ),
+                        MedicineDetailTile(
+                          icon: Icons.menu_book,
+                          label: 'Category',
+                          content: _medicineCategory,
+                        ),
+                        MedicineDetailTile(
+                          icon: Icons.business,
+                          label: 'Company: ',
+                          content: widget.medicine.company,
+                        ),
+                        MedicineDetailTile(
+                          icon: Icons.format_list_bulleted_add,
+                          label: 'Quantity',
+                          content: widget.medicine.quantity.toString(),
+                        ),
+                        MedicineDetailTile(
+                          icon: Icons.schedule,
+                          label: 'Expiration Date: ',
+                          content:
+                              _formatter.format(widget.medicine.expireDate),
+                        ),
+                        MedicineDetailTile(
+                          icon: Icons.price_change_outlined,
+                          label: 'Price: ',
+                          content: '${widget.medicine.price}   S.P',
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Icon(
-                            MaterialCommunityIcons.bag_suitcase,
-                            color: Theme.of(context).colorScheme.background,
-                            size: 32,
-                          ),
-                          const SizedBox(width: 10),
-                          Text(
-                            'Commercial Name',
-                            style: GoogleFonts.bitter(
-                              color: Colors.white,
-                              fontSize: 22,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ),
+                const SizedBox(height: 16),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.add_shopping_cart,
+                      color: Theme.of(context).colorScheme.tertiary,
+                      size: 50,
+                    ),
+                    const SizedBox(width: 6),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary),
+                      onPressed: () {},
+                      child: Text(
+                        'Add to Cart',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Theme.of(context).colorScheme.background),
+                      ),
+                    ),
+                    const SizedBox(width: 22),
+                  ],
+                )
+              ],
             ),
           ),
         ],
