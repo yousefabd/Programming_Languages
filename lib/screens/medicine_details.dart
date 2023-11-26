@@ -18,6 +18,9 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   final _formatter = DateFormat.yMd();
+  bool _amountFieldVisible = false;
+  final _formKey = GlobalKey<FormState>();
+  int? _enteredAmount;
   String get _medicineCategory {
     switch (widget.medicine.category) {
       case MedCategory.antibiotic:
@@ -45,6 +48,18 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
   void dispose() {
     _animationController.dispose();
     super.dispose();
+  }
+
+  void _enterAmount() {
+    setState(() {
+      _amountFieldVisible = true;
+    });
+  }
+
+  void _submitAmount() {
+    if (_formKey.currentState!.validate()) {
+      Navigator.of(context).pop(_enteredAmount);
+    }
   }
 
   @override
@@ -84,7 +99,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                       size: 32,
                     ),
                     Text(
-                      S.of(context).medicineDetails,
+                      'Medicine Details',
                       style: GoogleFonts.bitter(
                         color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 22,
@@ -97,9 +112,8 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                 Container(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   alignment: Alignment.center,
-                  padding:  EdgeInsets.only(
-                    left: isArabic() ? 0:50,
-                    right: isArabic() ? 50:0,
+                  padding: const EdgeInsets.only(
+                    left: 50,
                     top: 10,
                   ),
                   child: SlideTransition(
@@ -117,39 +131,39 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                       children: [
                         MedicineDetailTile(
                           icon: Icons.science,
-                          label: S.of(context).scientificName,
+                          label: 'Scientific Name:  ',
                           content: widget.medicine.sciName,
                         ),
                         MedicineDetailTile(
                           icon: Icons.store,
-                          label: S.of(context).commercialName,
+                          label: 'Commercial Name: ',
                           content: widget.medicine.marketName,
                         ),
                         MedicineDetailTile(
                           icon: Icons.menu_book,
-                          label: S.of(context).category,
+                          label: 'Category',
                           content: _medicineCategory,
                         ),
                         MedicineDetailTile(
                           icon: Icons.business,
-                          label: S.of(context).company,
+                          label: 'Company: ',
                           content: widget.medicine.company,
                         ),
                         MedicineDetailTile(
                           icon: Icons.format_list_bulleted_add,
-                          label: S.of(context).quantity,
+                          label: 'Quantity',
                           content: widget.medicine.quantity.toString(),
                         ),
                         MedicineDetailTile(
                           icon: Icons.schedule,
-                          label: S.of(context).expirationDate,
+                          label: 'Expiration Date: ',
                           content:
                               _formatter.format(widget.medicine.expireDate),
                         ),
                         MedicineDetailTile(
                           icon: Icons.price_change_outlined,
-                          label: S.of(context).price,
-                          content: '${widget.medicine.price}    ${S.of(context).SP}',
+                          label: 'Price: ',
+                          content: '${widget.medicine.price}   S.P',
                         ),
                       ],
                     ),
@@ -171,7 +185,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                               Theme.of(context).colorScheme.primary),
                       onPressed: () {},
                       child: Text(
-                        S.of(context).AddtoCart,
+                        'Add to Cart',
                         style: TextStyle(
                             fontSize: 18,
                             color: Theme.of(context).colorScheme.background),
