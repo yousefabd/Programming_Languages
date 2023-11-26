@@ -22,10 +22,16 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  void _pushDetails(Medicine medicine) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => MedicineDetailsScreen(medicine: medicine),
-    ));
+  void _pushDetails(Medicine medicine) async {
+    int? _amount = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => MedicineDetailsScreen(medicine: medicine),
+      ),
+    );
+    if (_amount == null) {
+      print('amogus');
+    } else
+      print(_amount);
   }
 
   List<Medicine> get categoryMedicines {
