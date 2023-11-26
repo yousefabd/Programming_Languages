@@ -218,7 +218,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                                 if (value!.trim().isEmpty) {
                                   return '';
                                 }
-                                if (int.tryParse(value!) == null) {
+                                if (int.tryParse(value) == null) {
                                   return 'Invalid amount';
                                 }
                                 _enteredAmount = int.parse(value);
