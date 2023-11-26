@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prog_languages/screens/home.dart';
-import 'package:prog_languages/screens/login.dart';
+//import 'package:prog_languages/screens/login.dart';
 import 'package:prog_languages/screens/register.dart';
 
 class PharmaStore extends StatefulWidget {

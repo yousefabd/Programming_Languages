@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
