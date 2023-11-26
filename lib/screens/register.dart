@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    S.of(context).createAccount,
+                    S.of(context).createAccount, 
                     style: GoogleFonts.acme(
                         color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 35,

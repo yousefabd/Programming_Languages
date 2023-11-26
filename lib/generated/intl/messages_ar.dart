@@ -22,13 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "AddtoCart": MessageLookupByLibrary.simpleMessage("أضف إلى السلة"),
         "Antibiotic": MessageLookupByLibrary.simpleMessage("مضاد حيوي"),
         "FirstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
         "LogOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "PasswordsDonotMatch":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير متطابقة"),
+        "SP": MessageLookupByLibrary.simpleMessage("ل.س"),
         "atLeastEight": MessageLookupByLibrary.simpleMessage(
             "أدخل كلمة مرور من ثمانية أحرف على الأقل"),
+        "category": MessageLookupByLibrary.simpleMessage("التصنيف:"),
+        "commercialName": MessageLookupByLibrary.simpleMessage("الاسم التجاري"),
+        "company": MessageLookupByLibrary.simpleMessage("الشركة:"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "create": MessageLookupByLibrary.simpleMessage("أنشئ واحداً"),
@@ -37,16 +42,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا تملك حساب؟"),
         "enterValidPhoneNumber":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم صالح"),
+        "expirationDate":
+            MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء:"),
         "hello": MessageLookupByLibrary.simpleMessage("مرحباً !"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "lastName": MessageLookupByLibrary.simpleMessage("الاسم الأخير"),
         "logIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login": MessageLookupByLibrary.simpleMessage("سجل دخول إلى حسابك"),
+        "medicineDetails":
+            MessageLookupByLibrary.simpleMessage("معلومات الدواء"),
         "painReliever": MessageLookupByLibrary.simpleMessage(" مسكن ألم"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة السر"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "price": MessageLookupByLibrary.simpleMessage("الكمية:"),
+        "quantity": MessageLookupByLibrary.simpleMessage("الكمية:"),
         "requiredField":
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
+        "scientificName": MessageLookupByLibrary.simpleMessage("الاسم العلمي"),
         "search": MessageLookupByLibrary.simpleMessage("ابحث..."),
         "sedative": MessageLookupByLibrary.simpleMessage("مهدئات"),
         "signup": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),

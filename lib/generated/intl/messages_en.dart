@@ -22,13 +22,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "AddtoCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
         "Antibiotic": MessageLookupByLibrary.simpleMessage("Antibiotic"),
         "FirstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "LogOut": MessageLookupByLibrary.simpleMessage("Log out"),
         "PasswordsDonotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords donot match"),
+        "SP": MessageLookupByLibrary.simpleMessage("S.P"),
         "atLeastEight": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 8 characters"),
+        "category": MessageLookupByLibrary.simpleMessage("Category:"),
+        "commercialName":
+            MessageLookupByLibrary.simpleMessage("Commercial Name:"),
+        "company": MessageLookupByLibrary.simpleMessage("Company:"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
@@ -37,17 +43,25 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "enterValidPhoneNumber": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid phone number"),
+        "expirationDate":
+            MessageLookupByLibrary.simpleMessage("Expiration Date:"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello!"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
         "login":
             MessageLookupByLibrary.simpleMessage("login in to your account"),
+        "medicineDetails":
+            MessageLookupByLibrary.simpleMessage("Medicine Details"),
         "painReliever": MessageLookupByLibrary.simpleMessage("Pain Reliever"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "price": MessageLookupByLibrary.simpleMessage("Price:"),
+        "quantity": MessageLookupByLibrary.simpleMessage("Quantity:"),
         "requiredField":
             MessageLookupByLibrary.simpleMessage("This field is required"),
+        "scientificName":
+            MessageLookupByLibrary.simpleMessage(" Scientific Name:"),
         "search": MessageLookupByLibrary.simpleMessage("Search ..."),
         "sedative": MessageLookupByLibrary.simpleMessage("Sedative"),
         "signup": MessageLookupByLibrary.simpleMessage("Sign Up"),

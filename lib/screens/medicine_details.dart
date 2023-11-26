@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:prog_languages/generated/l10n.dart';
+import 'package:prog_languages/main.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_detail_tile.dart';
 
@@ -82,7 +84,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                       size: 32,
                     ),
                     Text(
-                      'Medicine Details',
+                      S.of(context).medicineDetails,
                       style: GoogleFonts.bitter(
                         color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 22,
@@ -95,8 +97,9 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                 Container(
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(
-                    left: 50,
+                  padding:  EdgeInsets.only(
+                    left: isArabic() ? 0:50,
+                    right: isArabic() ? 50:0,
                     top: 10,
                   ),
                   child: SlideTransition(
@@ -114,39 +117,39 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                       children: [
                         MedicineDetailTile(
                           icon: Icons.science,
-                          label: 'Scientific Name:  ',
+                          label: S.of(context).scientificName,
                           content: widget.medicine.sciName,
                         ),
                         MedicineDetailTile(
                           icon: Icons.store,
-                          label: 'Commercial Name: ',
+                          label: S.of(context).commercialName,
                           content: widget.medicine.marketName,
                         ),
                         MedicineDetailTile(
                           icon: Icons.menu_book,
-                          label: 'Category',
+                          label: S.of(context).category,
                           content: _medicineCategory,
                         ),
                         MedicineDetailTile(
                           icon: Icons.business,
-                          label: 'Company: ',
+                          label: S.of(context).company,
                           content: widget.medicine.company,
                         ),
                         MedicineDetailTile(
                           icon: Icons.format_list_bulleted_add,
-                          label: 'Quantity',
+                          label: S.of(context).quantity,
                           content: widget.medicine.quantity.toString(),
                         ),
                         MedicineDetailTile(
                           icon: Icons.schedule,
-                          label: 'Expiration Date: ',
+                          label: S.of(context).expirationDate,
                           content:
                               _formatter.format(widget.medicine.expireDate),
                         ),
                         MedicineDetailTile(
                           icon: Icons.price_change_outlined,
-                          label: 'Price: ',
-                          content: '${widget.medicine.price}   S.P',
+                          label: S.of(context).price,
+                          content: '${widget.medicine.price}    ${S.of(context).SP}',
                         ),
                       ],
                     ),
@@ -168,7 +171,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                               Theme.of(context).colorScheme.primary),
                       onPressed: () {},
                       child: Text(
-                        'Add to Cart',
+                        S.of(context).AddtoCart,
                         style: TextStyle(
                             fontSize: 18,
                             color: Theme.of(context).colorScheme.background),

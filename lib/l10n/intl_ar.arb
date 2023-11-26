@@ -21,7 +21,19 @@
     "lastName" : "الاسم الأخير",
     "atLeastEight" : "أدخل كلمة مرور من ثمانية أحرف على الأقل",
     "confirmPassword" : "تأكيد كلمة المرور",
-    "PasswordsDonotMatch" : "كلمة المرور غير متطابقة"
+    "PasswordsDonotMatch" : "كلمة المرور غير متطابقة",
+    "medicineDetails" : "معلومات الدواء",
+    "scientificName": "الاسم العلمي",
+    "commercialName" : "الاسم التجاري",
+    "category" : "التصنيف:",
+    "company": "الشركة:",
+    "quantity" : "الكمية:",
+    "expirationDate" : "تاريخ الانتهاء:",
+    "price" : "الكمية:",
+    "SP" : "ل.س",
+    "AddtoCart" : "أضف إلى السلة"
+
+
     
 
 

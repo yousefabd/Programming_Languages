@@ -21,7 +21,17 @@
     "lastName" : "Last Name",
     "atLeastEight" : "Password must be at least 8 characters",
     "confirmPassword" : "Confirm Password",
-    "PasswordsDonotMatch" : "Passwords donot match"
+    "PasswordsDonotMatch" : "Passwords donot match",
+    "medicineDetails" : "Medicine Details",
+    "scientificName" : " Scientific Name:",
+    "commercialName" : "Commercial Name:",
+    "category" : "Category:",
+    "company" : "Company:",
+    "quantity" : "Quantity:",
+    "expirationDate" : "Expiration Date:",
+    "price" : "Price:",
+    "SP" : "S.P",
+    "AddtoCart" : "Add to Cart"
 
 
 

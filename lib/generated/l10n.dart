@@ -279,6 +279,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Medicine Details`
+  String get medicineDetails {
+    return Intl.message(
+      'Medicine Details',
+      name: 'medicineDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Scientific Name:`
+  String get scientificName {
+    return Intl.message(
+      ' Scientific Name:',
+      name: 'scientificName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Commercial Name:`
+  String get commercialName {
+    return Intl.message(
+      'Commercial Name:',
+      name: 'commercialName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category:`
+  String get category {
+    return Intl.message(
+      'Category:',
+      name: 'category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Company:`
+  String get company {
+    return Intl.message(
+      'Company:',
+      name: 'company',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quantity:`
+  String get quantity {
+    return Intl.message(
+      'Quantity:',
+      name: 'quantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expiration Date:`
+  String get expirationDate {
+    return Intl.message(
+      'Expiration Date:',
+      name: 'expirationDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price:`
+  String get price {
+    return Intl.message(
+      'Price:',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `S.P`
+  String get SP {
+    return Intl.message(
+      'S.P',
+      name: 'SP',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add to Cart`
+  String get AddtoCart {
+    return Intl.message(
+      'Add to Cart',
+      name: 'AddtoCart',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

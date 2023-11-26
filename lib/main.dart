@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/screens/pharma_store.dart';
+import 'package:intl/intl.dart';
 
 //adding a seed color
 final kColorScheme = ColorScheme.fromSeed(
@@ -25,7 +26,11 @@ void main() {
         useMaterial3: true,
         colorScheme: kColorScheme,
       ),
+      
       home: const PharmaStore(),
     ),
   );
 }
+bool isArabic() {
+              return Intl.getCurrentLocale() == 'ar';
+            }
