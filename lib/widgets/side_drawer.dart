@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SideDrawer extends StatelessWidget {
-  const SideDrawer({super.key, required this.onLogout});
+  const SideDrawer({super.key, required this.onLogout, required this.name});
+  final String name;
   final void Function() onLogout;
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,10 @@ class SideDrawer extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            'Ammar alkadi',
+            name,
             style: GoogleFonts.aBeeZee(
               color: Theme.of(context).colorScheme.primaryContainer,
-              fontSize: 28,
+              fontSize: 24,
             ),
           ),
           const SizedBox(height: 12),
@@ -47,7 +48,7 @@ class SideDrawer extends StatelessWidget {
                     title: Text(
                       'Log out',
                       style: GoogleFonts.bitter(
-                        fontSize: 24,
+                        fontSize: 28,
                         color: Theme.of(context).colorScheme.primary,
                       ),
                     ),

@@ -27,29 +27,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String? password;
 
+  String? email;
+
+  String? address;
+
+  bool _loading = false;
+
+  List<String> errorList = ['', ''];
   void _validateRegister() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      final tempUrl = Uri.https(
-          'flutter-prep-675a4-default-rtdb.firebaseio.com', 'register.json');
-      await http.post(
+      setState(() {
+        _loading = true;
+      });
+      final tempUrl = Uri.parse('http://10.0.2.2:8000/api/register');
+      final response = await http.post(
         tempUrl,
-        headers: {
-          'Content_Type': 'application/json',
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer your_token_here',
         },
         body: json.encode(
           {
-            'firstName': firstName!,
-            'lastName': lastName!,
-            'number': number!,
-            'password': password
+            'name': '${firstName!} ${lastName!}',
+            'phoneNumber': number,
+            'password': password,
+            'address': address,
+            'email': email,
+            'isStoreOwner': false
           },
         ),
       );
+      setState(() {
+        _loading = false;
+      });
+      final Map<String, dynamic> listData = json.decode(response.body);
+      try {
+        final errorMap = listData['errors'] as Map;
+        print(errorMap);
+        for (final error in errorMap.entries) {
+          if (error.key == 'email') {
+            errorList[1] = error.value[0];
+            print("error:${error.value[0]}\n");
+          } else if (error.key == 'phoneNumber') {
+            errorList[0] = error.value[0];
+            print("error:${error.value[0]}\n");
+          }
+        }
+        print(errorList);
+        // ignore: empty_catches
+      } catch (e) {}
       if (!context.mounted) {
         return;
       }
-      Navigator.of(context).pop();
+      if (_formKey.currentState!.validate()) {
+        Navigator.of(context).pop();
+      }
     }
   }
 
@@ -75,8 +108,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             backgroundColor: Colors.transparent,
             //resizeToAvoidBottomInset: false,
             body: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 120),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 50),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -167,6 +199,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     value[0] != '0' ||
                                     value[1] != '9') {
                                   return 'Please enter a valid phone number';
+                                } else if (errorList[0] != '') {
+                                  var a = errorList[0];
+                                  errorList[0] = '';
+                                  return a;
                                 }
                                 return null;
                               },
@@ -175,6 +211,63 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               },
                             ),
                           ), //phone number
+                          const SizedBox(height: 18),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 36),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon:
+                                    const Icon(Icons.alternate_email_rounded),
+                                labelText: ('Email'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                              ),
+                              keyboardType: TextInputType.emailAddress,
+                              validator: (value) {
+                                if (value!.trim().isEmpty) {
+                                  return 'This field is required';
+                                } else if (!value.contains('@') ||
+                                    !value.contains('.')) {
+                                  return 'Invalid email address';
+                                } else if (errorList[1] != '') {
+                                  var a = errorList[1];
+                                  errorList[1] = '';
+                                  return a;
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                email = value;
+                              },
+                            ),
+                          ), //Email
+                          const SizedBox(height: 18),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 36),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                prefixIcon: const Icon(Icons.house),
+                                labelText: ('Address'),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value!.trim().isEmpty) {
+                                  return 'This field is required';
+                                }
+                                return null;
+                              },
+                              onSaved: (value) {
+                                address = value;
+                              },
+                            ),
+                          ), //address
                           const SizedBox(height: 18),
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 36),
@@ -227,17 +320,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ), //confirm Password
                           const SizedBox(height: 30),
-                          Center(
-                            child: SubmitButton(
-                              label: 'Sign Up',
-                              onPressed: _validateRegister,
-                            ),
-                          ),
                         ],
                       ),
                     ),
                   ),
                   //End of TextFields --------------------
+                  Center(
+                    child: Column(
+                      children: [
+                        SubmitButton(
+                          label: 'Sign Up',
+                          onPressed: _validateRegister,
+                        ),
+                        _loading == true
+                            ? const CircularProgressIndicator()
+                            : const SizedBox(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

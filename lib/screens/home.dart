@@ -8,8 +8,14 @@ import 'package:prog_languages/widgets/search_bar.dart';
 import 'package:prog_languages/widgets/side_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.onLogout});
+  const HomeScreen(
+      {super.key,
+      required this.onLogout,
+      required this.number,
+      required this.name});
   final void Function() onLogout;
+  final String number;
+  final String name;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -55,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               GoogleFonts.comme(color: Theme.of(context).colorScheme.onPrimary),
         ),
       ),
-      drawer: SideDrawer(onLogout: widget.onLogout),
+      drawer: SideDrawer(onLogout: widget.onLogout, name: widget.name),
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.only(left: 10, right: 10, top: 40),

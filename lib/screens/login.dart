@@ -23,22 +23,28 @@ class _LogInScreenState extends State<LogInScreen> {
   final _formKey = GlobalKey<FormState>();
   String? _number;
   String? _password;
+  bool _loading = false;
+  int responseCode = 200;
   void _validateLogin() async {
     if (_formKey.currentState!.validate()) {
+      final tempUrl = Uri.parse('http://10.0.2.2:8000/api/login');
       _formKey.currentState!.save();
-      final tempUrl = Uri.https(
-          'flutter-prep-675a4-default-rtdb.firebaseio.com', 'login.json');
-      await http.post(
+      setState(() {
+        _loading = true;
+      });
+      final response = await http.post(
         tempUrl,
-        headers: {
-          'Content_Type': 'application/json',
-        },
-        body: json.encode(
-          {'phone-number': _number, 'password': _password},
-        ),
+        body: {'phoneNumber': _number, 'password': _password},
       );
-      widget.onLoginAccount(_number!, _password!);
-      _formKey.currentState!.reset();
+      setState(() {
+        _loading = false;
+      });
+      final infoList = json.decode(response.body)['pharmacist'] as Map;
+      responseCode = response.statusCode;
+      if (_formKey.currentState!.validate()) {
+        widget.onLoginAccount(infoList['phoneNumber'], infoList['name']);
+        _formKey.currentState!.reset();
+      }
     }
   }
 
@@ -114,6 +120,8 @@ class _LogInScreenState extends State<LogInScreen> {
                                 value[0] != '0' ||
                                 value[1] != '9') {
                               return 'Please enter a valid phone number';
+                            } else if (responseCode == 401) {
+                              return '';
                             }
                             return null;
                           },
@@ -143,6 +151,9 @@ class _LogInScreenState extends State<LogInScreen> {
                             if (value!.trim().isEmpty) {
                               return 'This field is requireed';
                             }
+                            if (responseCode == 401) {
+                              return 'Wrong phone number or password';
+                            }
                             return null;
                           },
                           onSaved: (value) => _password = value,
@@ -155,7 +166,15 @@ class _LogInScreenState extends State<LogInScreen> {
                           _validateLogin();
                         },
                       ),
-                      const SizedBox(height: 80),
+                      (_loading == false
+                          ? const SizedBox(height: 80)
+                          : const Column(
+                              children: [
+                                SizedBox(height: 20),
+                                CircularProgressIndicator(),
+                                SizedBox(height: 20)
+                              ],
+                            )),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [

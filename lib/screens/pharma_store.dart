@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prog_languages/screens/home.dart';
+import 'package:prog_languages/screens/login.dart';
 //import 'package:prog_languages/screens/login.dart';
 import 'package:prog_languages/screens/register.dart';
 
@@ -38,10 +39,14 @@ class _PharmaStoreState extends State<PharmaStore> {
     );
   }
 
-  void _loginAccount(String number, String password) {
+  void _loginAccount(String number, String name) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => HomeScreen(onLogout: _logoutAccount),
+        builder: (ctx) => HomeScreen(
+          onLogout: _logoutAccount,
+          number: number,
+          name: name,
+        ),
       ),
     );
   }
@@ -52,10 +57,10 @@ class _PharmaStoreState extends State<PharmaStore> {
 
   @override
   Widget build(BuildContext context) {
-    // return LogInScreen(
-    //   onRegisterAccount: _pushRegister,
-    //   onLoginAccount: _loginAccount,
-    // );
-    return HomeScreen(onLogout: _logoutAccount);
+    return LogInScreen(
+      onRegisterAccount: _pushRegister,
+      onLoginAccount: _loginAccount,
+    );
+    //return HomeScreen(onLogout: _logoutAccount);
   }
 }
