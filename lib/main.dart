@@ -11,6 +11,7 @@ void main() {
   );
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData().copyWith(
         useMaterial3: true,
         colorScheme: kColorScheme,
