@@ -1,21 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/dummy_medicines.dart';
 import 'package:prog_languages/models/medicine.dart';
-import 'package:prog_languages/screens/medicine_details.dart';
 import 'package:prog_languages/widgets/medicine_item.dart';
 import 'package:prog_languages/widgets/search_bar.dart';
-import 'package:prog_languages/widgets/side_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen(
-      {super.key,
-      required this.onLogout,
-      required this.number,
-      required this.name});
-  final void Function() onLogout;
-  final String number;
-  final String name;
+  const HomeScreen({super.key, required this.onTapMedicine});
+  final void Function(Medicine) onTapMedicine;
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -26,18 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _selectedCategory = c;
     });
-  }
-
-  void _pushDetails(Medicine medicine) async {
-    int? _amount = await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => MedicineDetailsScreen(medicine: medicine),
-      ),
-    );
-    if (_amount == null) {
-      print('amogus');
-    } else
-      print(_amount);
   }
 
   List<Medicine> get categoryMedicines {
@@ -52,47 +32,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: Text(
-          'Home',
-          style:
-              GoogleFonts.comme(color: Theme.of(context).colorScheme.onPrimary),
-        ),
-      ),
-      drawer: SideDrawer(onLogout: widget.onLogout, name: widget.name),
-      body: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.only(left: 10, right: 10, top: 40),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            MySearchBar(
-              onSearch: () {},
-              onSelectCategory: (category) {
-                changeCategory(category);
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 40),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          MySearchBar(
+            onSearch: () {},
+            onSelectCategory: (category) {
+              changeCategory(category);
+            },
+          ),
+          const SizedBox(height: 18),
+          Expanded(
+            child: ListView.builder(
+              itemCount: categoryMedicines.length,
+              itemBuilder: (BuildContext context, int index) {
+                return MedicineItem(
+                  medicine: categoryMedicines[index],
+                  onPushDetails: () {
+                    widget.onTapMedicine(
+                      categoryMedicines[index],
+                    );
+                  },
+                );
               },
             ),
-            const SizedBox(height: 18),
-            Expanded(
-              child: ListView.builder(
-                itemCount: categoryMedicines.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return MedicineItem(
-                    medicine: categoryMedicines[index],
-                    onPushDetails: () {
-                      _pushDetails(
-                        categoryMedicines[index],
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
