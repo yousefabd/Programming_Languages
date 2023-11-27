@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prog_languages/screens/home.dart';
+import 'package:prog_languages/screens/tabs.dart';
 import 'package:prog_languages/screens/login.dart';
-//import 'package:prog_languages/screens/login.dart';
 import 'package:prog_languages/screens/register.dart';
 
 class PharmaStore extends StatefulWidget {
@@ -42,7 +41,7 @@ class _PharmaStoreState extends State<PharmaStore> {
   void _loginAccount(String number, String name) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => HomeScreen(
+        builder: (ctx) => TabsScreen(
           onLogout: _logoutAccount,
           number: number,
           name: name,

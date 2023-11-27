@@ -10,8 +10,9 @@ class OrderScreen extends StatefulWidget {
 class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text('Order Screen'),
+    Widget content = Center(
+      child: Text('You haven\'t placed an order yet!'),
     );
+    return content;
   }
 }
