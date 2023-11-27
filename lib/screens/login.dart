@@ -26,6 +26,7 @@ class _LogInScreenState extends State<LogInScreen> {
   bool _loading = false;
   int responseCode = 200;
   void _validateLogin() async {
+    responseCode = 200;
     if (_formKey.currentState!.validate()) {
       final tempUrl = Uri.parse('http://10.0.2.2:8000/api/login');
       _formKey.currentState!.save();
@@ -39,9 +40,9 @@ class _LogInScreenState extends State<LogInScreen> {
       setState(() {
         _loading = false;
       });
-      final infoList = json.decode(response.body)['pharmacist'] as Map;
       responseCode = response.statusCode;
       if (_formKey.currentState!.validate()) {
+        final infoList = json.decode(response.body)['pharmacist'] as Map;
         widget.onLoginAccount(infoList['phoneNumber'], infoList['name']);
         _formKey.currentState!.reset();
       }
@@ -163,7 +164,8 @@ class _LogInScreenState extends State<LogInScreen> {
                       SubmitButton(
                         label: "Sign In",
                         onPressed: () {
-                          _validateLogin();
+                          //_validateLogin();
+                          widget.onLoginAccount('number', 'Yousef');
                         },
                       ),
                       (_loading == false
