@@ -204,7 +204,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                     child: (_amountFieldVisible
                         ? Padding(
                             padding:
-                                const EdgeInsets.only(left: 150, right: 110),
+                                const EdgeInsets.only(left: 130, right: 100),
                             child: TextFormField(
                               style: const TextStyle(fontSize: 18),
                               textAlign: TextAlign.center,
@@ -220,6 +220,10 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                                 }
                                 if (int.tryParse(value) == null) {
                                   return 'Invalid amount';
+                                }
+                                if (int.parse(value) >
+                                    widget.medicine.quantity) {
+                                  return 'Amount exceeded available\n quantity';
                                 }
                                 _enteredAmount = int.parse(value);
                                 return null;
