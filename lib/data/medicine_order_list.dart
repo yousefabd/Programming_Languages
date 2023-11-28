@@ -1,1 +1,1 @@
-final currentOrder = {};
+final Map<String, dynamic> currentOrder = {};

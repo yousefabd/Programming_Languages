@@ -4,40 +4,40 @@ import 'package:prog_languages/models/medicine.dart';
 //Zorprin
 var randomDate =
     DateTime(DateTime.now().year + 3, DateTime.now().month, DateTime.now().day);
-final dummyMedicines = [
+final medicinesList = [
   Medicine(
     sciName: 'Paracetamol',
-    marketName: 'Panadol',
+    marketName: 'panadol',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
     quantity: 250,
     expireDate: randomDate,
     price: 2500.0,
-    image: Image.asset('assets/images/medicine/paracetamol.png'),
+    image: Image.asset('assets/images/medicine/panadol.png'),
     id: '1',
   ),
   Medicine(
     sciName: 'Aspirine',
-    marketName: 'Easprin',
+    marketName: 'easprin',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
     quantity: 300,
     expireDate: randomDate,
     price: 3500.0,
     image: Image.asset(
-      'assets/images/medicine/aspirine.png',
+      'assets/images/medicine/easprin.png',
     ),
     id: '2',
   ),
   Medicine(
     sciName: 'Cetacodaine',
-    marketName: 'Cetacaine',
+    marketName: 'cetacaine',
     category: MedCategory.antibiotic,
     company: 'Ultra-Medica',
     quantity: 100,
     expireDate: randomDate,
     price: 4000.0,
-    image: Image.asset('assets/images/medicine/cetacodaine.png'),
+    image: Image.asset('assets/images/medicine/cetacaine.png'),
     id: '3',
   ),
   Medicine(
@@ -52,17 +52,6 @@ final dummyMedicines = [
     id: '4',
   ),
   Medicine(
-    sciName: 'cetacodaine',
-    marketName: 'Cetacaine',
-    category: MedCategory.painReliever,
-    company: 'Ultra-Medica',
-    quantity: 100,
-    expireDate: randomDate,
-    price: 4000.0,
-    image: Image.asset('assets/images/medicine/cetacodaine.png'),
-    id: '5',
-  ),
-  Medicine(
     sciName: 'Carbamazepine',
     marketName: 'carbatec',
     category: MedCategory.sadative,
@@ -73,7 +62,7 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/carbatec.png'),
     id: '6',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Amoxicillin & Clavulanic',
     marketName: 'augmentin',
     category: MedCategory.antibiotic,
@@ -84,7 +73,7 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/augmentin.png'),
     id: '7',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Bisoprolol',
     marketName: 'bizocand',
     category: MedCategory.painReliever,
@@ -106,20 +95,9 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/adderall.png'),
     id: '9',
   ),
-   Medicine(
-    sciName: 'Schizophrenia',
-    marketName: 'schizosmash',
-    category: MedCategory.stimulant,
-    company: 'Yypharma',
-    quantity: 26,
-    expireDate: randomDate,
-    price: 150.0,
-    image: Image.asset('assets/images/medicine/cmedicon.png'),
-    id: '10',
-  ),
-   Medicine(
+  Medicine(
     sciName: 'Sulpiride',
-    marketName: 'Damatil 50',
+    marketName: 'damatil',
     category: MedCategory.sadative,
     company: 'Ultra-Medica',
     quantity: 70,
@@ -128,7 +106,7 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/damatil.png'),
     id: '11',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Empagliflozin/Linagliptin',
     marketName: 'diacolin',
     category: MedCategory.painReliever,
@@ -139,7 +117,7 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/diacolin.png'),
     id: '12',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Pseudoephedrine Hydrochloride',
     marketName: 'ephedrinol',
     category: MedCategory.painReliever,
@@ -150,9 +128,9 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/ephedrinol.png'),
     id: '13',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Clomipramine hydrochloride',
-    marketName: 'Newfranil',
+    marketName: 'newfranil',
     category: MedCategory.sadative,
     company: 'Ultra-Medica',
     quantity: 120,
@@ -161,9 +139,9 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/newfranil.png'),
     id: '14',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Rivaroxiban',
-    marketName: 'Rioxaban',
+    marketName: 'rioxaban',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
     quantity: 700,
@@ -174,7 +152,7 @@ final dummyMedicines = [
   ),
   Medicine(
     sciName: 'Tiaprofenic Acid ',
-    marketName: 'Surgafast',
+    marketName: 'surgafast',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
     quantity: 700,
@@ -185,18 +163,18 @@ final dummyMedicines = [
   ),
   Medicine(
     sciName: 'Derativalic Acid ',
-    marketName: 'Surgafast 300',
+    marketName: 'surgafast',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
     quantity: 200,
     expireDate: randomDate,
     price: 2600.0,
-    image: Image.asset('assets/images/medicine/surgafast300.png'),
+    image: Image.asset('assets/images/medicine/surgafast.png'),
     id: '17',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Phenylephrine hcl  ',
-    marketName: 'Trilodin',
+    marketName: 'trilodin',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
     quantity: 300,
@@ -205,9 +183,9 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/trilodin.png'),
     id: '18',
   ),
-   Medicine(
+  Medicine(
     sciName: 'Valsartan hydroc.',
-    marketName: 'Valican-H',
+    marketName: 'valican',
     category: MedCategory.painReliever,
     company: 'Ultra-Medica',
     quantity: 350,
@@ -216,5 +194,4 @@ final dummyMedicines = [
     image: Image.asset('assets/images/medicine/valican.png'),
     id: '19',
   ),
-
 ];

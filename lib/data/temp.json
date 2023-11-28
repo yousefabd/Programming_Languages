@@ -1,0 +1,274 @@
+{
+    "data": [
+        {
+            "sciName": "Paracetamol",
+            "useName": "panadol",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 250,
+            "expiredDate": "1/3/2025",
+            "price": 2500,
+            "description": null
+        },
+        {
+            "sciName": "Aspirine",
+            "useName": "easprin",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 300,
+            "expiredDate": "5/4/2025",
+            "price": 3500,
+            "description": null
+        },
+        {
+            "sciName": "Cetacodaine",
+            "useName": "cetacaine",
+            "category": [
+                {
+                    "id": 4,
+                    "name": "Antibiotic"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 100,
+            "expiredDate": "12/4/2025",
+            "price": 4000,
+            "description": null
+        },
+        {
+            "sciName": "Azithromycin",
+            "useName": "azithromycin",
+            "category": [
+                {
+                    "id": 4,
+                    "name": "Antibiotic"
+                }
+            ],
+            "companyName": "Ibn-Al-Haitham",
+            "qtn": 76,
+            "expiredDate": "2/4/2026",
+            "price": 3700,
+            "description": null
+        },
+        {
+            "sciName": "Carbamazepine",
+            "useName": "carbatec",
+            "category": [
+                {
+                    "id": 3,
+                    "name": "Sedative"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 108,
+            "expiredDate": "8/7/2026",
+            "price": 5200,
+            "description": null
+        },
+        {
+            "sciName": "Amoxicillin & Clavulanic",
+            "useName": "augmentin",
+            "category": [
+                {
+                    "id": 4,
+                    "name": "Antibiotic"
+                }
+            ],
+            "companyName": "Uni-Pharma",
+            "qtn": 307,
+            "expiredDate": "8/7/2026",
+            "price": 2700,
+            "description": null
+        },
+        {
+            "sciName": "Bisoprolol",
+            "useName": "bizocand",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Uni-Pharma",
+            "qtn": 492,
+            "expiredDate": "8/7/2025",
+            "price": 8200,
+            "description": null
+        },
+        {
+            "sciName": "Dextro & Amphetamine",
+            "useName": "adderall",
+            "category": [
+                {
+                    "id": 2,
+                    "name": "Stimulant"
+                }
+            ],
+            "companyName": "Teva-Pharma",
+            "qtn": 709,
+            "expiredDate": "11/9/2027",
+            "price": 6300,
+            "description": null
+        },
+        {
+            "sciName": "Sulpiride",
+            "useName": "damatil",
+            "category": [
+                {
+                    "id": 3,
+                    "name": "Sedative"
+                }
+            ],
+            "companyName": "Uni-Pharma",
+            "qtn": 79,
+            "expiredDate": "8/7/2024",
+            "price": 1500,
+            "description": null
+        },
+        {
+            "sciName": "Empagliflozin/Linagliptin",
+            "useName": "diacolin",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 79,
+            "expiredDate": "9/2/2024",
+            "price": 1500,
+            "description": null
+        },
+        {
+            "sciName": "Pseudoephedrine Hydrochloride",
+            "useName": "ephedrinol",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 53,
+            "expiredDate": "9/11/2024",
+            "price": 2400,
+            "description": null
+        },
+        {
+            "sciName": "Clomipramine hydrochloride",
+            "useName": "newfranil",
+            "category": [
+                {
+                    "id": 3,
+                    "name": "Sedative"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 66,
+            "expiredDate": "9/11/2025",
+            "price": 3100,
+            "description": null
+        },
+        {
+            "sciName": "Rivaroxiban",
+            "useName": "rioxaban",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 301,
+            "expiredDate": "12/12/2024",
+            "price": 6500,
+            "description": null
+        },
+        {
+            "sciName": "Tiaprofenic Acid",
+            "useName": "surgafast",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 450,
+            "expiredDate": "1/1/2026",
+            "price": 6500,
+            "description": null
+        },
+        {
+            "sciName": "Derativalic Acid",
+            "useName": "surgafast",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 393,
+            "expiredDate": "1/10/2026",
+            "price": 7300,
+            "description": null
+        },
+        {
+            "sciName": "Derativalic Acid",
+            "useName": "surgafast",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 450,
+            "expiredDate": "1/1/2026",
+            "price": 6500,
+            "description": null
+        },
+        {
+            "sciName": "Valsartan hydroc",
+            "useName": "valican",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 290,
+            "expiredDate": "11/9/2024",
+            "price": 3700,
+            "description": null
+        },
+        {
+            "sciName": "Phenylephrine hcl",
+            "useName": "trilodin",
+            "category": [
+                {
+                    "id": 1,
+                    "name": "Pain Reliever"
+                }
+            ],
+            "companyName": "Ultra-Medica",
+            "qtn": 450,
+            "expiredDate": "11/1/2024",
+            "price": 3800,
+            "description": null
+        }
+    ]
+}
