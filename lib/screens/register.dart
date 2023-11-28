@@ -100,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Material(
             //used Material to fix black transparent color issue
             child: SvgPicture.asset(
-              'assets/images/signup_border.svg', // new imge added here, got changed a little bit, but the size now is better, and the quiality ofc.
+              'assets/images/bgorg.svg', // new imge added here, got changed a little bit, but the size now is better, and the quiality ofc.
               fit: BoxFit.fill,
             ),
           ),

@@ -68,6 +68,7 @@ flutter:
      - assets/images/logs.png
      - assets/images/needstore.svg
      - assets/images/svborders.svg
+     - assets/images/bgorg.svg
      - assets/images/signup_border.svg
      - assets/images/signup_border.png
      - assets/images/medicine/paracetamol.png
