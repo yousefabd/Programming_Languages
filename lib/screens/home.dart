@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:prog_languages/data/dummy_medicines.dart';
+import 'package:prog_languages/data/medicines_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_item.dart';
 import 'package:prog_languages/widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.onTapMedicine});
+  const HomeScreen(
+      {super.key, required this.onTapMedicine, required this.onSearch});
   final void Function(Medicine) onTapMedicine;
+  final void Function(String) onSearch;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -22,9 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Medicine> get categoryMedicines {
     List<Medicine> l = [];
-    for (int i = 0; i < dummyMedicines.length; i++) {
-      if (dummyMedicines[i].category == _selectedCategory) {
-        l.add(dummyMedicines[i]);
+    for (int i = 0; i < medicinesList.length; i++) {
+      if (medicinesList[i].category == _selectedCategory) {
+        l.add(medicinesList[i]);
       }
     }
     return l;
@@ -40,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           MySearchBar(
-            onSearch: () {},
+            onSearch: widget.onSearch,
             onSelectCategory: (category) {
               changeCategory(category);
             },

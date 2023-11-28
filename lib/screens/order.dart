@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prog_languages/data/medicine_order_list.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -13,6 +14,7 @@ class _OrderScreenState extends State<OrderScreen> {
     Widget content = Center(
       child: Text('You haven\'t placed an order yet!'),
     );
+    if (currentOrder.isNotEmpty) {}
     return content;
   }
 }

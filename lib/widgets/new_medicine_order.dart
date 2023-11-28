@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prog_languages/data/dummy_medicines.dart';
+import 'package:prog_languages/data/medicines_list.dart';
 import 'package:prog_languages/data/medicine_order_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 
@@ -24,7 +24,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
   }
 
   bool foundMedicine(String name) {
-    final m = dummyMedicines.where((medicine) {
+    final m = medicinesList.where((medicine) {
       if (medicine.sciName == name) {
         chosenMedicine = medicine;
         return true;

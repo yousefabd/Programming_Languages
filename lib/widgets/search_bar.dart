@@ -4,7 +4,7 @@ import 'package:prog_languages/models/medicine.dart';
 class MySearchBar extends StatefulWidget {
   MySearchBar(
       {super.key, required this.onSearch, required this.onSelectCategory});
-  final void Function() onSearch;
+  final void Function(String) onSearch;
   final void Function(MedCategory) onSelectCategory;
 
   @override
@@ -12,7 +12,6 @@ class MySearchBar extends StatefulWidget {
 }
 
 class _MySearchBarState extends State<MySearchBar> {
-  final _searchController = TextEditingController();
   MedCategory _selectedCategory = MedCategory.painReliever;
   String getCategoryName(MedCategory c) {
     switch (c) {
@@ -34,8 +33,8 @@ class _MySearchBarState extends State<MySearchBar> {
       children: [
         Expanded(
           child: SearchBar(
-            controller: _searchController,
             hintText: 'Search...',
+            onSubmitted: widget.onSearch,
             leading: const Icon(Icons.search),
           ),
         ),

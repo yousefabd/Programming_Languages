@@ -40,10 +40,11 @@ class _LogInScreenState extends State<LogInScreen> {
       setState(() {
         _loading = false;
       });
+      print(json.decode(response.body));
       responseCode = response.statusCode;
       if (_formKey.currentState!.validate()) {
-        final infoList = json.decode(response.body)['pharmacist'] as Map;
-        widget.onLoginAccount(infoList['phoneNumber'], infoList['name']);
+        final infoList = json.decode(response.body) as Map;
+        widget.onLoginAccount(_number!, infoList['name']);
         _formKey.currentState!.reset();
       }
     }

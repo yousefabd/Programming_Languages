@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/screens/home.dart';
@@ -39,6 +43,22 @@ class _TabsScreenState extends State<TabsScreen> {
       print(_amount);
   }
 
+  void _searchMedicine(String searched) async {
+    final tempUrl =
+        Uri.parse('http://10.0.2.2:8000/api/medcines?useName[like]=$searched');
+    final response = await http.get(
+      tempUrl,
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization':
+            'Bearer 1|LFrrMB7opUx6hvvQRhwu1vXwB4fGFq2xqp0x9mAkb9b2b4ca',
+      },
+    );
+    final searchResult = json.decode(response.body);
+    final data = searchResult['data'] as List;
+    print(data);
+  }
+
   void _addMedicineOrder() {
     showModalBottomSheet(
         isScrollControlled: true,
@@ -63,7 +83,10 @@ class _TabsScreenState extends State<TabsScreen> {
     String currentTitle = '';
     switch (_currentScreenIndex) {
       case 0:
-        currentScreen = HomeScreen(onTapMedicine: _pushDetails);
+        currentScreen = HomeScreen(
+          onTapMedicine: _pushDetails,
+          onSearch: _searchMedicine,
+        );
         currentTitle = 'Home';
       case 1:
         currentScreen = const OrderScreen();
