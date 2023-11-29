@@ -19,7 +19,8 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
 
   void _submitOrder() {
     if (_formKey.currentState!.validate()) {
-      currentOrder.addEntries([MapEntry(chosenMedicine!.id, _enteredAmount!)]);
+      print(chosenMedicine!.sciName);
+      Navigator.of(context).pop(MapEntry(chosenMedicine!, _enteredAmount!));
     }
   }
 
@@ -57,6 +58,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
                 return null;
               },
             ),
+            const SizedBox(height: 12),
             TextFormField(
               decoration: const InputDecoration(hintText: 'Enter Amount'),
               validator: (value) {

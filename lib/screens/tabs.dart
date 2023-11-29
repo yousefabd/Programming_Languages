@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/data/medicine_order_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/screens/home.dart';
 import 'package:prog_languages/screens/medicine_details.dart';
@@ -59,13 +60,101 @@ class _TabsScreenState extends State<TabsScreen> {
     print(data);
   }
 
-  void _addMedicineOrder() {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        context: context,
-        builder: (ctx) {
-          return const NewMedicineOrder();
-        });
+  void _addMedicineOrder() async {
+    final MapEntry<Medicine, int>? chosenMedicineEntry =
+        await showModalBottomSheet(
+            useSafeArea: true,
+            isScrollControlled: true,
+            context: context,
+            builder: (ctx) {
+              return const NewMedicineOrder();
+            });
+
+    if (chosenMedicineEntry != null) {
+      setState(() {
+        /* if the ordered medicine is already in the medicines order list we just edit the medicine order amount*/
+        if (currentOrder.containsKey(chosenMedicineEntry.key.id)) {
+          /*if old order of the medicine amount + new order amount doesn't exceed maximum amount of the medicine */
+          if (currentOrder[chosenMedicineEntry.key.id] +
+                  chosenMedicineEntry.value <=
+              chosenMedicineEntry.key.quantity) {
+            currentOrder[chosenMedicineEntry.key.id] =
+                currentOrder[chosenMedicineEntry.key.id] +
+                    chosenMedicineEntry.value;
+          } else {
+            ScaffoldMessenger.of(context).clearSnackBars();
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor:
+                    Theme.of(context).colorScheme.secondaryContainer,
+                content: Text(
+                  'Couldn\'nt submit because wanted amount exceeded maximum quantity',
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
+                ),
+              ),
+            );
+          }
+        } else {
+          currentOrder.addEntries({
+            MapEntry(chosenMedicineEntry.key.id, chosenMedicineEntry.value)
+          });
+        }
+      });
+    }
+  }
+
+  void _cancelMedicineOrder(String key, int amount) {
+    setState(() {
+      currentOrder.remove(key);
+    });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+          content: Text(
+            'Removed order from the list',
+            style: TextStyle(color: Theme.of(context).colorScheme.primary),
+          ),
+          action: SnackBarAction(
+            label: 'undo',
+            onPressed: () {
+              setState(() {
+                currentOrder.addEntries({MapEntry(key, amount)});
+              });
+            },
+          )),
+    );
+  }
+
+  void _clearMedicineOrder() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: const Text(
+            'Are you sure you want to clear order list?',
+            style: TextStyle(fontSize: 22),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                setState(() {
+                  currentOrder.clear();
+                });
+              },
+              child: const Text('Clear'),
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Cancel'))
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -89,7 +178,11 @@ class _TabsScreenState extends State<TabsScreen> {
         );
         currentTitle = 'Home';
       case 1:
-        currentScreen = const OrderScreen();
+        currentScreen = OrderScreen(
+          orderList: currentOrder,
+          onCancelOrder: _cancelMedicineOrder,
+          onClearList: _clearMedicineOrder,
+        );
         currentTitle = 'Add an order';
     }
     return Scaffold(
