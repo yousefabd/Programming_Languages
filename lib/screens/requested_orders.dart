@@ -21,7 +21,6 @@ class RequestedOrderScreen extends StatelessWidget {
         child: ListView.builder(
             itemCount: requestedOrders.length,
             itemBuilder: (ctx, index) {
-              print(requestedOrders.length);
               String title = requestedOrders[index]['orderTitle'];
               int status = requestedOrders[index]['orderState'];
               return OrderItem(title: title, status: status);

@@ -23,6 +23,8 @@ class _MySearchBarState extends State<MySearchBar> {
         return 'Stimulant';
       case MedCategory.sadative:
         return 'Sedative';
+      case MedCategory.all:
+        return 'All';
     }
   }
 

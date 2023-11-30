@@ -48,6 +48,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
           children: [
             TextFormField(
               initialValue: widget.name,
+              enabled: (widget.name == null),
               decoration:
                   const InputDecoration(hintText: 'Enter Medicine Name'),
               validator: (value) {
@@ -61,7 +62,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
             ),
             const SizedBox(height: 12),
             TextFormField(
-              initialValue: widget.amount.toString(),
+              initialValue: widget.amount?.toString(),
               decoration: const InputDecoration(hintText: 'Enter Amount'),
               validator: (value) {
                 if (value!.trim().isEmpty) {

@@ -9,8 +9,10 @@ class OrderScreen extends StatelessWidget {
       required this.orderList,
       required this.onCancelOrder,
       required this.onEditOrder,
-      required this.onClearList});
+      required this.onClearList,
+      required this.onSubmitOrder});
   final orderList;
+  final void Function() onSubmitOrder;
   final void Function(String, int) onCancelOrder;
   final void Function() onClearList;
   final void Function(String, int) onEditOrder;
@@ -54,7 +56,7 @@ class OrderScreen extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.greenAccent),
-                    onPressed: () {},
+                    onPressed: onSubmitOrder,
                     child: const Text(
                       'Submit ',
                       style: TextStyle(fontSize: 24),

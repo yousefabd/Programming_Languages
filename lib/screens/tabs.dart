@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/medicine_order_list.dart';
+import 'package:prog_languages/data/requested_orders_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/screens/home.dart';
 import 'package:prog_languages/screens/medicine_details.dart';
 import 'package:prog_languages/screens/order.dart';
 import 'package:prog_languages/widgets/new_medicine_order.dart';
 import 'package:prog_languages/widgets/side_drawer.dart';
+import 'package:prog_languages/widgets/submit_order_dialog_box.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen(
@@ -182,6 +184,34 @@ class _TabsScreenState extends State<TabsScreen> {
     );
   }
 
+  void _submitMedicineOrder() async {
+    final String? orderTitle = await showDialog(
+      context: context,
+      builder: (ctx) {
+        return SubmitOrderDialogBox();
+      },
+    );
+    if (orderTitle != null) {
+      requestedOrders.add({
+        "orderState": 0,
+        "orderTitle": orderTitle,
+        "medicines": currentOrder
+      });
+      setState(() {
+        currentOrder.clear();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+            content: Text(
+              'Submitted order successfully',
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+            ),
+          ),
+        );
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget currentScreen = const SizedBox();
@@ -208,6 +238,7 @@ class _TabsScreenState extends State<TabsScreen> {
           onCancelOrder: _cancelMedicineOrder,
           onClearList: _clearMedicineOrder,
           onEditOrder: _editMedicineOrder,
+          onSubmitOrder: _submitMedicineOrder,
         );
         currentTitle = 'Add an order';
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:prog_languages/data/medicine_order_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_detail_tile.dart';
 
@@ -19,6 +20,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
   bool _amountFieldVisible = false;
   final _formKey = GlobalKey<FormState>();
   int? _enteredAmount;
+  bool _exceeded = false;
   String get _medicineCategory {
     switch (widget.medicine.category) {
       case MedCategory.antibiotic:
@@ -29,6 +31,8 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
         return 'Stimulant';
       case MedCategory.sadative:
         return 'Sedative';
+      case MedCategory.all:
+        return 'All';
     }
   }
 
@@ -56,7 +60,25 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
 
   void _submitAmount() {
     if (_formKey.currentState!.validate()) {
-      Navigator.of(context).pop(_enteredAmount);
+      if (currentOrder.containsKey(widget.medicine.id)) {
+        if (currentOrder[widget.medicine.id] + _enteredAmount >
+            widget.medicine.quantity) {
+          setState(() {
+            _exceeded = true;
+          });
+        } else {
+          currentOrder.addEntries({
+            MapEntry(widget.medicine.id,
+                _enteredAmount! + currentOrder[widget.medicine.id])
+          });
+          Navigator.pop(context);
+        }
+      } else {
+        currentOrder.addEntries({
+          MapEntry(widget.medicine.id, _enteredAmount),
+        });
+        Navigator.pop(context);
+      }
     }
   }
 
@@ -222,7 +244,9 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                                   return 'Invalid amount';
                                 }
                                 if (int.parse(value) >
-                                    widget.medicine.quantity) {
+                                        widget.medicine.quantity ||
+                                    _exceeded) {
+                                  _exceeded = false;
                                   return 'Amount exceeded available\n quantity';
                                 }
                                 _enteredAmount = int.parse(value);
