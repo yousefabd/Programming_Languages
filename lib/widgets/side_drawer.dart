@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/screens/requested_orders.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({super.key, required this.onLogout, required this.name});
@@ -56,7 +57,28 @@ class SideDrawer extends StatelessWidget {
                       Navigator.pop(context);
                       onLogout();
                     },
-                  )
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.list,
+                      size: 28,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    title: Text(
+                      'My orders',
+                      style: GoogleFonts.bitter(
+                        fontSize: 28,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (ctx) {
+                        return const RequestedOrderScreen();
+                      }));
+                    },
+                  ),
                 ]),
               ),
             ),

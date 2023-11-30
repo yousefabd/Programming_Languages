@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
@@ -104,6 +103,32 @@ class _TabsScreenState extends State<TabsScreen> {
     }
   }
 
+  void _editMedicineOrder(String name, int amount) async {
+    final MapEntry<Medicine, int>? chosenMedicineEntry =
+        await showModalBottomSheet(
+            useSafeArea: true,
+            isScrollControlled: true,
+            context: context,
+            builder: (ctx) {
+              return NewMedicineOrder(
+                name: name,
+                amount: amount,
+              );
+            });
+
+    if (chosenMedicineEntry != null) {
+      setState(() {
+        if (currentOrder.containsKey(chosenMedicineEntry.key.id)) {
+          currentOrder[chosenMedicineEntry.key.id] = chosenMedicineEntry.value;
+        } else {
+          currentOrder.addEntries({
+            MapEntry(chosenMedicineEntry.key.id, chosenMedicineEntry.value)
+          });
+        }
+      });
+    }
+  }
+
   void _cancelMedicineOrder(String key, int amount) {
     setState(() {
       currentOrder.remove(key);
@@ -182,6 +207,7 @@ class _TabsScreenState extends State<TabsScreen> {
           orderList: currentOrder,
           onCancelOrder: _cancelMedicineOrder,
           onClearList: _clearMedicineOrder,
+          onEditOrder: _editMedicineOrder,
         );
         currentTitle = 'Add an order';
     }
