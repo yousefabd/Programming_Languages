@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/medicines_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_order_item.dart';
-import 'package:prog_languages/widgets/submit_button.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen(
       {super.key,
       required this.orderList,
       required this.onCancelOrder,
+      required this.onEditOrder,
       required this.onClearList});
   final orderList;
   final void Function(String, int) onCancelOrder;
   final void Function() onClearList;
+  final void Function(String, int) onEditOrder;
   Medicine getMedicine(String id) {
     final m = medicinesList.where((medicine) {
       if (medicine.id == id) {
@@ -40,6 +40,7 @@ class OrderScreen extends StatelessWidget {
                     medicine: getMedicine(medicine.key),
                     amount: medicine.value,
                     onCancelOrder: onCancelOrder,
+                    onEditOrder: onEditOrder,
                   ),
               ],
             ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:prog_languages/data/medicines_list.dart';
-import 'package:prog_languages/data/medicine_order_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 
 class NewMedicineOrder extends StatefulWidget {
-  const NewMedicineOrder({super.key});
-
+  const NewMedicineOrder({super.key, this.name, this.amount});
+  final String? name;
+  final int? amount;
   @override
   State<NewMedicineOrder> createState() => _NewMedicineOrderState();
 }
@@ -47,6 +47,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
         child: Column(
           children: [
             TextFormField(
+              initialValue: widget.name,
               decoration:
                   const InputDecoration(hintText: 'Enter Medicine Name'),
               validator: (value) {
@@ -60,6 +61,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
             ),
             const SizedBox(height: 12),
             TextFormField(
+              initialValue: widget.amount.toString(),
               decoration: const InputDecoration(hintText: 'Enter Amount'),
               validator: (value) {
                 if (value!.trim().isEmpty) {

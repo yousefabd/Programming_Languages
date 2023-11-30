@@ -7,17 +7,19 @@ class MedicineOrderItem extends StatelessWidget {
       {super.key,
       required this.medicine,
       required this.amount,
-      required this.onCancelOrder});
+      required this.onCancelOrder,
+      required this.onEditOrder});
   final Medicine medicine;
   final int amount;
   final void Function(String, int) onCancelOrder;
+  final void Function(String, int) onEditOrder;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(children: [
         Container(
-          constraints: BoxConstraints(maxHeight: 150, maxWidth: 130),
+          constraints: const BoxConstraints(maxHeight: 150, maxWidth: 130),
           child: Image(image: medicine.image.image),
         ),
         Container(
@@ -41,11 +43,22 @@ class MedicineOrderItem extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              IconButton(
-                  onPressed: () {
-                    onCancelOrder(medicine.id, amount);
-                  },
-                  icon: const Icon(Icons.cancel_rounded))
+              Column(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      onCancelOrder(medicine.id, amount);
+                    },
+                    icon: const Icon(Icons.cancel_rounded),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      onEditOrder(medicine.sciName, amount);
+                    },
+                    icon: const Icon(Icons.edit),
+                  )
+                ],
+              )
             ],
           ),
         ),
