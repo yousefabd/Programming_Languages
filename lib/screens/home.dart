@@ -25,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Medicine> get categoryMedicines {
     List<Medicine> l = [];
     for (int i = 0; i < medicinesList.length; i++) {
-      if (medicinesList[i].category == _selectedCategory) {
+      if (medicinesList[i].category == _selectedCategory ||
+          _selectedCategory == MedCategory.all) {
         l.add(medicinesList[i]);
       }
     }

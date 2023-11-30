@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-enum MedCategory { painReliever, stimulant, sadative, antibiotic }
+enum MedCategory {
+  all,
+  painReliever,
+  stimulant,
+  sadative,
+  antibiotic,
+}
 
 class Medicine {
   final String id;
