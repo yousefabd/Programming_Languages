@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/requested_orders_list.dart';
+import 'package:prog_languages/screens/order_details.dart';
 import 'package:prog_languages/widgets/order_item.dart';
 
 class RequestedOrderScreen extends StatelessWidget {
@@ -19,12 +20,21 @@ class RequestedOrderScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView.builder(
-            itemCount: requestedOrders.length,
-            itemBuilder: (ctx, index) {
-              String title = requestedOrders[index]['orderTitle'];
-              int status = requestedOrders[index]['orderState'];
-              return OrderItem(title: title, status: status);
-            }),
+          itemCount: requestedOrders.length,
+          itemBuilder: (ctx, index) {
+            String title = requestedOrders[index]['orderTitle'];
+            int status = requestedOrders[index]['orderState'];
+            return OrderItem(
+              title: title,
+              status: status,
+              onTap: (status) {
+                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                  return OrderDetailsScreen(index, status);
+                }));
+              },
+            );
+          },
+        ),
       ),
     );
   }
