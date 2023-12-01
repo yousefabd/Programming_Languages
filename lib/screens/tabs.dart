@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/data/favorite_medicines.dart';
 import 'package:prog_languages/data/medicine_order_list.dart';
 import 'package:prog_languages/data/requested_orders_list.dart';
 import 'package:prog_languages/models/medicine.dart';
+import 'package:prog_languages/screens/favorites.dart';
 import 'package:prog_languages/screens/home.dart';
 import 'package:prog_languages/screens/medicine_details.dart';
 import 'package:prog_languages/screens/order.dart';
@@ -208,6 +210,28 @@ class _TabsScreenState extends State<TabsScreen> {
     }
   }
 
+  void _toggleFavoritesList(String id) {
+    bool check = favoriteMedicines.contains(id);
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
+        content: Text(
+          check
+              ? 'Medicine removed from favorites'
+              : 'Medicine added to favorites',
+          style:
+              TextStyle(color: Theme.of(context).colorScheme.primaryContainer),
+        ),
+      ),
+    );
+    if (check) {
+      favoriteMedicines.remove(id);
+    } else {
+      favoriteMedicines.add(id);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget currentScreen = const SizedBox();
@@ -226,6 +250,7 @@ class _TabsScreenState extends State<TabsScreen> {
         currentScreen = HomeScreen(
           onTapMedicine: _pushDetails,
           onSearch: _searchMedicine,
+          onToggleFavorites: _toggleFavoritesList,
         );
         currentTitle = 'Home';
       case 1:
@@ -237,6 +262,9 @@ class _TabsScreenState extends State<TabsScreen> {
           onSubmitOrder: _submitMedicineOrder,
         );
         currentTitle = 'Add an order';
+      case 2:
+        currentScreen = const FavoritesScreen();
+        currentTitle = 'My Favorite Medicines';
     }
     return Scaffold(
       appBar: AppBar(
@@ -261,6 +289,7 @@ class _TabsScreenState extends State<TabsScreen> {
               icon: Icon(Icons.menu_book_outlined), label: ''),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_shopping_cart_sharp), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: ''),
         ],
       ),
     );

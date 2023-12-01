@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:prog_languages/data/favorite_medicines.dart';
+import 'package:prog_languages/data/medicines_list.dart';
+import 'package:prog_languages/models/medicine.dart';
+import 'package:prog_languages/widgets/favorite_medicine_item.dart';
+
+class FavoritesScreen extends StatelessWidget {
+  const FavoritesScreen({super.key});
+  Medicine getMedicine(String id) {
+    final m = medicinesList.where((medicine) {
+      if (medicine.id == id) {
+        return true;
+      }
+      return false;
+    }).toList();
+    return m[0];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget content = Center(
+      child: Text(
+        "You don't have any favorite medicines!",
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.tertiary,
+        ),
+      ),
+    );
+    if (favoriteMedicines.isNotEmpty) {
+      content = GridView.builder(
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemCount: favoriteMedicines.length,
+        itemBuilder: (ctx, index) {
+          return FavoriteMedicineItem(
+              medicine: getMedicine(favoriteMedicines[index]));
+        },
+      );
+    }
+    return content;
+  }
+}

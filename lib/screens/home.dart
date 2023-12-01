@@ -6,9 +6,13 @@ import 'package:prog_languages/widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen(
-      {super.key, required this.onTapMedicine, required this.onSearch});
+      {super.key,
+      required this.onTapMedicine,
+      required this.onSearch,
+      required this.onToggleFavorites});
   final void Function(Medicine) onTapMedicine;
   final void Function(String) onSearch;
+  final void Function(String) onToggleFavorites;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -60,6 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       categoryMedicines[index],
                     );
                   },
+                  onToggleFavorites: widget.onToggleFavorites,
                 );
               },
             ),

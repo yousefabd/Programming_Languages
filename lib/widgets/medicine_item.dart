@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:prog_languages/data/favorite_medicines.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_item_trait.dart';
 
 class MedicineItem extends StatefulWidget {
-  const MedicineItem(
-      {required this.medicine, required this.onPushDetails, super.key});
+  MedicineItem(
+      {required this.medicine,
+      required this.onPushDetails,
+      required this.onToggleFavorites,
+      super.key});
   final Medicine medicine;
   final void Function() onPushDetails;
+  void Function(String) onToggleFavorites;
 
   @override
   State<MedicineItem> createState() => _MedicineItemState();
 }
 
 class _MedicineItemState extends State<MedicineItem> {
-  bool _favorite = false;
+  bool get _isFavorite {
+    return favoriteMedicines.contains(widget.medicine.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class _MedicineItemState extends State<MedicineItem> {
             onTap: widget.onPushDetails,
             onDoubleTap: () {
               setState(() {
-                _favorite = !_favorite;
+                widget.onToggleFavorites(widget.medicine.id);
               });
             },
             child: Hero(
@@ -50,14 +57,16 @@ class _MedicineItemState extends State<MedicineItem> {
               icon: Icon(
                 MaterialCommunityIcons.heart,
                 size: 42,
-                color: (!_favorite
+                color: (!_isFavorite
                     ? const Color.fromARGB(255, 105, 105, 105)
                     : Colors.pink.shade400),
               ),
               onPressed: () {
-                setState(() {
-                  _favorite = !_favorite;
-                });
+                setState(
+                  () {
+                    widget.onToggleFavorites(widget.medicine.id);
+                  },
+                );
               },
             ),
           )
