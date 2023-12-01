@@ -62,14 +62,12 @@ class _TabsScreenState extends State<TabsScreen> {
   }
 
   void _addMedicineOrder() async {
-    final MapEntry<Medicine, int>? chosenMedicineEntry =
-        await showModalBottomSheet(
-            useSafeArea: true,
-            isScrollControlled: true,
-            context: context,
-            builder: (ctx) {
-              return const NewMedicineOrder();
-            });
+    final MapEntry<Medicine, int>? chosenMedicineEntry = await showDialog(
+        useSafeArea: true,
+        context: context,
+        builder: (ctx) {
+          return const NewMedicineOrder();
+        });
 
     if (chosenMedicineEntry != null) {
       setState(() {
@@ -106,17 +104,15 @@ class _TabsScreenState extends State<TabsScreen> {
   }
 
   void _editMedicineOrder(String name, int amount) async {
-    final MapEntry<Medicine, int>? chosenMedicineEntry =
-        await showModalBottomSheet(
-            useSafeArea: true,
-            isScrollControlled: true,
-            context: context,
-            builder: (ctx) {
-              return NewMedicineOrder(
-                name: name,
-                amount: amount,
-              );
-            });
+    final MapEntry<Medicine, int>? chosenMedicineEntry = await showDialog(
+        useSafeArea: true,
+        context: context,
+        builder: (ctx) {
+          return NewMedicineOrder(
+            name: name,
+            amount: amount,
+          );
+        });
 
     if (chosenMedicineEntry != null) {
       setState(() {

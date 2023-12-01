@@ -40,17 +40,24 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Padding(
-        padding: const EdgeInsets.all(30.0),
+    return AlertDialog(
+      content: Form(
+        key: _formKey,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
+            Icon(
+              widget.name != null ? Icons.edit_calendar : Icons.add_box,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            const SizedBox(height: 8),
             TextFormField(
               initialValue: widget.name,
               enabled: (widget.name == null),
-              decoration:
-                  const InputDecoration(hintText: 'Enter Medicine Name'),
+              decoration: const InputDecoration(
+                hintText: 'Enter Medicine Name',
+                border: OutlineInputBorder(),
+              ),
               validator: (value) {
                 if (value!.trim().isEmpty) {
                   return 'This field is required';
@@ -63,7 +70,10 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
             const SizedBox(height: 12),
             TextFormField(
               initialValue: widget.amount?.toString(),
-              decoration: const InputDecoration(hintText: 'Enter Amount'),
+              decoration: const InputDecoration(
+                hintText: 'Enter Amount',
+                border: OutlineInputBorder(),
+              ),
               validator: (value) {
                 if (value!.trim().isEmpty) {
                   return 'This field is required';
@@ -78,36 +88,30 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
                 return null;
               },
             ),
-            const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'cancel',
-                    style:
-                        TextStyle(color: Theme.of(context).colorScheme.primary),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: _submitOrder,
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Theme.of(context).colorScheme.secondaryContainer),
-                  child: Text(
-                    'submit',
-                    style:
-                        TextStyle(color: Theme.of(context).colorScheme.primary),
-                  ),
-                )
-              ],
-            ),
           ],
         ),
       ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'cancel',
+            style: TextStyle(color: Theme.of(context).colorScheme.primary),
+          ),
+        ),
+        ElevatedButton(
+          onPressed: _submitOrder,
+          style: ElevatedButton.styleFrom(
+              backgroundColor:
+                  Theme.of(context).colorScheme.secondaryContainer),
+          child: Text(
+            'submit',
+            style: TextStyle(color: Theme.of(context).colorScheme.primary),
+          ),
+        )
+      ],
     );
   }
 }
