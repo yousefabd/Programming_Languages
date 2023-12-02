@@ -5,7 +5,9 @@ import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/favorite_medicine_item.dart';
 
 class FavoritesScreen extends StatelessWidget {
-  const FavoritesScreen({super.key});
+  const FavoritesScreen({super.key, required this.onRemoved});
+  final void Function(String, int) onRemoved;
+
   Medicine getMedicine(String id) {
     final m = medicinesList.where((medicine) {
       if (medicine.id == id) {
@@ -33,7 +35,9 @@ class FavoritesScreen extends StatelessWidget {
         itemCount: favoriteMedicines.length,
         itemBuilder: (ctx, index) {
           return FavoriteMedicineItem(
-              medicine: getMedicine(favoriteMedicines[index]));
+            medicine: getMedicine(favoriteMedicines[index]),
+            onRemoved: onRemoved,
+          );
         },
       );
     }

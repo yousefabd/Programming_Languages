@@ -232,6 +232,33 @@ class _TabsScreenState extends State<TabsScreen> {
     }
   }
 
+  void _removeMedicineFromFavorites(String id, int index) {
+    setState(() {
+      favoriteMedicines.remove(id);
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
+          content: Text(
+            'Removed Item from favorites',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.primaryContainer,
+            ),
+          ),
+          action: SnackBarAction(
+            textColor: Theme.of(context).colorScheme.background,
+            label: 'Undo',
+            onPressed: () {
+              setState(() {
+                favoriteMedicines.insert(index, id);
+              });
+            },
+          ),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget currentScreen = const SizedBox();
@@ -263,7 +290,9 @@ class _TabsScreenState extends State<TabsScreen> {
         );
         currentTitle = 'Add an order';
       case 2:
-        currentScreen = const FavoritesScreen();
+        currentScreen = FavoritesScreen(
+          onRemoved: _removeMedicineFromFavorites,
+        );
         currentTitle = 'My Favorite Medicines';
     }
     return Scaffold(

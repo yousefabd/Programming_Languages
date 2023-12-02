@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/data/favorite_medicines.dart';
 import 'package:prog_languages/models/medicine.dart';
 
 class FavoriteMedicineItem extends StatelessWidget {
-  const FavoriteMedicineItem({super.key, required this.medicine});
+  const FavoriteMedicineItem(
+      {super.key, required this.medicine, required this.onRemoved});
   final Medicine medicine;
+  final void Function(String, int) onRemoved;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +33,10 @@ class FavoriteMedicineItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    onRemoved(
+                        medicine.id, favoriteMedicines.indexOf(medicine.id));
+                  },
                   icon: Icon(
                     Icons.cancel,
                     size: 28,
