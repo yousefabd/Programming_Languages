@@ -10,14 +10,15 @@ class MedicineItemTrait extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.green.shade300.withOpacity(0.75),
+          // color: Colors.green.shade300.withOpacity(0.75),
+          color: Theme.of(context).colorScheme.onTertiaryContainer.withAlpha(220),
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [
           Text(
             medicine.sciName,
             style: GoogleFonts.aDLaMDisplay(
-                fontSize: 18, color: Theme.of(context).colorScheme.primary),
+                fontSize: 18, color: Theme.of(context).colorScheme.background),
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -25,27 +26,27 @@ class MedicineItemTrait extends StatelessWidget {
               const SizedBox(width: 8),
               Icon(
                 MaterialCommunityIcons.office_building,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.background,
                 size: 24,
               ),
               const SizedBox(width: 4),
               Text(
                 medicine.company,
                 style: GoogleFonts.aDLaMDisplay(
-                    fontSize: 12, color: Theme.of(context).colorScheme.primary),
+                    fontSize: 12, color: Theme.of(context).colorScheme.background),
               ),
               const Spacer(),
               const SizedBox(width: 24),
               Icon(
                 Icons.format_list_numbered_outlined,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.background,
                 size: 24,
               ),
               const SizedBox(width: 4),
               Text(
                 medicine.quantity.toString(),
                 style: GoogleFonts.aDLaMDisplay(
-                    fontSize: 12, color: Theme.of(context).colorScheme.primary),
+                    fontSize: 12, color: Theme.of(context).colorScheme.background),
               ),
               const SizedBox(width: 8),
             ],

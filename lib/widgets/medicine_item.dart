@@ -26,6 +26,7 @@ class _MedicineItemState extends State<MedicineItem> {
   @override
   Widget build(BuildContext context) {
     return Card(
+    
       color: Theme.of(context).colorScheme.secondaryContainer,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
       child: Stack(

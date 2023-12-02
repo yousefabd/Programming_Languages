@@ -16,13 +16,13 @@ class MedicineOrderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 20),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(
-              color: Theme.of(context).colorScheme.inverseSurface, width: 6),
+          // border: Border.all(
+          //     color: Theme.of(context).colorScheme.inverseSurface, width: 6),
           borderRadius: BorderRadius.circular(15),
-          color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+          color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
         ),
         child: Row(children: [
           Container(
@@ -69,7 +69,7 @@ class MedicineOrderItem extends StatelessWidget {
                         },
                         icon: Icon(
                           Icons.cancel_rounded,
-                          color: Colors.red[400],
+                          color: Colors.red[50],
                         ),
                       ),
                       IconButton(
@@ -78,7 +78,9 @@ class MedicineOrderItem extends StatelessWidget {
                         },
                         icon: Icon(
                           Icons.edit_calendar,
-                          color: Colors.yellow[400],
+                          color: Colors.yellow[50],
+                          // color: Theme.of(context).colorScheme.surface,
+
                         ),
                       ),
                     ],

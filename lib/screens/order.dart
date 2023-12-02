@@ -58,24 +58,26 @@ class OrderScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(width: 44),
+              const SizedBox(width: 52),
               Icon(
                 Icons.price_change,
-                size: 40,
-                color: Theme.of(context).colorScheme.primary,
+                size: 38,
+                                    color: Theme.of(context).colorScheme.onTertiaryContainer.withOpacity(0.8),
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 10),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.9),
+                                    color: Theme.of(context).colorScheme.onTertiaryContainer.withOpacity(0.8),
+
+                  // color: Theme.of(context).colorScheme.primary.withOpacity(0.9),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
                   'Total Cost:',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.background,
-                    fontSize: 18,
+                    fontSize: 16,fontWeight: FontWeight.bold
                   ),
                 ),
               ),
@@ -85,12 +87,12 @@ class OrderScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(4),
                 color: Theme.of(context)
                     .colorScheme
-                    .onSurfaceVariant
+                    .onTertiaryContainer
                     .withOpacity(0.6),
                 child: Text(
                   '${_totalCost.toString()}  S.P',
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.w900),
+                  style:  TextStyle(fontWeight: FontWeight.w900,fontSize: 16,color: Theme.of(context).colorScheme.background),
                 ),
               )
             ],
@@ -101,18 +103,19 @@ class OrderScreen extends StatelessWidget {
             children: [
               Icon(
                 Icons.send_outlined,
-                color: Theme.of(context).colorScheme.primary,
-                size: 32,
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.6),
+                size: 30,
               ),
               const SizedBox(width: 4),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primary),
+                    backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.6)),
+                    // backgroundColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.7)),
                 onPressed: onSubmitOrder,
                 child: Text(
                   'Submit',
                   style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 18,fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.background),
                 ),
               ),
@@ -120,17 +123,19 @@ class OrderScreen extends StatelessWidget {
               Icon(
                 Icons.delete,
                 color: Colors.red.shade300,
-                size: 42,
+                size: 30,
               ),
               ElevatedButton(
                 onPressed: onClearList,
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red.shade300),
+                    // backgroundColor: Colors.red.shade300),
+                                        backgroundColor: Theme.of(context).colorScheme.onError.withOpacity(0.7)),
+
                 child: Text(
                   'Clear',
                   style: TextStyle(
-                      fontSize: 24,
-                      color: Theme.of(context).colorScheme.background),
+                      fontSize: 18,fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.error.withOpacity(0.6)),
                 ),
               ),
             ],
