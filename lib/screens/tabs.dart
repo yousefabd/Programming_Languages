@@ -301,24 +301,24 @@ class _TabsScreenState extends State<TabsScreen> {
         title: Text(
           currentTitle,
           style:
-              GoogleFonts.comme(color: Theme.of(context).colorScheme.onPrimary),
+              GoogleFonts.comme(color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
         ),
         actions: (currentTitle == 'Add an order' ? addToOrderButton : []),
       ),
       drawer: SideDrawer(onLogout: widget.onLogout, name: widget.name),
       body: currentScreen,
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        fixedColor: Theme.of(context).colorScheme.secondaryContainer,
+        backgroundColor: Theme.of(context).colorScheme.onTertiary,
+        fixedColor: Theme.of(context).colorScheme.tertiary,
         currentIndex: _currentScreenIndex,
         onTap: _switchScreen,
-        iconSize: 32,
+        iconSize: 28,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book_outlined), label: ''),
+              icon: Icon(Icons.home_rounded), label:  'Home', ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_shopping_cart_sharp), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: ''),
+              icon: Icon(Icons.add_shopping_cart_sharp), label: 'Order'),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Favorites'),
         ],
       ),
     );
