@@ -175,11 +175,9 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                             content: widget.medicine.quantity.toString(),
                           ),
                           MedicineDetailTile(
-                            icon: Icons.schedule,
-                            label: 'Expiration Date: ',
-                            content:
-                                _formatter.format(widget.medicine.expireDate),
-                          ),
+                              icon: Icons.schedule,
+                              label: 'Expiration Date: ',
+                              content: widget.medicine.expireDate),
                           MedicineDetailTile(
                             icon: Icons.price_change_outlined,
                             label: 'Price: ',

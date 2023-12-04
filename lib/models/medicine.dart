@@ -15,7 +15,7 @@ class Medicine {
   final MedCategory category;
   final String company;
   final int quantity;
-  final DateTime expireDate;
+  final String expireDate;
   final double price;
   final Image image;
 

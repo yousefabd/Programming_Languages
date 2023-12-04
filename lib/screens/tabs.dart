@@ -47,22 +47,6 @@ class _TabsScreenState extends State<TabsScreen> {
       print(_amount);
   }
 
-  void _searchMedicine(String searched) async {
-    final tempUrl =
-        Uri.parse('http://10.0.2.2:8000/api/medcines?useName[like]=$searched');
-    final response = await http.get(
-      tempUrl,
-      headers: <String, String>{
-        'Content-Type': 'application/json',
-        'Authorization':
-            'Bearer 1|LFrrMB7opUx6hvvQRhwu1vXwB4fGFq2xqp0x9mAkb9b2b4ca',
-      },
-    );
-    final searchResult = json.decode(response.body);
-    final data = searchResult['data'] as List;
-    print(data);
-  }
-
   void _addMedicineOrder() async {
     final MapEntry<Medicine, int>? chosenMedicineEntry = await showDialog(
         useSafeArea: true,
@@ -276,7 +260,6 @@ class _TabsScreenState extends State<TabsScreen> {
       case 0:
         currentScreen = HomeScreen(
           onTapMedicine: _pushDetails,
-          onSearch: _searchMedicine,
           onToggleFavorites: _toggleFavoritesList,
         );
         currentTitle = 'Home';
@@ -300,8 +283,9 @@ class _TabsScreenState extends State<TabsScreen> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
           currentTitle,
-          style:
-              GoogleFonts.comme(color: Theme.of(context).colorScheme.onPrimary, fontWeight: FontWeight.bold),
+          style: GoogleFonts.comme(
+              color: Theme.of(context).colorScheme.onPrimary,
+              fontWeight: FontWeight.bold),
         ),
         actions: (currentTitle == 'Add an order' ? addToOrderButton : []),
       ),
@@ -315,7 +299,9 @@ class _TabsScreenState extends State<TabsScreen> {
         iconSize: 28,
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded), label:  'Home', ),
+            icon: Icon(Icons.home_rounded),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.add_shopping_cart_sharp), label: 'Order'),
           BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Favorites'),

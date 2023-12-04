@@ -6,17 +6,22 @@ import 'package:prog_languages/models/medicine.dart';
 class MedicineItemTrait extends StatelessWidget {
   const MedicineItemTrait({super.key, required this.medicine});
   final Medicine medicine;
+  String toUpper(String input) {
+    return input[0].toUpperCase() + input.substring(1);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           // color: Colors.green.shade300.withOpacity(0.75),
-          color: Theme.of(context).colorScheme.onTertiaryContainer.withAlpha(220),
+          color:
+              Theme.of(context).colorScheme.onTertiaryContainer.withAlpha(220),
           borderRadius: BorderRadius.circular(10)),
       child: Column(
         children: [
           Text(
-            medicine.sciName,
+            toUpper(medicine.marketName),
             style: GoogleFonts.aDLaMDisplay(
                 fontSize: 18, color: Theme.of(context).colorScheme.background),
           ),
@@ -33,7 +38,8 @@ class MedicineItemTrait extends StatelessWidget {
               Text(
                 medicine.company,
                 style: GoogleFonts.aDLaMDisplay(
-                    fontSize: 12, color: Theme.of(context).colorScheme.background),
+                    fontSize: 12,
+                    color: Theme.of(context).colorScheme.background),
               ),
               const Spacer(),
               const SizedBox(width: 24),
@@ -46,7 +52,8 @@ class MedicineItemTrait extends StatelessWidget {
               Text(
                 medicine.quantity.toString(),
                 style: GoogleFonts.aDLaMDisplay(
-                    fontSize: 12, color: Theme.of(context).colorScheme.background),
+                    fontSize: 12,
+                    color: Theme.of(context).colorScheme.background),
               ),
               const SizedBox(width: 8),
             ],
