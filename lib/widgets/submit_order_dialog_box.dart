@@ -42,13 +42,16 @@ class _SubmitOrderDialogBoxState extends State<SubmitOrderDialogBox> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('cancel')),
                   ElevatedButton(
-                      onPressed: _submitOrder, child: const Text('submit')),
+                    onPressed: _submitOrder,
+                    child: const Text('submit'),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('cancel'),
+                  ),
                 ],
               )
             ],

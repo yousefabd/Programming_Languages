@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:prog_languages/auth/auth_util.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -40,7 +41,11 @@ class _LogInScreenState extends State<LogInScreen> {
       setState(() {
         _loading = false;
       });
-      print(json.decode(response.body));
+      final Map listData = json.decode(response.body);
+      if (response.statusCode == 200) {
+        print(listData['access_token']);
+        AuthUtility.setToken(listData['access_token']);
+      }
       responseCode = response.statusCode;
       if (_formKey.currentState!.validate()) {
         final infoList = json.decode(response.body) as Map;
@@ -165,8 +170,8 @@ class _LogInScreenState extends State<LogInScreen> {
                       SubmitButton(
                         label: "Sign In",
                         onPressed: () {
-                          //_validateLogin();
-                          widget.onLoginAccount('number', 'Yousef');
+                          _validateLogin();
+                          //widget.onLoginAccount('number', 'Yousef');
                         },
                       ),
                       (_loading == false
