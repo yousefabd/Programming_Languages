@@ -16,7 +16,6 @@ class MedicineDetailsScreen extends StatefulWidget {
 class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  final _formatter = DateFormat.yMd();
   bool _amountFieldVisible = false;
   final _formKey = GlobalKey<FormState>();
   int? _enteredAmount;

@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/data/url_data/auth_util.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -40,12 +41,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       setState(() {
         _loading = true;
       });
-      final tempUrl = Uri.parse('http://10.0.2.2:8000/api/register');
       final response = await http.post(
-        tempUrl,
+        Uri.parse('${url}register'),
         headers: <String, String>{
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer your_token_here',
         },
         body: json.encode(
           {

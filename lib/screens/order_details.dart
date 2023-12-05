@@ -23,7 +23,7 @@ class OrderDetailsScreen extends StatelessWidget {
   double get _totalCost {
     double cost = 0;
     for (final medicine
-        in (requestedOrders[index]['medicines'] as Map<String, int>).entries) {
+        in (requestedOrders[index]['medicines'] as Map).entries) {
       cost += getMedicine(medicine.key).price * medicine.value;
     }
     return cost;
@@ -47,9 +47,8 @@ class OrderDetailsScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  for (final medicine in (requestedOrders[index]['medicines']
-                          as Map<String, int>)
-                      .entries)
+                  for (final medicine
+                      in (requestedOrders[index]['medicines'] as Map).entries)
                     OrderDetailsItem(
                       medicine: getMedicine(medicine.key),
                       amount: medicine.value,

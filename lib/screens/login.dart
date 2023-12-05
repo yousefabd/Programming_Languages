@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:prog_languages/auth/auth_util.dart';
+import 'package:prog_languages/data/url_data/auth_util.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -29,13 +29,12 @@ class _LogInScreenState extends State<LogInScreen> {
   void _validateLogin() async {
     responseCode = 200;
     if (_formKey.currentState!.validate()) {
-      final tempUrl = Uri.parse('http://10.0.2.2:8000/api/login');
       _formKey.currentState!.save();
       setState(() {
         _loading = true;
       });
       final response = await http.post(
-        tempUrl,
+        Uri.parse('${url}login'),
         body: {'phoneNumber': _number, 'password': _password},
       );
       setState(() {

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:prog_languages/auth/auth_util.dart';
+import 'package:prog_languages/data/url_data/auth_util.dart';
 import 'package:prog_languages/data/medicines_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_item.dart';
@@ -96,9 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
       _loading = true;
       medicinesList.clear();
     });
-    final tempUrl = Uri.parse('http://10.0.2.2:8000/api/medcines');
     final response = await http.get(
-      tempUrl,
+      Uri.parse('${url}medcines'),
       headers: <String, String>{
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${AuthUtility.getToken()}',

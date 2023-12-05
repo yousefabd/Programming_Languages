@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/data/url_data/auth_util.dart';
 import 'package:prog_languages/data/favorite_medicines.dart';
 import 'package:prog_languages/data/medicine_order_list.dart';
-import 'package:prog_languages/data/requested_orders_list.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/screens/favorites.dart';
 import 'package:prog_languages/screens/home.dart';
@@ -13,7 +13,6 @@ import 'package:prog_languages/screens/medicine_details.dart';
 import 'package:prog_languages/screens/order.dart';
 import 'package:prog_languages/widgets/new_medicine_order.dart';
 import 'package:prog_languages/widgets/side_drawer.dart';
-import 'package:prog_languages/widgets/submit_order_dialog_box.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen(
@@ -166,19 +165,21 @@ class _TabsScreenState extends State<TabsScreen> {
     );
   }
 
-  void _submitMedicineOrder() async {
-    final String? orderTitle = await showDialog(
-      context: context,
-      builder: (ctx) {
-        return SubmitOrderDialogBox();
+  void _awaitSubmit() async {
+    final response = await http.post(
+      Uri.parse('${url}placeOrder'),
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${AuthUtility.getToken()}',
       },
+      body: json.encode({
+        'items': [
+          for (final medicine in currentOrder.entries)
+            {'medcine_id': int.parse(medicine.key), 'qtn': medicine.value},
+        ]
+      }),
     );
-    if (orderTitle != null) {
-      requestedOrders.add({
-        "orderState": 0,
-        "orderTitle": orderTitle,
-        "medicines": currentOrder
-      });
+    if (response.statusCode == 200) {
       setState(() {
         currentOrder.clear();
         ScaffoldMessenger.of(context).showSnackBar(
@@ -191,7 +192,37 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
         );
       });
+    } else {
+      print('http error when tried to submit order');
     }
+  }
+
+  void _submitMedicineOrder() {
+    showDialog(
+      context: context,
+      builder: (ctx) {
+        return AlertDialog(
+          content: const Text(
+            'Are you sure you want to Submit order list?',
+            style: TextStyle(fontSize: 22),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                _awaitSubmit();
+                Navigator.pop(context);
+              },
+              child: const Text('Submit'),
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Cancel'))
+          ],
+        );
+      },
+    );
   }
 
   void _toggleFavoritesList(String id) {

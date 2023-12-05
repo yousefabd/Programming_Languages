@@ -34,9 +34,12 @@ class MedicineOrderItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).colorScheme.onTertiaryContainer.withAlpha(100)),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onTertiaryContainer
+                      .withAlpha(100)),
 
-                  // color: Theme.of(context).colorScheme.outlineVariant.withAlpha(255)),
+              // color: Theme.of(context).colorScheme.outlineVariant.withAlpha(255)),
               child: Row(
                 children: [
                   Column(
@@ -51,7 +54,6 @@ class MedicineOrderItem extends StatelessWidget {
                         icon: Icons.format_list_numbered_rounded,
                         title: '${amount.toString()}        ',
                         containerColor:
-                        
                             const Color.fromARGB(255, 237, 237, 237),
                       ),
                       const SizedBox(height: 6),
@@ -59,9 +61,9 @@ class MedicineOrderItem extends StatelessWidget {
                         icon: Icons.calculate,
                         title: '${medicine.price * amount}  S.P',
                         containerColor:
-                                                    const Color.fromARGB(255, 237, 237, 237),
+                            const Color.fromARGB(255, 237, 237, 237),
 
-                            // Theme.of(context).colorScheme.background,
+                        // Theme.of(context).colorScheme.background,
                       ),
                     ],
                   ),
@@ -74,9 +76,8 @@ class MedicineOrderItem extends StatelessWidget {
                         },
                         icon: Icon(
                           Icons.cancel_rounded,
-                          // color: Colors.red[50],
-                                                    color: Theme.of(context).colorScheme.background.withOpacity(0.8)
-
+                          color: Colors.red[200],
+                          //color: Theme.of(context).colorScheme.background.withOpacity(0.8)
                         ),
                       ),
                       IconButton(
@@ -85,10 +86,12 @@ class MedicineOrderItem extends StatelessWidget {
                         },
                         icon: Icon(
                           Icons.edit_calendar,
-                          // color: Colors.yellow[50],
-                          color: Theme.of(context).colorScheme.background.withOpacity(0.8)
+                          color: Colors.yellow[200],
+                          // color: Theme.of(context)
+                          //     .colorScheme
+                          //     .background
+                          //     .withOpacity(0.8)
                           // color: Theme.of(context).colorScheme.surface,
-
                         ),
                       ),
                     ],

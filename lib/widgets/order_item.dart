@@ -92,7 +92,7 @@ class OrderItem extends StatelessWidget {
               width: 4,
             ),
             borderRadius: BorderRadius.circular(10),
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.secondaryContainer,
           ),
           child: Center(
             child: Row(
@@ -116,6 +116,7 @@ class OrderItem extends StatelessWidget {
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.background),
                     overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 const SizedBox(width: 8),

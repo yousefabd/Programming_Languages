@@ -62,7 +62,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
                 if (value!.trim().isEmpty) {
                   return 'This field is required';
                 } else if (!foundMedicine(value)) {
-                  return 'Couldn\'t find medicine, make sure to enter the scientific name!';
+                  return 'Couldn\'t find medicine, make sure to\nenter the scientific name correctly!';
                 }
                 return null;
               },
@@ -82,7 +82,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
                 } else if (chosenMedicine == null) {
                   return 'Enter medicine name first';
                 } else if (int.parse(value) > chosenMedicine!.quantity) {
-                  return 'Entered value exceeded available quantity';
+                  return 'Entered value exceeded available \nquantity';
                 }
                 _enteredAmount = int.parse(value);
                 return null;
@@ -97,7 +97,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
             Navigator.of(context).pop();
           },
           child: Text(
-            'cancel',
+            'Cancel',
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
         ),
@@ -107,7 +107,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
               backgroundColor:
                   Theme.of(context).colorScheme.secondaryContainer),
           child: Text(
-            'submit',
+            'Submit',
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
         )
