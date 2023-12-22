@@ -97,6 +97,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
           const SizedBox(height: 24),
           Container(
             color: Theme.of(context).colorScheme.background,
+            constraints: const BoxConstraints(maxHeight: 250),
             child: Hero(
               tag: widget.medicine.id,
               child: Image(
@@ -106,6 +107,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
           ),
           Expanded(
             child: SingleChildScrollView(
+              //reverse: _amountFieldVisible,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -223,7 +225,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                     child: (_amountFieldVisible
                         ? Padding(
                             padding:
-                                const EdgeInsets.only(left: 130, right: 100),
+                                const EdgeInsets.only(left: 120, right: 90),
                             child: TextFormField(
                               style: const TextStyle(fontSize: 18),
                               textAlign: TextAlign.center,
@@ -244,7 +246,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                                         widget.medicine.quantity ||
                                     _exceeded) {
                                   _exceeded = false;
-                                  return 'Amount exceeded available\n quantity';
+                                  return 'Amount exceeded available\nquantity';
                                 }
                                 _enteredAmount = int.parse(value);
                                 return null;

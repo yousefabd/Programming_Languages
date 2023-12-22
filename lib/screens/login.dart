@@ -78,7 +78,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       const SizedBox(
-                        height: 150,
+                        height: 130,
                       ),
                       Text(
                         "Hello!",

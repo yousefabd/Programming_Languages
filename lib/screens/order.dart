@@ -10,12 +10,14 @@ class OrderScreen extends StatelessWidget {
       required this.onCancelOrder,
       required this.onEditOrder,
       required this.onClearList,
-      required this.onSubmitOrder});
+      required this.onSubmitOrder,
+      required this.onTapOrder});
   final orderList;
   final void Function() onSubmitOrder;
   final void Function(String, int) onCancelOrder;
   final void Function() onClearList;
   final void Function(String, int) onEditOrder;
+  final void Function(Medicine) onTapOrder;
   Medicine getMedicine(String id) {
     final m = medicinesList.where((medicine) {
       if (medicine.id == id) {
@@ -47,11 +49,11 @@ class OrderScreen extends StatelessWidget {
               children: [
                 for (final medicine in orderList.entries)
                   MedicineOrderItem(
-                    medicine: getMedicine(medicine.key),
-                    amount: medicine.value,
-                    onCancelOrder: onCancelOrder,
-                    onEditOrder: onEditOrder,
-                  ),
+                      medicine: getMedicine(medicine.key),
+                      amount: medicine.value,
+                      onCancelOrder: onCancelOrder,
+                      onEditOrder: onEditOrder,
+                      onTapOrder: onTapOrder),
               ],
             ),
           ),

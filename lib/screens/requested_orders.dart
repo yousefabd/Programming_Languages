@@ -75,24 +75,26 @@ class _RequestedOrderScreenState extends State<RequestedOrderScreen> {
     Widget content = const Center(child: CircularProgressIndicator());
     if (!_loading) {
       content = Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: ListView.builder(
-          itemCount: requestedOrders.length,
-          itemBuilder: (ctx, index) {
-            String title = requestedOrders[index]['orderTitle'];
-            int status = requestedOrders[index]['orderState'];
-            return OrderItem(
-              title: title,
-              status: status,
-              onTap: (status) {
-                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return OrderDetailsScreen(index, status);
-                }));
-              },
-            );
-          },
-        ),
-      );
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: requestedOrders.isNotEmpty
+              ? ListView.builder(
+                  itemCount: requestedOrders.length,
+                  itemBuilder: (ctx, index) {
+                    String title = requestedOrders[index]['orderTitle'];
+                    int status = requestedOrders[index]['orderState'];
+                    return OrderItem(
+                      title: title,
+                      status: status,
+                      onTap: (status) {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (ctx) {
+                          return OrderDetailsScreen(index, status);
+                        }));
+                      },
+                    );
+                  },
+                )
+              : const Center(child: Text('No requested orders yet!')));
     }
     return Scaffold(
         appBar: AppBar(

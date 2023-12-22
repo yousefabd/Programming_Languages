@@ -35,15 +35,17 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _pushDetails(Medicine medicine) async {
+  Future<int> _pushDetails(Medicine medicine) async {
     int? _amount = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => MedicineDetailsScreen(medicine: medicine),
       ),
     );
     if (_amount == null) {
-    } else
-      print(_amount);
+      return 0;
+    } else {
+      return _amount;
+    }
   }
 
   void _addMedicineOrder() async {
@@ -225,7 +227,7 @@ class _TabsScreenState extends State<TabsScreen> {
     );
   }
 
-  void _toggleFavoritesList(String id) {
+  void _toggleFavoritesList(String id) async {
     bool check = favoriteMedicines.contains(id);
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -245,6 +247,19 @@ class _TabsScreenState extends State<TabsScreen> {
     } else {
       favoriteMedicines.add(id);
     }
+  }
+
+  void _loadFavorites() async {
+    favoriteMedicines.clear();
+    final response = await http.get(Uri.parse('${url}favourites'), headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${AuthUtility.getToken()}',
+    });
+    final listData = json.decode(response.body);
+    for (final favItem in listData) {
+      favoriteMedicines.add(favItem['medcine_id'].toString());
+    }
+    print(favoriteMedicines.length);
   }
 
   void _removeMedicineFromFavorites(String id, int index) {
@@ -301,6 +316,10 @@ class _TabsScreenState extends State<TabsScreen> {
           onClearList: _clearMedicineOrder,
           onEditOrder: _editMedicineOrder,
           onSubmitOrder: _submitMedicineOrder,
+          onTapOrder: (m) async {
+            await _pushDetails(m);
+            setState(() {});
+          },
         );
         currentTitle = 'Add an order';
       case 2:
