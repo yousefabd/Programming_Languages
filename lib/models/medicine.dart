@@ -17,9 +17,9 @@ class Medicine {
   final int quantity;
   final String expireDate;
   final double price;
-  final Image image;
+  Image image = Image.asset('assets/images/medicine/cmedicon.png');
 
-  const Medicine(
+  Medicine(
       {required this.sciName,
       required this.marketName,
       required this.category,
@@ -27,6 +27,5 @@ class Medicine {
       required this.quantity,
       required this.expireDate,
       required this.price,
-      required this.image,
       required this.id}); //initializing id is temporary,we'll be getting id from backend eventually
 }

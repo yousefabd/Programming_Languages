@@ -40,8 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _loading = true;
       filteredMedicines.clear();
     });
-    final tempUrl =
-        Uri.parse('http://10.0.2.2:8000/api/medcines?useName[like]=$searched');
+    final tempUrl = Uri.parse('${url}medcines?useName[like]=$searched');
     final response = await http.get(
       tempUrl,
       headers: <String, String>{
@@ -62,8 +61,6 @@ class _HomeScreenState extends State<HomeScreen> {
             quantity: medicine['qtn'],
             expireDate: medicine['expiredDate'],
             price: medicine['price'] * 1.0,
-            image: Image.asset(
-                'assets/images/medicine/${medicine['useName']}.png'),
             id: medicine['id'].toString(),
           ),
         );
@@ -104,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
     if (response.statusCode == 200) {
+      print('loaded medicines');
       final listData = json.decode(response.body);
       final listMedicines = listData['data'];
       for (final medicine in listMedicines) {
@@ -116,8 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
             quantity: medicine['qtn'],
             expireDate: medicine['expiredDate'],
             price: medicine['price'] * 1.0,
-            image: Image.asset(
-                'assets/images/medicine/${medicine['useName']}.png'),
             id: medicine['id'].toString(),
           ),
         );
