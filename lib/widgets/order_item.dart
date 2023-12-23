@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/generated/l10n.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem({
@@ -21,6 +22,7 @@ class OrderItem extends StatelessWidget {
           children: [
             Text(
               'Preparing',
+              //S.of(context).Preparing,
               style: GoogleFonts.bitter(
                   color: Colors.pinkAccent, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -39,6 +41,7 @@ class OrderItem extends StatelessWidget {
           children: [
             Text(
               'Delivering',
+              //S.of(context).Delivering,
               style: GoogleFonts.bitter(
                   color: Colors.indigo, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -58,6 +61,7 @@ class OrderItem extends StatelessWidget {
           children: [
             Text(
               'Received',
+              //S.of(context).Received,
               style: GoogleFonts.bitter(
                   color: Colors.green, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -135,7 +139,7 @@ class OrderItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    'Status:',
+                    S.of(context).Status,
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.background),
                     overflow: TextOverflow.ellipsis,
