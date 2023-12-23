@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prog_languages/data/favorite_medicines.dart';
 import 'package:prog_languages/data/medicines_list.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/favorite_medicine_item.dart';
 
@@ -22,7 +23,7 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget content = Center(
       child: Text(
-        "You don't have any favorite medicines!",
+        S.of(context).DontHaveFavoriteMedicines,
         style: TextStyle(
           color: Theme.of(context).colorScheme.tertiary,
         ),

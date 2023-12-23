@@ -470,10 +470,10 @@ class S {
     );
   }
 
-  /// `Amount exceeded available\nquantity`
+  /// `Amount exceeded available quantity`
   String get AmountExceededAvailableQuantity {
     return Intl.message(
-      'Amount exceeded available\nquantity',
+      'Amount exceeded available quantity',
       name: 'AmountExceededAvailableQuantity',
       desc: '',
       args: [],
@@ -715,6 +715,76 @@ class S {
     return Intl.message(
       'Received',
       name: 'Received',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don't have any favorite medicines!`
+  String get DontHaveFavoriteMedicines {
+    return Intl.message(
+      'You don\'t have any favorite medicines!',
+      name: 'DontHaveFavoriteMedicines',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Medicine Name`
+  String get EnterMedicineName {
+    return Intl.message(
+      'Enter Medicine Name',
+      name: 'EnterMedicineName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Couldn't find medicine, make sure to enter the scientific name correctly!`
+  String get WrongSciName {
+    return Intl.message(
+      'Couldn\'t find medicine, make sure to enter the scientific name correctly!',
+      name: 'WrongSciName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Amount`
+  String get enterAmount {
+    return Intl.message(
+      'Enter Amount',
+      name: 'enterAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid amount`
+  String get PleaseEnterValidAmount {
+    return Intl.message(
+      'Please enter a valid amount',
+      name: 'PleaseEnterValidAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter medicine name first`
+  String get EnterMedicineNameFirst {
+    return Intl.message(
+      'Enter medicine name first',
+      name: 'EnterMedicineNameFirst',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order-`
+  String get OrderID {
+    return Intl.message(
+      'Order-',
+      name: 'OrderID',
       desc: '',
       args: [],
     );

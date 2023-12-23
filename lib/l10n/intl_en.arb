@@ -41,7 +41,7 @@
     "ListIsEmpty" : "This list is empty!",
     "EnterAmount" : "Enter Amount",
     "InvalidAmount" : "Invalid amount!",
-    "AmountExceededAvailableQuantity" : "Amount exceeded available\nquantity",
+    "AmountExceededAvailableQuantity" : "Amount exceeded available quantity",
     "CouldnotSubmit": "Couldn't submit because wanted amount exceeded available quantity",
     "RemovedOrderFromList" : "Removed order from the list",
     "undo" : "undo",
@@ -65,8 +65,15 @@
     "MyPreviousOrders" : "My Orders",
     "Preparing" : "Preparing",
     "Delivering" : "Delivering",
-    "Received" : "Received"
-
+    "Received" : "Received",
+    "DontHaveFavoriteMedicines" : "You don't have any favorite medicines!",
+    "EnterMedicineName" : "Enter Medicine Name",
+    "WrongSciName" : "Couldn't find medicine, make sure to enter the scientific name correctly!",
+    "enterAmount" : "Enter Amount",
+    "PleaseEnterValidAmount" : "Please enter a valid amount",
+    "EnterMedicineNameFirst" : "Enter medicine name first",
+    "OrderID" : "Order-"
+    
 
 
 

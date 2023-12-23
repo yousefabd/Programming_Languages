@@ -27,15 +27,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "AddtoCart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
         "All": MessageLookupByLibrary.simpleMessage("All"),
         "AmountExceededAvailableQuantity": MessageLookupByLibrary.simpleMessage(
-            "Amount exceeded available\nquantity"),
+            "Amount exceeded available quantity"),
         "Antibiotic": MessageLookupByLibrary.simpleMessage("Antibiotic"),
         "Cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "Clear": MessageLookupByLibrary.simpleMessage("Clear"),
         "CouldnotSubmit": MessageLookupByLibrary.simpleMessage(
             "Couldn\'t submit because wanted amount exceeded available quantity"),
         "Delivering": MessageLookupByLibrary.simpleMessage("Delivering"),
+        "DontHaveFavoriteMedicines": MessageLookupByLibrary.simpleMessage(
+            "You don\'t have any favorite medicines!"),
         "Email": MessageLookupByLibrary.simpleMessage("Email"),
         "EnterAmount": MessageLookupByLibrary.simpleMessage("Enter Amount"),
+        "EnterMedicineName":
+            MessageLookupByLibrary.simpleMessage("Enter Medicine Name"),
+        "EnterMedicineNameFirst":
+            MessageLookupByLibrary.simpleMessage("Enter medicine name first"),
         "Favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "FirstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "InvalidAmount":
@@ -56,8 +62,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "NoRequestedOrdersYet":
             MessageLookupByLibrary.simpleMessage("No requested orders yet!"),
         "Order": MessageLookupByLibrary.simpleMessage("Order"),
+        "OrderID": MessageLookupByLibrary.simpleMessage("Order-"),
         "PasswordsDoesnotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords donot match"),
+        "PleaseEnterValidAmount":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid amount"),
         "Preparing": MessageLookupByLibrary.simpleMessage("Preparing"),
         "Received": MessageLookupByLibrary.simpleMessage("Received"),
         "RemovedOrderFromList":
@@ -70,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "TotalCost": MessageLookupByLibrary.simpleMessage("Total Cost:"),
         "WrongPhoneOrPass": MessageLookupByLibrary.simpleMessage(
             "Wrong phone number or password"),
+        "WrongSciName": MessageLookupByLibrary.simpleMessage(
+            "Couldn\'t find medicine, make sure to enter the scientific name correctly!"),
         "atLeastEight": MessageLookupByLibrary.simpleMessage(
             "Password must contain at least 8 characters"),
         "category": MessageLookupByLibrary.simpleMessage("Category: "),
@@ -82,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "enterAmount": MessageLookupByLibrary.simpleMessage("Enter Amount"),
         "enterValidPhoneNumber": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid phone number"),
         "expirationDate":

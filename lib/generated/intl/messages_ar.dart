@@ -34,8 +34,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "CouldnotSubmit": MessageLookupByLibrary.simpleMessage(
             "الكمية المطلوبة تجاوزت الكمية المتوفرة!"),
         "Delivering": MessageLookupByLibrary.simpleMessage("قيد التوصيل"),
+        "DontHaveFavoriteMedicines": MessageLookupByLibrary.simpleMessage(
+            "لا يوجد أدوية مضافة إلى قائمة المفضلة"),
         "Email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني"),
         "EnterAmount": MessageLookupByLibrary.simpleMessage("أدخل الكمية"),
+        "EnterMedicineName":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم الدواء"),
+        "EnterMedicineNameFirst":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم الدواء أولاً !"),
         "Favorites": MessageLookupByLibrary.simpleMessage("المفضلة"),
         "FirstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
         "InvalidAmount":
@@ -51,13 +57,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "تمت إزالة الدواء من قائمة المفضلة"),
         "MyFavoriteMedicines":
             MessageLookupByLibrary.simpleMessage("الأدوية المفضلة"),
-        "MyOrders": MessageLookupByLibrary.simpleMessage("الطلبيات"),
+        "MyOrders": MessageLookupByLibrary.simpleMessage("الطلبات"),
         "MyPreviousOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
         "NoRequestedOrdersYet":
             MessageLookupByLibrary.simpleMessage("لا يوجد طلبات سابقة"),
         "Order": MessageLookupByLibrary.simpleMessage("طلب"),
         "PasswordsDoesnotMatch":
             MessageLookupByLibrary.simpleMessage("كلمة المرور غير متطابقة"),
+        "PleaseEnterValidAmount":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال كمية صالحة !"),
         "Preparing": MessageLookupByLibrary.simpleMessage("قيد التحضير"),
         "Received": MessageLookupByLibrary.simpleMessage("تم الاستلام"),
         "RemovedOrderFromList": MessageLookupByLibrary.simpleMessage(
@@ -70,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "TotalCost": MessageLookupByLibrary.simpleMessage("الكلفة الإجمالية"),
         "WrongPhoneOrPass": MessageLookupByLibrary.simpleMessage(
             "خطأ في رقم الهاتف أو كلمة المرور"),
+        "WrongSciName": MessageLookupByLibrary.simpleMessage(
+            "هذا الدواء غير موجود، تأكد من صحة الاسم العلمي للدواء!"),
         "atLeastEight": MessageLookupByLibrary.simpleMessage(
             "أدخل كلمة مرور من ثمانية أحرف على الأقل"),
         "category": MessageLookupByLibrary.simpleMessage("التصنيف: "),
@@ -82,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createAccount": MessageLookupByLibrary.simpleMessage("أنشئ حساب"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("لا تملك حساب؟"),
+        "enterAmount": MessageLookupByLibrary.simpleMessage("أدخل الكمية"),
         "enterValidPhoneNumber":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم صالح"),
         "expirationDate":

@@ -9,7 +9,7 @@
     "sedative" : "مهدئات",
     "All" : "الكل",
     "LogOut" : "تسجيل الخروج",
-    "MyOrders" : "الطلبيات",
+    "MyOrders" : "الطلبات",
     "phoneNumber" : "رقم الهاتف",
     "requiredField" : "هذا الحقل مطلوب",
     "enterValidPhoneNumber" : "الرجاء إدخال رقم صالح",
@@ -65,7 +65,21 @@
     "MyPreviousOrders" : "طلباتي",
     "Preparing" : "قيد التحضير",
     "Delivering" : "قيد التوصيل",
-    "Received" : "تم الاستلام"
+    "Received" : "تم الاستلام",
+    "DontHaveFavoriteMedicines" : "لا يوجد أدوية مضافة إلى قائمة المفضلة",
+    "EnterMedicineName" : "أدخل اسم الدواء",
+    "WrongSciName" : "هذا الدواء غير موجود، تأكد من صحة الاسم العلمي للدواء!",
+    "enterAmount" : "أدخل الكمية",
+    "PleaseEnterValidAmount" : "الرجاء إدخال كمية صالحة !",
+    "EnterMedicineNameFirst" : "أدخل اسم الدواء أولاً !",
+    "OrderID-" : "الطلب- "
+
+
+
+
+
+
+
 
 
 

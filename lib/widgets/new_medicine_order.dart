@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prog_languages/data/medicines_list.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 
 class NewMedicineOrder extends StatefulWidget {
@@ -54,15 +55,15 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
             TextFormField(
               initialValue: widget.name,
               enabled: (widget.name == null),
-              decoration: const InputDecoration(
-                hintText: 'Enter Medicine Name',
-                border: OutlineInputBorder(),
+              decoration:  InputDecoration(
+                hintText:  S.of(context).EnterMedicineName,
+                border: const OutlineInputBorder(),
               ),
               validator: (value) {
                 if (value!.trim().isEmpty) {
-                  return 'This field is required';
+                  return S.of(context).requiredField;
                 } else if (!foundMedicine(value)) {
-                  return 'Couldn\'t find medicine, make sure to\nenter the scientific name correctly!';
+                  return S.of(context).WrongSciName;
                 }
                 return null;
               },
@@ -70,19 +71,19 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
             const SizedBox(height: 12),
             TextFormField(
               initialValue: widget.amount?.toString(),
-              decoration: const InputDecoration(
-                hintText: 'Enter Amount',
-                border: OutlineInputBorder(),
+              decoration:  InputDecoration(
+                hintText: S.of(context).enterAmount,
+                border: const OutlineInputBorder(),
               ),
               validator: (value) {
                 if (value!.trim().isEmpty) {
-                  return 'This field is required';
+                  return S.of(context).requiredField;
                 } else if (int.tryParse(value) == null) {
-                  return 'Please enter a valid amount';
+                  return S.of(context).PleaseEnterValidAmount;
                 } else if (chosenMedicine == null) {
-                  return 'Enter medicine name first';
+                  return S.of(context).EnterMedicineNameFirst;
                 } else if (int.parse(value) > chosenMedicine!.quantity) {
-                  return 'Entered value exceeded available \nquantity';
+                  return S.of(context).AmountExceededAvailableQuantity;
                 }
                 _enteredAmount = int.parse(value);
                 return null;
@@ -97,7 +98,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
             Navigator.of(context).pop();
           },
           child: Text(
-            'Cancel',
+            S.of(context).Cancel,
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
         ),
@@ -107,7 +108,7 @@ class _NewMedicineOrderState extends State<NewMedicineOrder> {
               backgroundColor:
                   Theme.of(context).colorScheme.secondaryContainer),
           child: Text(
-            'Submit',
+            S.of(context).Submit,
             style: TextStyle(color: Theme.of(context).colorScheme.primary),
           ),
         )

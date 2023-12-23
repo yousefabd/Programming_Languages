@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/order_details_item_trait.dart';
 
@@ -66,7 +67,7 @@ class MedicineOrderItem extends StatelessWidget {
                         const SizedBox(height: 6),
                         OrderDetailsItemTrait(
                           icon: Icons.calculate,
-                          title: '${medicine.price * amount}  S.P',
+                          title: '${medicine.price * amount}  ${S.of(context).SP}',
                           containerColor:
                               const Color.fromARGB(255, 237, 237, 237),
 
