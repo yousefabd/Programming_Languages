@@ -1,0 +1,100 @@
+{
+    "hello" : "مرحباً !",
+    "signIn": "سجل دخول إلى حسابك",
+    "home" : "الصفحة الرئيسية",
+    "search" : "ابحث...",
+    "Antibiotic" : "مضاد حيوي",
+    "painReliever" : " مسكن ألم",
+    "stimulant" : "منشطات",
+    "sedative" : "مهدئات",
+    "All" : "الكل",
+    "LogOut" : "تسجيل الخروج",
+    "MyOrders" : "الطلبيات",
+    "phoneNumber" : "رقم الهاتف",
+    "requiredField" : "هذا الحقل مطلوب",
+    "enterValidPhoneNumber" : "الرجاء إدخال رقم صالح",
+    "password" : "كلمة المرور",
+    "signup" : "إنشاء حساب",
+    "logIn" : "تسجيل الدخول",
+    "dontHaveAccount" : "لا تملك حساب؟",
+    "create" : "أنشئ واحداً",
+    "createAccount" : "أنشئ حساب",
+    "FirstName" : "الاسم الأول",
+    "lastName" : "الاسم الأخير",
+    "atLeastEight" : "أدخل كلمة مرور من ثمانية أحرف على الأقل",
+    "confirmPassword" : "تأكيد كلمة المرور",
+    "PasswordsDoesnotMatch" : "كلمة المرور غير متطابقة",
+    "medicineDetails" : "معلومات الدواء",
+    "scientificName":"الاسم العلمي: ",
+    "commercialName" : "الاسم التجاري: ",
+    "category" : "التصنيف: ",
+    "company": "الشركة: ",
+    "quantity" : "الكمية: ",
+    "expirationDate" : "تاريخ الانتهاء: ",
+    "price" : "الكمية: ",
+    "SP" : "ل.س",
+    "AddtoCart" : "أضف إلى السلة",
+    "WrongPhoneOrPass" : "خطأ في رقم الهاتف أو كلمة المرور",
+    "Email" : "البريد الالكتروني",
+    "InvalidEmail" : "البريد الالكتروني غير صالح",
+    "Address" : "العنوان",
+    "ListIsEmpty" : "القائمة فارغة حالياً",
+    "EnterAmount" : "أدخل الكمية",
+    "InvalidAmount" : "الكمية غير صالحة!",
+    "AmountExceededAvailableQuantity" : "الكمية غير متوفرة!",
+    "CouldnotSubmit": "الكمية المطلوبة تجاوزت الكمية المتوفرة!",
+    "RemovedOrderFromList" : "تمَّت إزالة الطلب من القائمة",
+    "undo" : "تراجع",
+    "sureToClear" : "هل أنت متأكد؟ هل تريد حذف قائمة الطلب؟",
+    "Clear" : "إزالة",
+    "Cancel" : "إغلاق",
+    "SubmitSuccess" : "تمَّ تأكيد الطلب",
+    "httpSubmitError" : "خطأ في الاتصال",
+    "sureToSubmitOrder" : "هل تريد تأكيد الطلب؟",
+    "Submit" : "تأكيد",
+    "MedicineRemovedFromFavorites" : "تمت إزالة الدواء من قائمة المفضلة",
+    "MedicineAddedToFavorites" : "تمت إضافة الدواء إلى قائمة المفضلة",
+    "AddAnOrder" : "إضافة طلب",
+    "MyFavoriteMedicines" : "الأدوية المفضلة",
+    "Order": "طلب",
+    "Favorites" : "المفضلة",
+    "Status" : "حالة الطلب:",
+    "TotalCost" : "الكلفة الإجمالية",
+    "havenotPlacedAnOrder" : "لم تقم بإضافة طلب بعد !",
+    "NoRequestedOrdersYet" : "لا يوجد طلبات سابقة",
+    "MyPreviousOrders" : "طلباتي",
+    "Preparing" : "قيد التحضير",
+    "Delivering" : "قيد التوصيل",
+    "Received" : "تم الاستلام"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+}

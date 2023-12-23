@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/url_data/auth_util.dart';
 import 'package:prog_languages/data/requested_orders_list.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/screens/order_details.dart';
 import 'package:prog_languages/widgets/order_item.dart';
 import 'package:http/http.dart' as http;
@@ -94,13 +95,13 @@ class _RequestedOrderScreenState extends State<RequestedOrderScreen> {
                     );
                   },
                 )
-              : const Center(child: Text('No requested orders yet!')));
+              :  Center(child: Text(S.of(context).NoRequestedOrdersYet)));
     }
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
           title: Text(
-            'My Previous Orders',
+            S.of(context).MyOrders,
             style: GoogleFonts.comme(
                 color: Theme.of(context).colorScheme.onPrimary),
           ),

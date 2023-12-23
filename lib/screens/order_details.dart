@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/medicines_list.dart';
 import 'package:prog_languages/data/requested_orders_list.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/order_details_item.dart';
 
@@ -75,7 +76,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    'Status:',
+                    S.of(context).Status,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.background,
                       fontSize: 24,
@@ -106,7 +107,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
-                    'Total Cost:',
+                    S.of(context).TotalCost,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.background,
                       fontSize: 18,
@@ -122,7 +123,7 @@ class OrderDetailsScreen extends StatelessWidget {
                       .onSurfaceVariant
                       .withOpacity(0.6),
                   child: Text(
-                    '${_totalCost.toString()}  S.P',
+                    '${_totalCost.toString()}  ${S.of(context).SP}',
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontWeight: FontWeight.w900),
                   ),

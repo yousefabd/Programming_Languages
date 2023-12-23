@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:prog_languages/data/medicine_order_list.dart';
+import 'package:prog_languages/generated/l10n.dart';
+import 'package:prog_languages/main.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_detail_tile.dart';
 
@@ -23,15 +25,15 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
   String get _medicineCategory {
     switch (widget.medicine.category) {
       case MedCategory.antibiotic:
-        return 'Anti-Biotic';
+        return S.of(context).Antibiotic;
       case MedCategory.painReliever:
-        return 'Pain Reliever';
+        return S.of(context).painReliever;
       case MedCategory.stimulant:
-        return 'Stimulant';
+        return S.of(context).stimulant;
       case MedCategory.sadative:
-        return 'Sedative';
+        return S.of(context).sedative;
       case MedCategory.all:
-        return 'All';
+        return S.of(context).All;
     }
   }
 
@@ -121,7 +123,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                         size: 32,
                       ),
                       Text(
-                        'Medicine Details',
+                        S.of(context).medicineDetails,
                         style: GoogleFonts.bitter(
                           color: Theme.of(context).colorScheme.onBackground,
                           fontSize: 22,
@@ -133,8 +135,9 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                   Container(
                     color: Theme.of(context).colorScheme.secondaryContainer,
                     alignment: Alignment.center,
-                    padding: const EdgeInsets.only(
-                      left: 50,
+                    padding:  EdgeInsets.only(
+                      left: isArabic() ? 0:50,
+                      right: isArabic() ? 50:0,
                       top: 10,
                     ),
                     child: SlideTransition(
@@ -152,37 +155,37 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                         children: [
                           MedicineDetailTile(
                             icon: Icons.science,
-                            label: 'Scientific Name:  ',
+                            label: S.of(context).scientificName,
                             content: widget.medicine.sciName,
                           ),
                           MedicineDetailTile(
                             icon: Icons.store,
-                            label: 'Commercial Name: ',
+                            label: S.of(context).commercialName,
                             content: widget.medicine.marketName,
                           ),
                           MedicineDetailTile(
                             icon: Icons.menu_book,
-                            label: 'Category',
+                            label: S.of(context).category,
                             content: _medicineCategory,
                           ),
                           MedicineDetailTile(
                             icon: Icons.business,
-                            label: 'Company: ',
+                            label: S.of(context).company,
                             content: widget.medicine.company,
                           ),
                           MedicineDetailTile(
                             icon: Icons.format_list_bulleted_add,
-                            label: 'Quantity',
+                            label: S.of(context).quantity,
                             content: widget.medicine.quantity.toString(),
                           ),
                           MedicineDetailTile(
                               icon: Icons.schedule,
-                              label: 'Expiration Date: ',
+                              label: S.of(context).expirationDate,
                               content: widget.medicine.expireDate),
                           MedicineDetailTile(
                             icon: Icons.price_change_outlined,
-                            label: 'Price: ',
-                            content: '${widget.medicine.price}   S.P',
+                          label: S.of(context).price,
+                          content: '${widget.medicine.price}    ${S.of(context).SP}',
                           ),
                         ],
                       ),
@@ -211,7 +214,7 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                           }
                         },
                         child: Text(
-                          'Add to Cart',
+                          S.of(context).AddtoCart,
                           style: TextStyle(
                               fontSize: 18,
                               color: Theme.of(context).colorScheme.background),
@@ -230,23 +233,23 @@ class _MedicineDetailsScreenState extends State<MedicineDetailsScreen>
                               style: const TextStyle(fontSize: 18),
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.number,
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.all(5),
-                                border: OutlineInputBorder(),
-                                hintText: 'Enter Amount',
+                              decoration:  InputDecoration(
+                                contentPadding: const EdgeInsets.all(5),
+                                border: const OutlineInputBorder(),
+                                hintText: S.of(context).EnterAmount,
                               ),
                               validator: (value) {
                                 if (value!.trim().isEmpty) {
                                   return '';
                                 }
                                 if (int.tryParse(value) == null) {
-                                  return 'Invalid amount';
+                                  return S.of(context).InvalidAmount;
                                 }
                                 if (int.parse(value) >
                                         widget.medicine.quantity ||
                                     _exceeded) {
                                   _exceeded = false;
-                                  return 'Amount exceeded available\nquantity';
+                                  return S.of(context).AmountExceededAvailableQuantity;
                                 }
                                 _enteredAmount = int.parse(value);
                                 return null;

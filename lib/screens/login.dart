@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:prog_languages/data/url_data/auth_util.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -81,7 +82,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         height: 130,
                       ),
                       Text(
-                        "Hello!",
+                        S.of(context).hello,
                         style: GoogleFonts.bitter(
                           color: Theme.of(context).colorScheme.onBackground,
                           fontWeight: FontWeight.bold,
@@ -89,7 +90,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         ),
                       ),
                       Text(
-                        "Sign in to your account",
+                        S.of(context).signIn,
                         style: GoogleFonts.bitter(
                           color: Theme.of(context).colorScheme.onBackground,
                           fontWeight: FontWeight.bold,
@@ -106,12 +107,12 @@ class _LogInScreenState extends State<LogInScreen> {
                           textAlign: TextAlign.start,
                           keyboardType: TextInputType.number,
                           maxLength: 10,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
-                            prefixIcon: Icon(Icons.phone_android),
-                            label: Text('Phone Number'),
-                            border: OutlineInputBorder(
+                            prefixIcon: const Icon(Icons.phone_android),
+                            label: Text(S.of(context).phoneNumber),
+                            border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(30),
                               ),
@@ -119,13 +120,13 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                           validator: (value) {
                             if (value!.trim().isEmpty) {
-                              return 'This field is required';
+                              return S.of(context).requiredField;
                             } else if (value.contains('.') ||
                                 value.contains(',') ||
                                 value.trim().length < 10 ||
                                 value[0] != '0' ||
                                 value[1] != '9') {
-                              return 'Please enter a valid phone number';
+                              return S.of(context).enterValidPhoneNumber;
                             } else if (responseCode == 401) {
                               return '';
                             }
@@ -142,12 +143,12 @@ class _LogInScreenState extends State<LogInScreen> {
                         child: TextFormField(
                           style: const TextStyle(fontSize: 20),
                           obscureText: true,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
-                            prefixIcon: Icon(Icons.lock),
-                            label: Text('Password'),
-                            border: OutlineInputBorder(
+                            prefixIcon: const Icon(Icons.lock),
+                            label: Text(S.of(context).password),
+                            border: const OutlineInputBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(30),
                               ),
@@ -155,10 +156,10 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                           validator: (value) {
                             if (value!.trim().isEmpty) {
-                              return 'This field is requireed';
+                              return S.of(context).requiredField;
                             }
                             if (responseCode == 401) {
-                              return 'Wrong phone number or password';
+                              return S.of(context).WrongPhoneOrPass;
                             }
                             return null;
                           },
@@ -167,7 +168,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       ),
                       const SizedBox(height: 14),
                       SubmitButton(
-                        label: "Sign In",
+                        label: S.of(context).logIn,
                         onPressed: () {
                           _validateLogin();
                           //widget.onLoginAccount('number', 'Yousef');
@@ -186,7 +187,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Don\'t have an account?',
+                            S.of(context).dontHaveAccount,
                             style: TextStyle(
                                 fontSize: 14,
                                 color:
@@ -195,9 +196,9 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                           TextButton(
                             onPressed: widget.onRegisterAccount,
-                            child: const Text(
-                              'Create',
-                              style: TextStyle(
+                            child:  Text(
+                              S.of(context).create,
+                              style: const TextStyle(
                                 decoration: TextDecoration.underline,
                               ),
                             ),

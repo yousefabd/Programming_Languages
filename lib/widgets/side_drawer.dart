@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/screens/requested_orders.dart';
 
 class SideDrawer extends StatelessWidget {
@@ -48,7 +49,7 @@ class SideDrawer extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onTertiaryContainer,
                     ),
                     title: Text(
-                      'My orders',
+                      S.of(context).MyOrders,
                       style: GoogleFonts.roboto(
                         fontSize: 22,fontWeight: FontWeight.w400,
                         color: Theme.of(context).colorScheme.onTertiaryContainer,
@@ -72,7 +73,7 @@ class SideDrawer extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onTertiaryContainer,
                     ),
                     title: Text(
-                      'Log out',
+                      S.of(context).LogOut,
                       style: GoogleFonts.roboto(
                         fontSize: 22,fontWeight: FontWeight.w400,
                         color: Theme.of(context).colorScheme.onTertiaryContainer,

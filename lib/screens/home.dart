@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:prog_languages/data/url_data/auth_util.dart';
 import 'package:prog_languages/data/medicines_list.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_item.dart';
 import 'package:prog_languages/widgets/search_bar.dart';
@@ -157,9 +158,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               )
-            : const Expanded(
+            :  Expanded(
                 child: Center(
-                  child: Text('This list is empty!'),
+                  child: Text(S.of(context).ListIsEmpty),
                 ),
               ));
     return Container(

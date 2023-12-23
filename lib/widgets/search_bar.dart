@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 
 class MySearchBar extends StatefulWidget {
@@ -16,15 +17,15 @@ class _MySearchBarState extends State<MySearchBar> {
   String getCategoryName(MedCategory c) {
     switch (c) {
       case MedCategory.antibiotic:
-        return 'Antibiotic';
+        return S.of(context).Antibiotic;
       case MedCategory.painReliever:
-        return 'Pain Reliever';
+        return S.of(context).painReliever;
       case MedCategory.stimulant:
-        return 'Stimulant';
+        return S.of(context).stimulant;
       case MedCategory.sadative:
-        return 'Sedative';
+        return S.of(context).sedative;
       case MedCategory.all:
-        return 'All';
+        return S.of(context).All;
     }
   }
 
@@ -35,7 +36,7 @@ class _MySearchBarState extends State<MySearchBar> {
       children: [
         Expanded(
           child: SearchBar(
-            hintText: 'Search...',
+            hintText: S.of(context).search,
             onSubmitted: widget.onSearch,
             leading: const Icon(Icons.search),
           ),

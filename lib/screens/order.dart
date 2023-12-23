@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prog_languages/data/medicines_list.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/models/medicine.dart';
 import 'package:prog_languages/widgets/medicine_order_item.dart';
 
@@ -38,8 +39,8 @@ class OrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = const Center(
-      child: Text('You haven\'t placed an order yet!'),
+    Widget content =  Center(
+      child: Text(S.of(context).havenotPlacedAnOrder),
     );
     if (orderList.isNotEmpty) {
       return Column(
@@ -78,7 +79,7 @@ class OrderScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(
-                  'Total Cost:',
+                  S.of(context).TotalCost,
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.background,
                       fontSize: 16,
@@ -95,7 +96,7 @@ class OrderScreen extends StatelessWidget {
                     .background
                     .withOpacity(0.6),
                 child: Text(
-                  '${_totalCost.toString()}  S.P',
+                  '${_totalCost.toString()}  ${S.of(context).SP}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w900,
@@ -127,7 +128,7 @@ class OrderScreen extends StatelessWidget {
                 // backgroundColor: Theme.of(context).colorScheme.onBackground.withOpacity(0.7)),
                 onPressed: onClearList,
                 child: Text(
-                  'Clear',
+                  S.of(context).Clear,
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -153,7 +154,7 @@ class OrderScreen extends StatelessWidget {
                     backgroundColor:
                         Theme.of(context).colorScheme.onTertiaryContainer),
                 child: Text(
-                  'Submit',
+                  S.of(context).Submit,
                   style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,

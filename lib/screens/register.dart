@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/url_data/auth_util.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/widgets/submit_button.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -112,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Create Account',
+                    S.of(context).createAccount,
                     style: GoogleFonts.acme(
                         color: Theme.of(context).colorScheme.onBackground,
                         fontSize: 35,
@@ -135,14 +136,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 fillColor: Colors.white,
                                 //  fillColor: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 246, 244, 244)),
                                 prefixIcon: const Icon(Icons.person),
-                                labelText: ('First Name'),
+                                labelText: (S.of(context).FirstName),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.trim().isEmpty) {
-                                  return 'This field is required';
+                                  return S.of(context).requiredField;
                                 }
                                 return null;
                               },
@@ -159,14 +160,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 filled: true,
                                 fillColor: Colors.white,
                                 prefixIcon: const Icon(Icons.person),
-                                labelText: ('Last Name'),
+                                labelText: (S.of(context).lastName),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.trim().isEmpty) {
-                                  return 'This field is required';
+                                  return S.of(context).requiredField;
                                 }
                                 return null;
                               },
@@ -183,7 +184,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 filled: true,
                                 fillColor: Colors.white,
                                 prefixIcon: const Icon(Icons.phone_android),
-                                labelText: ('Phone Number'),
+                                labelText: (S.of(context).phoneNumber),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
@@ -191,13 +192,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               keyboardType: TextInputType.number,
                               validator: (value) {
                                 if (value!.trim().isEmpty) {
-                                  return 'This field is required';
+                                  return S.of(context).requiredField;
                                 } else if (value.contains('.') ||
                                     value.contains(',') ||
                                     value.trim().length != 10 ||
                                     value[0] != '0' ||
                                     value[1] != '9') {
-                                  return 'Please enter a valid phone number';
+                                  return S.of(context).enterValidPhoneNumber;
                                 } else if (errorList[0] != '') {
                                   var a = errorList[0];
                                   errorList[0] = '';
@@ -219,7 +220,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 fillColor: Colors.white,
                                 prefixIcon:
                                     const Icon(Icons.alternate_email_rounded),
-                                labelText: ('Email'),
+                                labelText: (S.of(context).Email),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
@@ -227,10 +228,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
                                 if (value!.trim().isEmpty) {
-                                  return 'This field is required';
+                                  return S.of(context).requiredField;
                                 } else if (!value.contains('@') ||
                                     !value.contains('.')) {
-                                  return 'Invalid email address';
+                                  return S.of(context).InvalidEmail;
                                 } else if (errorList[1] != '') {
                                   var a = errorList[1];
                                   errorList[1] = '';
@@ -251,14 +252,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 filled: true,
                                 fillColor: Colors.white,
                                 prefixIcon: const Icon(Icons.house),
-                                labelText: ('Address'),
+                                labelText: (S.of(context).Address),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                               ),
                               validator: (value) {
                                 if (value!.trim().isEmpty) {
-                                  return 'This field is required';
+                                  return S.of(context).requiredField;
                                 }
                                 return null;
                               },
@@ -275,7 +276,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 filled: true,
                                 fillColor: Colors.white,
                                 prefixIcon: const Icon(Icons.lock),
-                                labelText: ('Password'),
+                                labelText: (S.of(context).password),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
@@ -284,10 +285,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               obscureText: true,
                               validator: (value) {
                                 if (value!.trim().isEmpty) {
-                                  return 'This field is required';
+                                  return S.of(context).requiredField;
                                 }
                                 if (value.trim().length < 8) {
-                                  return 'Password must be at least 8 characters';
+                                  return S.of(context).atLeastEight;
                                 }
                                 return null;
                               },
@@ -304,7 +305,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 filled: true,
                                 fillColor: Colors.white,
                                 prefixIcon: const Icon(Icons.lock),
-                                labelText: ('Confirm Password'),
+                                labelText: (S.of(context).confirmPassword),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(25),
                                 ),
@@ -312,7 +313,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               obscureText: true,
                               validator: (value) {
                                 if (value != _passwordController.text) {
-                                  return 'Passwords don\'t match';
+                                  return S.of(context).PasswordsDoesnotMatch;
                                 }
                                 return null;
                               },
@@ -328,7 +329,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Column(
                       children: [
                         SubmitButton(
-                          label: 'Sign Up',
+                          label: S.of(context).signup,
                           onPressed: _validateRegister,
                         ),
                         _loading == true
