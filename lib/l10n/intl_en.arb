@@ -72,7 +72,8 @@
     "enterAmount" : "Enter Amount",
     "PleaseEnterValidAmount" : "Please enter a valid amount",
     "EnterMedicineNameFirst" : "Enter medicine name first",
-    "OrderID" : "Order-"
+    "orderID" : "Order",
+    "test" : "hh"
     
 
 

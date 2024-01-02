@@ -72,7 +72,8 @@
     "enterAmount" : "أدخل الكمية",
     "PleaseEnterValidAmount" : "الرجاء إدخال كمية صالحة !",
     "EnterMedicineNameFirst" : "أدخل اسم الدواء أولاً !",
-    "OrderID-" : "الطلب- "
+    "orderID" : "الطلب",
+    "test" : "hh"
 
 
 

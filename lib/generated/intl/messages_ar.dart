@@ -107,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "medicineDetails":
             MessageLookupByLibrary.simpleMessage("معلومات الدواء"),
+        "orderID": MessageLookupByLibrary.simpleMessage("الطلب"),
         "painReliever": MessageLookupByLibrary.simpleMessage(" مسكن ألم"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
@@ -125,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "هل أنت متأكد؟ هل تريد حذف قائمة الطلب؟"),
         "sureToSubmitOrder":
             MessageLookupByLibrary.simpleMessage("هل تريد تأكيد الطلب؟"),
+        "test": MessageLookupByLibrary.simpleMessage("hh"),
         "undo": MessageLookupByLibrary.simpleMessage("تراجع")
       };
 }

@@ -62,7 +62,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "NoRequestedOrdersYet":
             MessageLookupByLibrary.simpleMessage("No requested orders yet!"),
         "Order": MessageLookupByLibrary.simpleMessage("Order"),
-        "OrderID": MessageLookupByLibrary.simpleMessage("Order-"),
         "PasswordsDoesnotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords donot match"),
         "PleaseEnterValidAmount":
@@ -108,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logIn": MessageLookupByLibrary.simpleMessage("Log In"),
         "medicineDetails":
             MessageLookupByLibrary.simpleMessage("Medicine Details"),
+        "orderID": MessageLookupByLibrary.simpleMessage("Order"),
         "painReliever": MessageLookupByLibrary.simpleMessage("Pain Reliever"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
@@ -127,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
             " Are you sure you want to clear order list?"),
         "sureToSubmitOrder": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to Submit order list?"),
+        "test": MessageLookupByLibrary.simpleMessage("hh"),
         "undo": MessageLookupByLibrary.simpleMessage("undo")
       };
 }

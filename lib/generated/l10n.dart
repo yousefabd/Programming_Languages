@@ -780,11 +780,21 @@ class S {
     );
   }
 
-  /// `Order-`
-  String get OrderID {
+  /// `Order`
+  String get orderID {
     return Intl.message(
-      'Order-',
-      name: 'OrderID',
+      'Order',
+      name: 'orderID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hh`
+  String get test {
+    return Intl.message(
+      'hh',
+      name: 'test',
       desc: '',
       args: [],
     );
