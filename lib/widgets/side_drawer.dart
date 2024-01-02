@@ -21,8 +21,9 @@ class SideDrawer extends StatelessWidget {
               borderRadius: BorderRadius.circular(70),
               color: Theme.of(context).colorScheme.secondaryContainer,
             ),
-            child:  Icon(
-              Icons.person_outline_rounded,color: Theme.of(context).colorScheme.onTertiaryContainer,
+            child: Icon(
+              Icons.person_outline_rounded,
+              color: Theme.of(context).colorScheme.onTertiaryContainer,
               size: 70,
             ),
           ),
@@ -37,9 +38,16 @@ class SideDrawer extends StatelessWidget {
           const SizedBox(height: 12),
           Expanded(
             child: Container(
-              color: Theme.of(context).colorScheme.secondaryContainer.withOpacity(0.7),
+              color: Theme.of(context)
+                  .colorScheme
+                  .secondaryContainer
+                  .withOpacity(0.7),
               child: Material(
-                color: Theme.of(context).colorScheme.background.withOpacity(0.6).withAlpha(210),
+                color: Theme.of(context)
+                    .colorScheme
+                    .background
+                    .withOpacity(0.6)
+                    .withAlpha(210),
                 child: Column(children: [
                   const SizedBox(height: 14),
                   ListTile(
@@ -51,8 +59,10 @@ class SideDrawer extends StatelessWidget {
                     title: Text(
                       S.of(context).MyOrders,
                       style: GoogleFonts.roboto(
-                        fontSize: 22,fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.onTertiaryContainer,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        color:
+                            Theme.of(context).colorScheme.onTertiaryContainer,
                       ),
                     ),
                     onTap: () {
@@ -68,6 +78,26 @@ class SideDrawer extends StatelessWidget {
                   ),
                   ListTile(
                     leading: Icon(
+                      Icons.settings,
+                      size: 28,
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                    ),
+                    title: Text(
+                      'Settings',
+                      style: GoogleFonts.roboto(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        color:
+                            Theme.of(context).colorScheme.onTertiaryContainer,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      onLogout();
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(
                       Icons.exit_to_app,
                       size: 28,
                       color: Theme.of(context).colorScheme.onTertiaryContainer,
@@ -75,8 +105,10 @@ class SideDrawer extends StatelessWidget {
                     title: Text(
                       S.of(context).LogOut,
                       style: GoogleFonts.roboto(
-                        fontSize: 22,fontWeight: FontWeight.w400,
-                        color: Theme.of(context).colorScheme.onTertiaryContainer,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w400,
+                        color:
+                            Theme.of(context).colorScheme.onTertiaryContainer,
                       ),
                     ),
                     onTap: () {

@@ -11,7 +11,7 @@ final kColorScheme = ColorScheme.fromSeed(
     // seedColor: Color.fromARGB(255, 0, 141, 141), brightness: Brightness.light);
     // seedColor: Color.fromARGB(255, 8, 171, 171), brightness: Brightness.light);
     seedColor: const Color.fromARGB(255, 59, 225, 225),
-    brightness: Brightness.light);
+    brightness: Brightness.dark);
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -30,9 +30,12 @@ void main() {
       supportedLocales: S.delegate.supportedLocales,
       debugShowCheckedModeBanner: false,
       theme: ThemeData().copyWith(
-        useMaterial3: true,
         colorScheme: kColorScheme,
       ),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: kColorScheme,
+      ),
+      themeMode: ThemeMode.dark,
       home: const PharmaStore(),
     ),
   );

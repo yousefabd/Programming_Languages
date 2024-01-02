@@ -58,12 +58,13 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(
           children: [
             SvgPicture.asset(
-              'assets/images/svborders.svg', // new imge added here, got changed a little bit, but the size now is better, and the quiality ofc.
+              'assets/images/login_border.png', // new imge added here, got changed a little bit, but the size now is better, and the quiality ofc.
               fit: BoxFit.fill,
             ),
             Center(
@@ -71,7 +72,8 @@ class _LogInScreenState extends State<LogInScreen> {
                 /*When we used a stack with background image, some Material features were gone, like splash effect
                 in InkWell when it's tapped, so we wrapped the Column with Material with an invisible color just 
                 to get those features back!*/
-                color: Colors.transparent,
+                color:
+                    Theme.of(context).colorScheme.background.withOpacity(0.5),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -107,7 +109,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           textAlign: TextAlign.start,
                           keyboardType: TextInputType.number,
                           maxLength: 10,
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
                             prefixIcon: const Icon(Icons.phone_android),
@@ -143,7 +145,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         child: TextFormField(
                           style: const TextStyle(fontSize: 20),
                           obscureText: true,
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
                             prefixIcon: const Icon(Icons.lock),
@@ -196,7 +198,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                           TextButton(
                             onPressed: widget.onRegisterAccount,
-                            child:  Text(
+                            child: Text(
                               S.of(context).create,
                               style: const TextStyle(
                                 decoration: TextDecoration.underline,
