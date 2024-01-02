@@ -42,19 +42,17 @@ class _RequestedOrderScreenState extends State<RequestedOrderScreen> {
       },
     );
     try {
-      print('object');
       final listData =
           (json.decode(response.body) as Map)['data']; //array list of maps
       for (final ord in listData) {
         requestedOrders.add({
           'orderState': getOrderState(ord['status']),
-          'orderTitle': 'Order-${ord['id']}',
+          'orderTitle': '${S.of(context).orderID}-${ord['id']}',
           'medicines': {
             for (final med in ord['items'])
               med['medcine_id'].toString(): med['qtn_requested'],
           }
         });
-        print('finished');
       }
     } catch (e) {
       print('failed to fetch data');
@@ -95,7 +93,7 @@ class _RequestedOrderScreenState extends State<RequestedOrderScreen> {
                     );
                   },
                 )
-              :  Center(child: Text(S.of(context).NoRequestedOrdersYet)));
+              : Center(child: Text(S.of(context).NoRequestedOrdersYet)));
     }
     return Scaffold(
         appBar: AppBar(

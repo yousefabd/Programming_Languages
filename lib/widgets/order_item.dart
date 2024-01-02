@@ -13,7 +13,7 @@ class OrderItem extends StatelessWidget {
   final String title;
   final int status;
   final void Function(Widget) onTap;
-  Widget _getStatus(int status) {
+  Widget _getStatus(int status, context) {
     switch (status) {
       case 0:
         return Row(
@@ -21,8 +21,7 @@ class OrderItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Preparing',
-              //S.of(context).Preparing,
+              S.of(context).Preparing,
               style: GoogleFonts.bitter(
                   color: Colors.pinkAccent, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -40,8 +39,7 @@ class OrderItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Delivering',
-              //S.of(context).Delivering,
+              S.of(context).Delivering,
               style: GoogleFonts.bitter(
                   color: Colors.indigo, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -60,8 +58,7 @@ class OrderItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Received',
-              //S.of(context).Received,
+              S.of(context).Received,
               style: GoogleFonts.bitter(
                   color: Colors.green, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -85,7 +82,7 @@ class OrderItem extends StatelessWidget {
       padding: const EdgeInsets.only(top: 28),
       child: InkWell(
         onTap: () {
-          onTap(_getStatus(status));
+          onTap(_getStatus(status, context));
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
@@ -146,7 +143,7 @@ class OrderItem extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                _getStatus(status),
+                _getStatus(status, context),
               ],
             ),
           ),

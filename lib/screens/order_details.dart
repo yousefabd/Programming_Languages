@@ -60,7 +60,7 @@ class OrderDetailsScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(width: 44),
+                const SizedBox(width: 36),
                 Icon(
                   Icons.pending_outlined,
                   size: 40,

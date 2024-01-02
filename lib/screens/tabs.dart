@@ -143,7 +143,7 @@ class _TabsScreenState extends State<TabsScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content:  Text(
+          content: Text(
             S.of(context).sureToClear,
             style: const TextStyle(fontSize: 22),
           ),
@@ -155,13 +155,13 @@ class _TabsScreenState extends State<TabsScreen> {
                   currentOrder.clear();
                 });
               },
-              child:  Text(S.of(context).Clear),
+              child: Text(S.of(context).Clear),
             ),
             TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child:  Text(S.of(context).Cancel))
+                child: Text(S.of(context).Cancel))
           ],
         );
       },
@@ -205,7 +205,7 @@ class _TabsScreenState extends State<TabsScreen> {
       context: context,
       builder: (ctx) {
         return AlertDialog(
-          content:  Text(
+          content: Text(
             S.of(context).sureToSubmitOrder,
             style: const TextStyle(fontSize: 22),
           ),
@@ -215,13 +215,13 @@ class _TabsScreenState extends State<TabsScreen> {
                 _awaitSubmit();
                 Navigator.pop(context);
               },
-              child:  Text(S.of(context).Submit),
+              child: Text(S.of(context).Submit),
             ),
             TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child:  Text(S.of(context).Cancel))
+                child: Text(S.of(context).Cancel))
           ],
         );
       },
@@ -230,6 +230,31 @@ class _TabsScreenState extends State<TabsScreen> {
 
   void _toggleFavoritesList(String id) async {
     bool check = favoriteMedicines.contains(id);
+    if (check) {
+      setState(() {
+        favoriteMedicines.remove(id);
+      });
+      var response =
+          await http.delete(Uri.parse('${url}favourites/$id'), headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${AuthUtility.getToken()}',
+      });
+      if (response.statusCode >= 300) {
+        favoriteMedicines.add(id);
+      }
+    } else {
+      setState(() {
+        favoriteMedicines.add(id);
+      });
+      final response = await http
+          .post(Uri.parse('${url}medcines/$id/add-to-favorites'), headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${AuthUtility.getToken()}',
+      });
+      if (response.statusCode >= 300) {
+        favoriteMedicines.remove(id);
+      }
+    }
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -243,11 +268,6 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
       ),
     );
-    if (check) {
-      favoriteMedicines.remove(id);
-    } else {
-      favoriteMedicines.add(id);
-    }
   }
 
   void _loadFavorites() async {
@@ -260,34 +280,55 @@ class _TabsScreenState extends State<TabsScreen> {
     for (final favItem in listData) {
       favoriteMedicines.add(favItem['medcine_id'].toString());
     }
-    print(favoriteMedicines.length);
   }
 
-  void _removeMedicineFromFavorites(String id, int index) {
-    setState(() {
+  void _removeMedicineFromFavorites(String id, int index) async {
+    var response =
+        await http.delete(Uri.parse('${url}favourites/$id'), headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${AuthUtility.getToken()}',
+    });
+    print(response.statusCode);
+    if (response.statusCode < 300) {
       favoriteMedicines.remove(id);
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Theme.of(context).colorScheme.tertiary,
-          content: Text(
-            S.of(context).MedicineRemovedFromFavorites,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primaryContainer,
+      setState(() {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Theme.of(context).colorScheme.tertiary,
+            content: Text(
+              S.of(context).MedicineRemovedFromFavorites,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primaryContainer,
+              ),
+            ),
+            action: SnackBarAction(
+              textColor: Theme.of(context).colorScheme.background,
+              label: S.of(context).undo,
+              onPressed: () async {
+                response = await http.post(
+                    Uri.parse('${url}medcines/$id/add-to-favorites'),
+                    headers: {
+                      'Content-Type': 'application/json',
+                      'Authorization': 'Bearer ${AuthUtility.getToken()}',
+                    });
+                if (response.statusCode == 200) {
+                  setState(() {
+                    favoriteMedicines.insert(index, id);
+                  });
+                }
+              },
             ),
           ),
-          action: SnackBarAction(
-            textColor: Theme.of(context).colorScheme.background,
-            label: S.of(context).undo,
-            onPressed: () {
-              setState(() {
-                favoriteMedicines.insert(index, id);
-              });
-            },
-          ),
-        ),
-      );
-    });
+        );
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFavorites();
   }
 
   @override
@@ -338,7 +379,8 @@ class _TabsScreenState extends State<TabsScreen> {
               color: Theme.of(context).colorScheme.onPrimary,
               fontWeight: FontWeight.bold),
         ),
-        actions: (currentTitle == S.of(context).AddAnOrder ? addToOrderButton : []),
+        actions:
+            (currentTitle == S.of(context).AddAnOrder ? addToOrderButton : []),
       ),
       drawer: SideDrawer(onLogout: widget.onLogout, name: widget.name),
       body: currentScreen,
@@ -348,14 +390,16 @@ class _TabsScreenState extends State<TabsScreen> {
         currentIndex: _currentScreenIndex,
         onTap: _switchScreen,
         iconSize: 28,
-        items:  [
+        items: [
           BottomNavigationBarItem(
             icon: const Icon(Icons.home_rounded),
             label: S.of(context).home,
           ),
           BottomNavigationBarItem(
-              icon: const Icon(Icons.add_shopping_cart_sharp), label: S.of(context).Order),
-          BottomNavigationBarItem( icon: const Icon(Icons.star), label: S.of(context).Favorites),
+              icon: const Icon(Icons.add_shopping_cart_sharp),
+              label: S.of(context).Order),
+          BottomNavigationBarItem(
+              icon: const Icon(Icons.star), label: S.of(context).Favorites),
         ],
       ),
     );
