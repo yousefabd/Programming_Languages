@@ -12,7 +12,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  String lang = languages[1];
+  String lang = languages[0];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
