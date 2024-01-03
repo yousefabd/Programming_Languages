@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/data/url_data/auth_util.dart';
+import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/main.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: Text(
-          'Settings',
+          S.of(context).Settings,
           style: GoogleFonts.comme(
               color: Theme.of(context).colorScheme.onPrimary,
               fontWeight: FontWeight.bold),
@@ -33,7 +34,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             const Icon(Icons.language),
             const SizedBox(width: 10),
             Text(
-              'Language',
+              S.of(context).Language,
               style: GoogleFonts.roboto(
                 fontSize: 22,
                 fontWeight: FontWeight.w400,

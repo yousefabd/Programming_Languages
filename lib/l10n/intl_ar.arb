@@ -73,7 +73,11 @@
     "PleaseEnterValidAmount" : "الرجاء إدخال كمية صالحة !",
     "EnterMedicineNameFirst" : "أدخل اسم الدواء أولاً !",
     "orderID" : "الطلب",
-    "test" : "hh"
+    "test" : "hh",
+    "Settings" : "الإعدادات",
+    "Language" : "اللغة"
+
+
 
 
 

@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الكمية غير صالحة!"),
         "InvalidEmail":
             MessageLookupByLibrary.simpleMessage("البريد الالكتروني غير صالح"),
+        "Language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "ListIsEmpty":
             MessageLookupByLibrary.simpleMessage("القائمة فارغة حالياً"),
         "LogOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
@@ -71,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "RemovedOrderFromList": MessageLookupByLibrary.simpleMessage(
             "تمَّت إزالة الطلب من القائمة"),
         "SP": MessageLookupByLibrary.simpleMessage("ل.س"),
+        "Settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "Status": MessageLookupByLibrary.simpleMessage("حالة الطلب:"),
         "Submit": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "SubmitSuccess":

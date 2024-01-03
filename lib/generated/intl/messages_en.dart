@@ -48,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid amount!"),
         "InvalidEmail":
             MessageLookupByLibrary.simpleMessage("Invalid email address"),
+        "Language": MessageLookupByLibrary.simpleMessage("Language"),
         "ListIsEmpty":
             MessageLookupByLibrary.simpleMessage("This list is empty!"),
         "LogOut": MessageLookupByLibrary.simpleMessage("Log out"),
@@ -71,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "RemovedOrderFromList":
             MessageLookupByLibrary.simpleMessage("Removed order from the list"),
         "SP": MessageLookupByLibrary.simpleMessage("S.P"),
+        "Settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "Status": MessageLookupByLibrary.simpleMessage("Status:"),
         "Submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "SubmitSuccess": MessageLookupByLibrary.simpleMessage(
