@@ -84,7 +84,7 @@ class SideDrawer extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onTertiaryContainer,
                     ),
                     title: Text(
-                      'Settings',
+                      S.of(context).Settings,
                       style: GoogleFonts.roboto(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
