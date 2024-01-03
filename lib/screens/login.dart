@@ -64,7 +64,7 @@ class _LogInScreenState extends State<LogInScreen> {
         child: Stack(
           children: [
             SvgPicture.asset(
-              'assets/images/login_border.png', // new imge added here, got changed a little bit, but the size now is better, and the quiality ofc.
+              'assets/images/svborders.svg', // new imge added here, got changed a little bit, but the size now is better, and the quiality ofc.
               fit: BoxFit.fill,
             ),
             Center(
@@ -72,8 +72,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 /*When we used a stack with background image, some Material features were gone, like splash effect
                 in InkWell when it's tapped, so we wrapped the Column with Material with an invisible color just 
                 to get those features back!*/
-                color:
-                    Theme.of(context).colorScheme.background.withOpacity(0.5),
+                color: Colors.transparent,
                 child: Form(
                   key: _formKey,
                   child: Column(

@@ -11,15 +11,38 @@ final kColorScheme = ColorScheme.fromSeed(
     // seedColor: Color.fromARGB(255, 0, 141, 141), brightness: Brightness.light);
     // seedColor: Color.fromARGB(255, 8, 171, 171), brightness: Brightness.light);
     seedColor: const Color.fromARGB(255, 59, 225, 225),
-    brightness: Brightness.dark);
-
+    brightness: Brightness.light);
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(statusBarColor: kColorScheme.primary),
   );
-  runApp(
-    MaterialApp(
-      locale: const Locale('ar'),
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  _MyAppState createState() => _MyAppState();
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var currentLocale = const Locale('ar');
+  void setLocale(Locale newLocale) {
+    setState(() {
+      currentLocale = newLocale;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      locale: currentLocale,
       //locale: const Locale('en'),
       localizationsDelegates: const [
         S.delegate,
@@ -35,10 +58,10 @@ void main() {
       darkTheme: ThemeData.dark().copyWith(
         colorScheme: kColorScheme,
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       home: const PharmaStore(),
-    ),
-  );
+    );
+  }
 }
 
 bool isArabic() {

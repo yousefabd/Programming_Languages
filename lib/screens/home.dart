@@ -158,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               )
-            :  Expanded(
+            : Expanded(
                 child: Center(
                   child: Text(S.of(context).ListIsEmpty),
                 ),

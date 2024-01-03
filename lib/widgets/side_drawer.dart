@@ -3,6 +3,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prog_languages/generated/l10n.dart';
 import 'package:prog_languages/screens/requested_orders.dart';
+import 'package:prog_languages/screens/settings.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({super.key, required this.onLogout, required this.name});
@@ -93,7 +94,8 @@ class SideDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       Navigator.pop(context);
-                      onLogout();
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (ctx) => const SettingsScreen()));
                     },
                   ),
                   ListTile(
